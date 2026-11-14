@@ -6,95 +6,64 @@
 <title>TUMPUK.ID — Tumpuk 5 Foto Jadi 1</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  body{font-family:-apple-system,BlinkMacSystemFont,"Inter","Helvetica Neue",Arial,sans-serif;background:#F4F2ED;color:#111}
+  html{scroll-behavior:auto}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Inter","Helvetica Neue",Arial,sans-serif;background:#F4F2ED;color:#111;-webkit-font-smoothing:antialiased}
   .serif{font-family:Georgia,"Times New Roman",serif}
   .card{background:#fff;border:1px solid #E5E1D8;border-radius:16px}
   .btn-black{background:#111;color:#fff;border-radius:999px}
   .btn-black:active{transform:scale(.98)}
-  .btn-wa{background:#1A1A1A;color:#fff;border-radius:999px;border:1px solid #111}
   .opt{border:1px solid #E5E1D8;background:#fff;border-radius:12px;transition:.15s}
   .opt.active{border-color:#111;background:#111;color:#fff}
-  .slot{border:1px dashed #C9C4B8;background:#FAF8F4;border-radius:12px;transition:.15s}
-  .slot:hover{border-color:#111}
+  .slot{border:1px dashed #C9C4B8;background:#FAF8F4;border-radius:12px}
   input[type=file]{display:none}
+  /* INI KUNCI SCROLL NYA - Preview dibatasin, bisa di-scroll sendiri, gak bikin halaman loncat */
+  .preview-scroll{max-height:520px;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  .preview-scroll::-webkit-scrollbar{width:4px}
+  .preview-scroll::-webkit-scrollbar-thumb{background:#D8D5CE;border-radius:999px}
 </style>
 </head>
 <body class="min-h-screen">
 <div class="max-w-[1080px] mx-auto px-4 md:px-6 py-5">
 
-  <!-- HEADER - SIMPLE, NO GRADIENT -->
   <header class="flex items-center justify-between pb-5 border-b border-[#E5E1D8]">
     <div class="flex items-baseline gap-2">
       <span class="text-[22px] font-black tracking-tight">TUMPUK<span class="font-normal">.ID</span></span>
       <span class="hidden md:inline text-[12px] text-zinc-500">— Semarang, 2026</span>
     </div>
-    <nav class="flex items-center gap-4 text-[13px] font-medium">
-      <a href="#" class="hidden md:block text-zinc-600">Cara pakai</a>
-      <a href="#" class="hidden md:block text-zinc-600">Contoh</a>
-      <span class="text-[11px] bg-[#111] text-white px-3 py-1.5 rounded-full">Gratis • Tanpa watermark</span>
-    </nav>
+    <span class="text-[11px] bg-[#111] text-white px-3 py-1.5 rounded-full">Gratis • Tanpa watermark</span>
   </header>
 
-  <!-- HERO - KAYAK MAJALAH, BUKAN KAYAK AI -->
-  <section class="py-8 md:py-12 grid md:grid-cols-[1.2fr_1fr] gap-8 items-end">
-    <div>
-      <p class="text-[12px] tracking-[0.18em] uppercase text-zinc-500">Kolase foto — 5 foto ke bawah</p>
-      <h1 class="serif text-[44px] leading-[1.02] md:text-[64px] mt-3">Tumpuk lima foto<br><span class="italic font-normal">jadi satu yang tajam.</span></h1>
-      <p class="text-[15px] leading-relaxed text-zinc-600 mt-4 max-w-[480px]">Pilih lima foto dari galeri. Atur jarak dan garis tepi. Unduh dalam resolusi tinggi, lalu kirim ke WhatsApp. Selesai.</p>
-      <div class="flex flex-wrap gap-2 mt-5 text-[12px] text-zinc-600">
-        <span class="border border-[#E5E1D8] bg-white px-3 py-1.5 rounded-full">3224 × 7200 px</span>
-        <span class="border border-[#E5E1D8] bg-white px-3 py-1.5 rounded-full">PNG • 100%</span>
-        <span class="border border-[#E5E1D8] bg-white px-3 py-1.5 rounded-full">Diproses di perangkatmu</span>
-      </div>
-    </div>
-    <div class="text-[13px] text-zinc-600 leading-relaxed md:text-right">
-      <p>01 — Pilih foto<br>02 — Atur tampilan<br>03 — Unduh / bagikan</p>
-      <p class="mt-4 text-zinc-400">Tidak perlu daftar.<br>Tidak ada foto yang diunggah ke server.</p>
-    </div>
+  <section class="py-8 md:py-10">
+    <p class="text-[12px] tracking-[0.18em] uppercase text-zinc-500">Kolase foto — 5 foto ke bawah</p>
+    <h1 class="serif text-[40px] leading-[1.05] md:text-[56px] mt-3">Tumpuk lima foto<br><span class="italic font-normal">jadi satu yang tajam.</span></h1>
+    <p class="text-[15px] leading-relaxed text-zinc-600 mt-3 max-w-[520px]">Pilih lima foto dari galeri. Atur jarak dan garis tepi. Unduh dalam resolusi tinggi, lalu kirim ke WhatsApp.</p>
   </section>
 
-  <div class="grid lg:grid-cols-[1fr_380px] gap-5 items-start">
-    <!-- KIRI -->
-    <div class="space-y-5">
-      <!-- PREVIEW -->
-      <section class="card p-4 md:p-5">
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-[13px] font-bold tracking-wide">Pratinjau</h2>
-          <span id="infoLabel" class="text-[12px] text-zinc-500">Jarak: 2 • Garis tepi: 2</span>
-        </div>
-        <div class="bg-[#F4F2ED] border border-[#E5E1D8] rounded-xl p-4 md:p-6 flex justify-center">
-          <div class="w-full max-w-[300px] bg-white border border-[#E5E1D8] overflow-hidden">
-            <canvas id="canvas" width="3224" height="7200" class="w-full h-auto block"></canvas>
-          </div>
-        </div>
-        <p class="text-[12px] text-zinc-500 mt-3 leading-relaxed">Pratinjau diperkecil agar muat di layar. Hasil unduhan tetap beresolusi penuh. Jangan gunakan tangkapan layar untuk hasil akhir.</p>
-      </section>
+  <!-- URUTAN BARU BIAR SCROLL ENAK: 1. Pilih Foto -> 2. Pengaturan -> 3. Preview + Download -->
+  <!-- Dulu kan Preview di atas, makanya halaman langsung panjang banget. Sekarang Preview di bawah, scroll nya natural. -->
 
-      <!-- PILIH FOTO -->
+  <div class="grid lg:grid-cols-2 gap-5 items-start">
+    <!-- KIRI: PILIH + PENGATURAN - NO STICKY -->
+    <div class="space-y-5">
       <section class="card p-5">
         <div class="flex justify-between items-baseline">
-          <h2 class="text-[15px] font-bold">Pilih 5 foto</h2>
+          <h2 class="text-[15px] font-bold">1. Pilih 5 foto</h2>
           <span id="countBadge" class="text-[12px] font-medium text-zinc-500">0 / 5 terisi</span>
         </div>
-        <p class="text-[13px] text-zinc-500 mt-1">Urutan dari atas ke bawah. Foto 1 paling atas, foto 5 paling bawah. Ketuk kotak untuk mengganti.</p>
+        <p class="text-[13px] text-zinc-500 mt-1">Foto 1 paling atas, foto 5 paling bawah. Ketuk kotak untuk mengganti.</p>
         <div class="grid grid-cols-5 gap-2 md:gap-3 mt-4">
-          <label class="cursor-pointer"><div id="slot1" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative"><span class="text-[18px] font-bold">1</span><span class="text-[10px] text-zinc-500 tracking-wide">ATAS</span></div><input type="file" accept="image/*" onchange="loadImage(event,0)"></label>
-          <label class="cursor-pointer"><div id="slot2" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative"><span class="text-[18px] font-bold">2</span><span class="text-[10px] text-zinc-500 tracking-wide">KE-2</span></div><input type="file" accept="image/*" onchange="loadImage(event,1)"></label>
-          <label class="cursor-pointer"><div id="slot3" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative"><span class="text-[18px] font-bold">3</span><span class="text-[10px] text-zinc-500 tracking-wide">TENGAH</span></div><input type="file" accept="image/*" onchange="loadImage(event,2)"></label>
-          <label class="cursor-pointer"><div id="slot4" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative"><span class="text-[18px] font-bold">4</span><span class="text-[10px] text-zinc-500 tracking-wide">KE-4</span></div><input type="file" accept="image/*" onchange="loadImage(event,3)"></label>
-          <label class="cursor-pointer"><div id="slot5" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative"><span class="text-[18px] font-bold">5</span><span class="text-[10px] text-zinc-500 tracking-wide">BAWAH</span></div><input type="file" accept="image/*" onchange="loadImage(event,4)"></label>
+          <label class="cursor-pointer"><div id="slot1" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative"><span class="text-[18px] font-bold">1</span><span class="text-[10px] text-zinc-500">ATAS</span></div><input type="file" accept="image/*" onchange="loadImage(event,0)"></label>
+          <label class="cursor-pointer"><div id="slot2" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative"><span class="text-[18px] font-bold">2</span><span class="text-[10px] text-zinc-500">KE-2</span></div><input type="file" accept="image/*" onchange="loadImage(event,1)"></label>
+          <label class="cursor-pointer"><div id="slot3" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative"><span class="text-[18px] font-bold">3</span><span class="text-[10px] text-zinc-500">TENGAH</span></div><input type="file" accept="image/*" onchange="loadImage(event,2)"></label>
+          <label class="cursor-pointer"><div id="slot4" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative"><span class="text-[18px] font-bold">4</span><span class="text-[10px] text-zinc-500">KE-4</span></div><input type="file" accept="image/*" onchange="loadImage(event,3)"></label>
+          <label class="cursor-pointer"><div id="slot5" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative"><span class="text-[18px] font-bold">5</span><span class="text-[10px] text-zinc-500">BAWAH</span></div><input type="file" accept="image/*" onchange="loadImage(event,4)"></label>
         </div>
         <p id="countText" class="text-[12px] text-zinc-500 mt-3">0 dari 5 foto terisi.</p>
         <p id="qualityText" class="text-[12px] mt-1"></p>
-        <div class="mt-4 bg-[#F4F2ED] border border-[#E5E1D8] rounded-xl p-3 text-[12px] leading-relaxed text-zinc-600">Gunakan foto asli dari galeri / kamera. Foto yang sudah dikirim lewat WhatsApp / Instagram biasanya sudah terkompres dan hasilnya tidak akan tajam.</div>
       </section>
-    </div>
 
-    <!-- KANAN -->
-    <div class="space-y-5 lg:sticky lg:top-5">
       <section class="card p-5">
-        <h2 class="text-[15px] font-bold">Pengaturan</h2>
-
+        <h2 class="text-[15px] font-bold">2. Pengaturan</h2>
         <div class="mt-5">
           <div class="flex justify-between items-baseline mb-2"><span class="text-[13px] font-bold">Jarak antar foto</span><span id="gapLabel" class="text-[12px] text-zinc-500">2 — Seimbang</span></div>
           <div class="grid grid-cols-3 gap-2">
@@ -103,7 +72,6 @@
             <button onclick="setGap(3)" class="gapBtn opt py-3 text-[13px] font-bold">3<span class="block text-[11px] font-normal text-zinc-500">Longgar</span></button>
           </div>
         </div>
-
         <div class="mt-5">
           <div class="flex justify-between items-baseline mb-2"><span class="text-[13px] font-bold">Garis tepi</span><span id="strokeLabel" class="text-[12px] text-zinc-500">2 — Sedang</span></div>
           <div class="grid grid-cols-3 gap-2">
@@ -112,7 +80,6 @@
             <button onclick="setStroke(3)" class="strokeBtn opt py-3 text-[13px] font-bold">3<span class="block text-[11px] font-normal text-zinc-500">Tebal</span></button>
           </div>
         </div>
-
         <div class="mt-5">
           <div class="text-[13px] font-bold mb-2">Warna latar</div>
           <div class="flex gap-2">
@@ -122,9 +89,7 @@
             <button onclick="setBg('#D8D5CE')" class="w-9 h-9 rounded-full bg-[#D8D5CE] border border-zinc-300"></button>
             <button onclick="setBg('#1E2A26')" class="w-9 h-9 rounded-full bg-[#1E2A26] border border-zinc-300"></button>
           </div>
-          <p class="text-[12px] text-zinc-500 mt-2">Putih paling aman untuk dicetak / dibagikan. Hitam cocok untuk foto malam.</p>
         </div>
-
         <div class="mt-5">
           <div class="text-[13px] font-bold mb-2">Preset</div>
           <div class="grid grid-cols-3 gap-2 text-[12px] font-medium">
@@ -133,11 +98,27 @@
             <button onclick="applyPreset(3,2,'#EDE8DF')" class="opt py-2.5">Kertas</button>
           </div>
         </div>
+      </section>
+    </div>
 
-        <div class="border-t border-[#E5E1D8] mt-6 pt-4 text-[12px] leading-relaxed text-zinc-500">Hasil: 3224 × 7200 px • PNG • Tiap foto 3224 × 1440 px.<br>Ukuran file sekitar 5–15 MB. Itu normal untuk resolusi tinggi.</div>
-
+    <!-- KANAN: PREVIEW + DOWNLOAD - NO STICKY, SCROLL NORMAL -->
+    <div class="space-y-5">
+      <section class="card p-4 md:p-5">
+        <div class="flex justify-between items-center mb-3">
+          <h2 class="text-[13px] font-bold">3. Pratinjau</h2>
+          <span id="infoLabel" class="text-[12px] text-zinc-500">Jarak: 2 • Garis tepi: 2</span>
+        </div>
+        <!-- Preview dibungkus scroll sendiri, max 520px, jadi halaman gak loncat -->
+        <div class="preview-scroll bg-[#F4F2ED] border border-[#E5E1D8] rounded-xl p-3">
+          <div class="w-full max-w-[300px] mx-auto bg-white border border-[#E5E1D8] overflow-hidden">
+            <!-- Canvas preview KECIL, bukan 4K. Yang 4K cuma pas download. -->
+            <canvas id="previewCanvas" width="600" height="1340" class="w-full h-auto block"></canvas>
+          </div>
+        </div>
+        <p class="text-[12px] text-zinc-500 mt-3 leading-relaxed">Geser ke bawah untuk melihat semua 5 foto di dalam kotak pratinjau. Hasil unduhan tetap 3224 × 7200 px.</p>
+        <div class="border-t border-[#E5E1D8] mt-4 pt-4 text-[12px] leading-relaxed text-zinc-500">Hasil: 3224 × 7200 px • PNG • Tiap foto 3224 × 1440 px.</div>
         <button onclick="downloadHD()" class="w-full btn-black font-bold py-4 text-[14px] mt-4">Unduh HD — PNG</button>
-        <button onclick="shareToWA()" class="w-full btn-wa font-bold py-4 text-[14px] mt-2">Bagikan ke WhatsApp</button>
+        <button onclick="shareToWA()" class="w-full bg-white border border-[#111] font-bold py-4 text-[14px] mt-2 rounded-full">Bagikan ke WhatsApp</button>
         <button onclick="location.reload()" class="w-full text-[13px] text-zinc-500 font-medium py-3 mt-1">Atur ulang</button>
       </section>
 
@@ -149,7 +130,6 @@
           <li>Pilih file <span class="font-mono text-[12px]">tumpukid-...png</span></li>
           <li>Kirim. File diterima utuh, tanpa kompresi.</li>
         </ol>
-        <p class="text-[12px] text-zinc-500 mt-3">Jika dikirim lewat Galeri, WhatsApp akan mengompresnya menjadi kecil dan hasilnya buram.</p>
       </section>
     </div>
   </div>
@@ -160,12 +140,15 @@
   </footer>
 </div>
 
+<!-- Canvas 4K disembunyiin, cuma dipake pas download, jadi gak bikin scroll berat -->
+<canvas id="exportCanvas" width="3224" height="7200" style="display:none"></canvas>
+
 <script>
 let images=[null,null,null,null,null];
 let gapLevel=2, strokeLevel=2, bgColor='#ffffff';
 const PW=3224, PH=1440;
-function getGapPx(){ return gapLevel===1 ? 12 : gapLevel===2 ? 32 : 64; }
-function getStrokePx(){ return strokeLevel===1 ? 6 : strokeLevel===2 ? 16 : 32; }
+function getGapPx(scale){ return (gapLevel===1 ? 12 : gapLevel===2 ? 32 : 64) * scale; }
+function getStrokePx(scale){ return (strokeLevel===1 ? 6 : strokeLevel===2 ? 16 : 32) * scale; }
 function loadImage(e, idx){
   const file=e.target.files[0]; if(!file) return;
   const reader=new FileReader();
@@ -176,12 +159,12 @@ function loadImage(e, idx){
       document.getElementById('slot'+(idx+1)).innerHTML=`<img src="${ev.target.result}" class="absolute inset-0 w-full h-full object-cover">`;
       updateCount();
       let q='';
-      if(img.width < 1000) q = `Foto ${idx+1} hanya ${img.width}×${img.height}. Terlalu kecil, hasil akan buram. Ganti dengan foto asli.`;
+      if(img.width < 1000) q = `Foto ${idx+1} hanya ${img.width}×${img.height}. Terlalu kecil, hasil akan buram.`;
       else if(img.width < 2000) q = `Foto ${idx+1}: ${img.width}×${img.height} — Cukup untuk HD.`;
       else q = `Foto ${idx+1}: ${img.width}×${img.height} — Bagus, resolusi tinggi.`;
       document.getElementById('qualityText').textContent=q;
       document.getElementById('qualityText').className = img.width<1000 ? 'text-[12px] mt-1 text-red-600 font-medium' : 'text-[12px] mt-1 text-zinc-600';
-      drawCanvas();
+      drawPreview();
     };
     img.src=ev.target.result;
   };
@@ -196,60 +179,64 @@ function setGap(l){
   gapLevel=l;
   document.querySelectorAll('.gapBtn').forEach(b=>b.classList.remove('active')); event.target.closest('button').classList.add('active');
   document.getElementById('gapLabel').textContent=l===1?'1 — Rapat':l===2?'2 — Seimbang':'3 — Longgar';
-  updateInfo(); drawCanvas();
+  updateInfo(); drawPreview();
 }
 function setStroke(l){
   strokeLevel=l;
   document.querySelectorAll('.strokeBtn').forEach(b=>b.classList.remove('active')); event.target.closest('button').classList.add('active');
   document.getElementById('strokeLabel').textContent=l===1?'1 — Tipis':l===2?'2 — Sedang':'3 — Tebal';
-  updateInfo(); drawCanvas();
+  updateInfo(); drawPreview();
 }
-function setBg(c){ bgColor=c; drawCanvas(); }
-function applyPreset(g,s,c){ gapLevel=g; strokeLevel=s; bgColor=c; document.querySelectorAll('.gapBtn').forEach((b,i)=>b.classList.toggle('active', i+1===g)); document.querySelectorAll('.strokeBtn').forEach((b,i)=>b.classList.toggle('active', i+1===s)); document.getElementById('gapLabel').textContent=g+' — '+(g===1?'Rapat':g===2?'Seimbang':'Longgar'); document.getElementById('strokeLabel').textContent=s+' — '+(s===1?'Tipis':s===2?'Sedang':'Tebal'); updateInfo(); drawCanvas(); }
+function setBg(c){ bgColor=c; drawPreview(); }
+function applyPreset(g,s,c){ gapLevel=g; strokeLevel=s; bgColor=c; document.querySelectorAll('.gapBtn').forEach((b,i)=>b.classList.toggle('active', i+1===g)); document.querySelectorAll('.strokeBtn').forEach((b,i)=>b.classList.toggle('active', i+1===s)); document.getElementById('gapLabel').textContent=g+' — '+(g===1?'Rapat':g===2?'Seimbang':'Longgar'); document.getElementById('strokeLabel').textContent=s+' — '+(s===1?'Tipis':s===2?'Sedang':'Tebal'); updateInfo(); drawPreview(); }
 function updateInfo(){ document.getElementById('infoLabel').textContent=`Jarak: ${gapLevel} • Garis tepi: ${strokeLevel}`; }
-function drawOne(ctx, img, x, y, w, h){
-  const stroke=getStrokePx();
-  ctx.fillStyle=bgColor; ctx.fillRect(x-stroke, y-stroke, w+stroke*2, h+stroke*2);
-  if(!img){ ctx.fillStyle='#EDE8DF'; ctx.fillRect(x,y,w,h); ctx.fillStyle='#999'; ctx.font='600 60px sans-serif'; ctx.textAlign='center'; ctx.fillText('FOTO', x+w/2, y+h/2); return; }
-  ctx.imageSmoothingEnabled=true; ctx.imageSmoothingQuality='high';
-  const imgRatio=img.width/img.height, boxRatio=w/h;
-  let sw,sh,sx,sy;
-  if(imgRatio>boxRatio){ sh=img.height; sw=sh*boxRatio; sx=(img.width-sw)/2; sy=0; }
-  else { sw=img.width; sh=sw/boxRatio; sx=0; sy=(img.height-sh)/2; }
-  ctx.drawImage(img, sx,sy,sw,sh, x,y,w,h);
-}
-function drawCanvas(){
-  const canvas=document.getElementById('canvas'), ctx=canvas.getContext('2d');
-  const gap=getGapPx(), stroke=getStrokePx();
-  const totalH = PH*5 + gap*6 + stroke*10;
-  if(canvas.height!==totalH) canvas.height=totalH;
-  if(canvas.width!==PW) canvas.width=PW;
-  ctx.fillStyle=bgColor; ctx.fillRect(0,0,PW,totalH);
+
+// Gambar ke canvas apapun - bisa preview kecil / export 4K, rumusnya sama
+function drawToCanvas(canvas, W, H){
+  const ctx=canvas.getContext('2d');
+  const scale = W / PW;
+  const gap=getGapPx(scale), stroke=getStrokePx(scale);
+  const ph = PH * scale;
+  const totalH = ph*5 + gap*6 + stroke*10;
+  if(canvas.height!==Math.round(totalH)) canvas.height=Math.round(totalH);
+  if(canvas.width!==W) canvas.width=W;
+  ctx.fillStyle=bgColor; ctx.fillRect(0,0,W,totalH);
   for(let i=0;i<5;i++){
-    const y = gap + stroke + (PH + gap + stroke*2)*i;
+    const y = gap + stroke + (ph + gap + stroke*2)*i;
     const x = gap + stroke;
-    const w = PW - gap*2 - stroke*2;
-    drawOne(ctx, images[i], x, y, w, PH);
+    const w = W - gap*2 - stroke*2;
+    ctx.fillStyle=bgColor; ctx.fillRect(x-stroke, y-stroke, w+stroke*2, ph+stroke*2);
+    const img=images[i];
+    if(!img){ ctx.fillStyle='#EDE8DF'; ctx.fillRect(x,y,w,ph); ctx.fillStyle='#999'; ctx.font='600 20px sans-serif'; ctx.textAlign='center'; ctx.fillText('FOTO', x+w/2, y+ph/2); continue; }
+    ctx.imageSmoothingEnabled=true; ctx.imageSmoothingQuality='high';
+    const imgRatio=img.width/img.height, boxRatio=w/ph;
+    let sw,sh,sx,sy;
+    if(imgRatio>boxRatio){ sh=img.height; sw=sh*boxRatio; sx=(img.width-sw)/2; sy=0; }
+    else { sw=img.width; sh=sw/boxRatio; sx=0; sy=(img.height-sh)/2; }
+    ctx.drawImage(img, sx,sy,sw,sh, x,y,w,ph);
   }
 }
-drawCanvas();
+function drawPreview(){ drawToCanvas(document.getElementById('previewCanvas'), 600, 1340); }
+drawPreview();
 function downloadHD(){
   const filled=images.filter(i=>i!==null).length;
   if(filled===0){ alert('Pilih foto dulu.'); return; }
-  const canvas=document.getElementById('canvas');
+  const canvas=document.getElementById('exportCanvas');
+  drawToCanvas(canvas, PW, PH);
   const a=document.createElement('a'); a.download='tumpukid-4K-3224x7200-5foto.png'; a.href=canvas.toDataURL('image/png',1.0); a.click();
 }
 async function shareToWA(){
   const filled=images.filter(i=>i!==null).length;
   if(filled===0){ alert('Pilih foto dulu.'); return; }
-  const canvas=document.getElementById('canvas');
+  const canvas=document.getElementById('exportCanvas');
+  drawToCanvas(canvas, PW, PH);
   canvas.toBlob(async (blob)=>{
     const file=new File([blob], 'tumpukid-4K-3224x7200-5foto.png', {type:'image/png'});
     if(navigator.canShare && navigator.canShare({files:[file]})){
       try{ await navigator.share({ files:[file], title:'TUMPUK.ID', text:'Hasil dari TUMPUK.ID — 5 foto jadi 1.' }); return; }catch(e){}
     }
     const a=document.createElement('a'); a.download='tumpukid-4K-3224x7200-5foto.png'; a.href=canvas.toDataURL('image/png',1.0); a.click();
-    alert('Foto sudah diunduh. Kirim lewat Dokumen di WhatsApp agar tetap tajam.');
+    alert('Foto sudah diunduh. Kirim lewat Dokumen di WhatsApp agar tetap HD.');
   }, 'image/png', 1.0);
 }
 </script>
