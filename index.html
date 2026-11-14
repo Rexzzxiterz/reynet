@@ -35,16 +35,13 @@
   <section class="py-8 md:py-10">
     <p class="text-[12px] tracking-[0.18em] uppercase text-zinc-500">Pilih layout</p>
     <h1 class="serif text-[40px] leading-[1.05] md:text-[56px] mt-3">Tumpuk foto<br><span class="italic font-normal">jadi satu yang tajam.</span></h1>
-    <p class="text-[15px] leading-relaxed text-zinc-600 mt-3 max-w-[520px]">Pilih layout, pilih foto, atur jarak dan garis tepi. Unduh dalam resolusi tinggi, lalu kirim ke WhatsApp.</p>
+    <p class="text-[15px] leading-relaxed text-zinc-600 mt-3 max-w-[520px]">Pilih layout, pilih foto, atur jarak dan garis tepi. Unduh dalam resolusi tinggi, lalu Unduh / kirim ke WhatsApp.</p>
   </section>
 
   <div class="grid lg:grid-cols-2 gap-5 items-start">
-    <!-- KIRI -->
     <div class="space-y-5">
-      <!-- 1. PILIH LAYOUT -->
       <section class="card p-5">
         <h2 class="text-[15px] font-bold">1. Pilih layout</h2>
-        <p class="text-[13px] text-zinc-500 mt-1">Mau berapa foto yang ditumpuk?</p>
         <div class="grid grid-cols-3 gap-2 mt-4">
           <button onclick="setLayout(4)" id="layout4" class="layoutBtn opt py-3 px-2 text-[13px] font-bold">
             4 Foto
@@ -62,22 +59,17 @@
             <span class="block mt-2 mx-auto w-[28px] grid grid-cols-2 gap-[2px]"><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span></span>
           </button>
         </div>
-        <p id="layoutDesc" class="text-[12px] text-zinc-500 mt-3">5 foto ke bawah — cocok untuk story / status WA yang panjang.</p>
       </section>
-
-      <!-- 2. PILIH FOTO - DINAMIS SESUAI LAYOUT -->
       <section class="card p-5">
         <div class="flex justify-between items-baseline">
           <h2 class="text-[15px] font-bold">2. Pilih foto</h2>
           <span id="countBadge" class="text-[12px] font-medium text-zinc-500">0 / 5 terisi</span>
         </div>
-        <p id="photoHint" class="text-[13px] text-zinc-500 mt-1">Foto 1 paling atas, foto 5 paling bawah. Ketuk kotak untuk mengganti.</p>
+        <p id="photoHint" class="text-[13px] text-zinc-500 mt-1">Ketuk kotak untuk Upload foto / Mengganti foto.</p>
         <div id="slotsGrid" class="grid grid-cols-5 gap-2 md:gap-3 mt-4"></div>
         <p id="countText" class="text-[12px] text-zinc-500 mt-3">0 dari 5 foto terisi.</p>
         <p id="qualityText" class="text-[12px] mt-1"></p>
       </section>
-
-      <!-- 3. PENGATURAN -->
       <section class="card p-5">
         <h2 class="text-[15px] font-bold">3. Pengaturan</h2>
         <div class="mt-5">
@@ -96,7 +88,6 @@
             <button onclick="setStroke(3)" class="strokeBtn opt py-3 text-[13px] font-bold">3<span class="block text-[11px] font-normal text-zinc-500">Tebal</span></button>
           </div>
         </div>
-        <!-- WARNA LATAR CUMA 2 -->
         <div class="mt-5">
           <div class="text-[13px] font-bold mb-2">Warna latar</div>
           <div class="flex gap-3">
@@ -109,16 +100,13 @@
               <span class="text-[13px] font-medium">Hitam</span>
             </button>
           </div>
-          <p class="text-[12px] text-zinc-500 mt-2">Putih paling aman. Hitam cocok untuk foto malam / foto gelap.</p>
-        </div>
       </section>
     </div>
 
-    <!-- KANAN -->
     <div class="space-y-5">
       <section class="card p-4 md:p-5">
         <div class="flex justify-between items-center mb-3">
-          <h2 class="text-[13px] font-bold">4. Pratinjau</h2>
+          <h2 class="text-[13px] font-bold">4. Preview</h2>
           <span id="infoLabel" class="text-[12px] text-zinc-500">Jarak: 2 • Garis tepi: 2</span>
         </div>
         <div class="preview-scroll bg-[#F4F2ED] border border-[#E5E1D8] rounded-xl p-3">
@@ -126,17 +114,15 @@
             <canvas id="previewCanvas" width="600" height="1340" class="w-full h-auto block"></canvas>
           </div>
         </div>
-        <p id="previewHint" class="text-[12px] text-zinc-500 mt-3 leading-relaxed">Geser ke bawah untuk melihat semua foto di dalam kotak pratinjau. Hasil unduhan tetap 3224 px lebar.</p>
-        <div id="exportInfo" class="border-t border-[#E5E1D8] mt-4 pt-4 text-[12px] leading-relaxed text-zinc-500">Hasil: 3224 × 7200 px • PNG • Tiap foto 3224 × 1440 px.</div>
         <button onclick="downloadHD()" class="w-full btn-black font-bold py-4 text-[14px] mt-4">Unduh HD — PNG</button>
         <button onclick="shareToWA()" class="w-full bg-white border border-[#111] font-bold py-4 text-[14px] mt-2 rounded-full">Bagikan ke WhatsApp</button>
         <button onclick="location.reload()" class="w-full text-[13px] text-zinc-500 font-medium py-3 mt-1">Atur ulang</button>
       </section>
 
       <section class="card p-5">
-        <h3 class="text-[14px] font-bold">Agar tetap tajam di WhatsApp</h3>
+        <h3 class="text-[14px] font-bold">Agar tetap HD di WhatsApp</h3>
         <ol class="text-[13px] leading-relaxed text-zinc-600 mt-2 list-decimal list-inside space-y-1">
-          <li>Buka WhatsApp, pilih chat, ketuk +</li>
+          <li>Buka WhatsApp, pilih chat, ketuk 📎</li>
           <li>Pilih <b class="text-zinc-900">Dokumen</b>, bukan Galeri</li>
           <li>Pilih file <span class="font-mono text-[12px]">tumpukid-...png</span></li>
           <li>Kirim. File diterima utuh, tanpa kompresi.</li>
@@ -147,35 +133,30 @@
 
   <footer class="flex flex-col md:flex-row justify-between gap-2 border-t border-[#E5E1D8] mt-8 pt-5 pb-4 text-[12px] text-zinc-500">
     <span><b class="text-zinc-900">TUMPUK.ID</b> — Tumpuk foto jadi satu.</span>
-    <span>Semarang • 2026 • Foto diproses lokal di perangkatmu.</span>
+    <span>Create by REY OFFICIAL</span>
   </footer>
 </div>
 
 <canvas id="exportCanvas" width="3224" height="7200" style="display:none"></canvas>
 
 <script>
-let layout = 5; // 4, 5, atau 8
+let layout = 5;
 let images = [null,null,null,null,null];
 let gapLevel=2, strokeLevel=2, bgColor='#ffffff';
 const PW=3224, PH=1440;
 function getGapPx(scale){ return (gapLevel===1 ? 12 : gapLevel===2 ? 32 : 64) * scale; }
 function getStrokePx(scale){ return (strokeLevel===1 ? 6 : strokeLevel===2 ? 16 : 32) * scale; }
-
-// RENDER SLOT SESUAI LAYOUT
 function renderSlots(){
   const grid=document.getElementById('slotsGrid');
-  // 8 foto pake grid 4 kolom biar muat, 4/5 foto pake 5 kolom
   grid.className = layout===8 ? 'grid grid-cols-4 gap-2 md:gap-3 mt-4' : 'grid grid-cols-5 gap-2 md:gap-3 mt-4';
   let html='';
   const labels = layout===8 ? ['KIRI 1','KIRI 2','KIRI 3','KIRI 4','KANAN 1','KANAN 2','KANAN 3','KANAN 4'] : ['ATAS','KE-2','TENGAH','KE-4','BAWAH','KE-6'];
   for(let i=0;i<layout;i++){
     const label = layout===8 ? labels[i] : (i===0?'ATAS': i===layout-1?'BAWAH': 'KE-'+(i+1));
     const existing = images[i] ? '' : `<span class="text-[18px] font-bold">${i+1}</span><span class="text-[10px] text-zinc-500">${label}</span>`;
-    // kalau udah ada gambar, kita simpen di data, renderSlots akan dipanggil ulang, jadi kita butuh simpen URL
     html += `<label class="cursor-pointer"><div id="slot${i+1}" data-idx="${i}" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative">${existing}</div><input type="file" accept="image/*" onchange="loadImage(event,${i})"></label>`;
   }
   grid.innerHTML=html;
-  // balikin gambar yang udah keisi (karena innerHTML ke-reset)
   images.forEach((img,i)=>{
     if(img && img._url){
       const el=document.getElementById('slot'+(i+1));
@@ -185,7 +166,6 @@ function renderSlots(){
   updateCount();
 }
 function setLayout(n){
-  // simpen foto lama, potong / tambah sesuai layout baru
   const old=[...images];
   layout=n;
   images = Array(n).fill(null);
@@ -255,7 +235,6 @@ function drawToCanvas(canvas, W){
   const scale = W / PW;
   const gap=getGapPx(scale), stroke=getStrokePx(scale);
   if(layout===8){
-    // 8 FOTO: 2 kolom x 4 baris
     const cols=2, rows=4;
     const cellW = (W - gap*(cols+1) - stroke*cols*2) / cols;
     const cellH = cellW * (PH / PW); // rasio sama kayak foto ke bawah, biar konsisten
@@ -279,7 +258,7 @@ function drawToCanvas(canvas, W){
       ctx.drawImage(img, sx,sy,sw,sh, x,y,cellW,cellH);
     }
   } else {
-    // 4 / 5 FOTO: 1 kolom ke bawah
+    
     const ph = PH * scale;
     const totalH = ph*layout + gap*(layout+1) + stroke*layout*2;
     if(canvas.height!==Math.round(totalH)) canvas.height=Math.round(totalH);
