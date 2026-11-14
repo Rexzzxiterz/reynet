@@ -18,22 +18,15 @@
   input[type=file]{display:none}
   .colorBtn.active{outline:2px solid #111;outline-offset:2px}
 
-  /* === IPHONE MOCKUP - BARU === */
   .iphone{
     width:100%; max-width:300px; margin:0 auto;
     background:#111; border-radius:48px;
     padding:11px; box-shadow:0 20px 40px rgba(0,0,0,.25), 0 0 0 2px #000, inset 0 0 0 2px #333;
     position:relative;
   }
-  .iphone::before{ /* tombol samping kiri */
-    content:""; position:absolute; left:-3px; top:110px; width:3px; height:32px; background:#333; border-radius:3px;
-  }
-  .iphone::after{ /* tombol samping kanan */
-    content:""; position:absolute; right:-3px; top:150px; width:3px; height:60px; background:#333; border-radius:3px;
-  }
-  .iphone-screen{
-    background:#fff; border-radius:38px; overflow:hidden; position:relative;
-  }
+  .iphone::before{ content:""; position:absolute; left:-3px; top:110px; width:3px; height:32px; background:#333; border-radius:3px; }
+  .iphone::after{ content:""; position:absolute; right:-3px; top:150px; width:3px; height:60px; background:#333; border-radius:3px; }
+  .iphone-screen{ background:#fff; border-radius:38px; overflow:hidden; position:relative; }
   .iphone-notch{
     position:absolute; top:10px; left:50%; transform:translateX(-50%);
     width:100px; height:24px; background:#111; border-radius:999px; z-index:10;
@@ -41,15 +34,15 @@
   }
   .iphone-notch::after{ content:""; width:8px; height:8px; background:#1a1a2e; border-radius:50%; }
   .iphone-scroll{
-    max-height:520px; overflow-y:auto; -webkit-overflow-scrolling:touch; scrollbar-width:thin;
+    max-height:520px; overflow-y:auto; -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
   }
-  .iphone-scroll::-webkit-scrollbar{width:4px}
-  .iphone-scroll::-webkit-scrollbar-thumb{background:#D8D5CE;border-radius:999px}
+  .iphone-scroll::-webkit-scrollbar{ display:none; width:0; height:0; }
   .iphone-home{
     position:absolute; bottom:7px; left:50%; transform:translateX(-50%);
     width:110px; height:4px; background:rgba(0,0,0,.85); border-radius:999px; z-index:10;
   }
-  /* biar canvas gak ketutup poni / home indicator */
   .iphone-screen canvas{ display:block; }
 </style>
 </head>
@@ -142,8 +135,6 @@
           <h2 class="text-[13px] font-bold">4. Preview</h2>
           <span id="infoLabel" class="text-[12px] text-zinc-500">Jarak: 2 • Garis tepi: 2</span>
         </div>
-
-        <!-- === PRATINJAU JADI IPHONE - BARU === -->
         <div class="bg-[#F4F2ED] border border-[#E5E1D8] rounded-xl p-4">
           <div class="iphone">
             <div class="iphone-screen">
@@ -156,14 +147,12 @@
           </div>
           <p class="text-center text-[12px] text-zinc-500 mt-3">Geser di dalam HP untuk lihat semua foto 👆</p>
         </div>
-
         <p id="previewHint" class="text-[12px] text-zinc-500 mt-3 leading-relaxed">Geser ke bawah untuk melihat semua foto di dalam HP. Hasil unduhan tetap 3224 px lebar.</p>
         <div id="exportInfo" class="border-t border-[#E5E1D8] mt-4 pt-4 text-[12px] leading-relaxed text-zinc-500">Hasil: 3224 × 7200 px • PNG • Tiap foto 3224 × 1440 px.</div>
         <button onclick="downloadHD()" class="w-full btn-black font-bold py-4 text-[14px] mt-4">Unduh HD — PNG</button>
         <button onclick="shareToWA()" class="w-full bg-white border border-[#111] font-bold py-4 text-[14px] mt-2 rounded-full">Bagikan ke WhatsApp</button>
         <button onclick="location.reload()" class="w-full text-[13px] text-zinc-500 font-medium py-3 mt-1">Atur ulang</button>
       </section>
-
       <section class="card p-5">
         <h3 class="text-[14px] font-bold">Agar tetap HD di WhatsApp</h3>
         <ol class="text-[13px] leading-relaxed text-zinc-600 mt-2 list-decimal list-inside space-y-1">
