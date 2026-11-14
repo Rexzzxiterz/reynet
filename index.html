@@ -60,8 +60,7 @@
             <span class="block mt-2 mx-auto w-[28px] grid grid-cols-2 gap-[2px]"><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span></span>
           </button>
         </div>
-        <!-- FIX: ID yang dicari JS dibalikin -->
-        <p id="layoutDesc" class="text-[12px] text-zinc-500 mt-3">5 foto ke bawah — cocok untuk story / status WA yang panjang.</p>
+        
       </section>
       <section class="card p-5">
         <div class="flex justify-between items-baseline">
@@ -118,8 +117,7 @@
             <canvas id="previewCanvas" width="600" height="1340" class="w-full h-auto block"></canvas>
           </div>
         </div>
-        <!-- FIX: ID yang dicari JS dibalikin -->
-        <p id="previewHint" class="text-[12px] text-zinc-500 mt-3 leading-relaxed">Geser ke bawah untuk melihat semua foto di dalam kotak pratinjau. Hasil unduhan tetap 3224 px lebar.</p>
+        
         <div id="exportInfo" class="border-t border-[#E5E1D8] mt-4 pt-4 text-[12px] leading-relaxed text-zinc-500">Hasil: 3224 × 7200 px • PNG • Tiap foto 3224 × 1440 px.</div>
         <button onclick="downloadHD()" class="w-full btn-black font-bold py-4 text-[14px] mt-4">Unduh HD — PNG</button>
         <button onclick="shareToWA()" class="w-full bg-white border border-[#111] font-bold py-4 text-[14px] mt-2 rounded-full">Bagikan ke WhatsApp</button>
@@ -179,7 +177,7 @@ function setLayout(n){
   for(let i=0;i<Math.min(old.length,n);i++) images[i]=old[i];
   document.querySelectorAll('.layoutBtn').forEach(b=>b.classList.remove('active'));
   document.getElementById('layout'+n).classList.add('active');
-  // FIX: dikasih pengaman, biar gak crash kalo ID kehapus lagi
+  
   const descEl=document.getElementById('layoutDesc');
   if(descEl) descEl.textContent = n===4 ? '4 foto ke bawah — lebih pendek, cocok untuk feed / status yang tidak terlalu panjang.'
     : n===5 ? '5 foto ke bawah — cocok untuk story / status WA yang panjang.'
