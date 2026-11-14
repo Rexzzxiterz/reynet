@@ -27,7 +27,8 @@
 
   <header class="flex items-center justify-between pb-5 border-b border-[#E5E1D8]">
     <div class="flex items-baseline gap-2">
-      <span class="text-[22px] font-black tracking-tight">TUMPUK<span class="font-normal">.ID</span>
+      <!-- FIX: ditambah </span> -->
+      <span class="text-[22px] font-black tracking-tight">TUMPUK<span class="font-normal">.ID</span></span>
     </div>
     <span class="text-[11px] bg-[#111] text-white px-3 py-1.5 rounded-full">HD Gratis • Tanpa watermark</span>
   </header>
@@ -59,6 +60,8 @@
             <span class="block mt-2 mx-auto w-[28px] grid grid-cols-2 gap-[2px]"><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span></span>
           </button>
         </div>
+        <!-- FIX: ID yang dicari JS dibalikin -->
+        <p id="layoutDesc" class="text-[12px] text-zinc-500 mt-3">5 foto ke bawah — cocok untuk story / status WA yang panjang.</p>
       </section>
       <section class="card p-5">
         <div class="flex justify-between items-baseline">
@@ -100,6 +103,7 @@
               <span class="text-[13px] font-medium">Hitam</span>
             </button>
           </div>
+        </div>
       </section>
     </div>
 
@@ -114,6 +118,9 @@
             <canvas id="previewCanvas" width="600" height="1340" class="w-full h-auto block"></canvas>
           </div>
         </div>
+        <!-- FIX: ID yang dicari JS dibalikin -->
+        <p id="previewHint" class="text-[12px] text-zinc-500 mt-3 leading-relaxed">Geser ke bawah untuk melihat semua foto di dalam kotak pratinjau. Hasil unduhan tetap 3224 px lebar.</p>
+        <div id="exportInfo" class="border-t border-[#E5E1D8] mt-4 pt-4 text-[12px] leading-relaxed text-zinc-500">Hasil: 3224 × 7200 px • PNG • Tiap foto 3224 × 1440 px.</div>
         <button onclick="downloadHD()" class="w-full btn-black font-bold py-4 text-[14px] mt-4">Unduh HD — PNG</button>
         <button onclick="shareToWA()" class="w-full bg-white border border-[#111] font-bold py-4 text-[14px] mt-2 rounded-full">Bagikan ke WhatsApp</button>
         <button onclick="location.reload()" class="w-full text-[13px] text-zinc-500 font-medium py-3 mt-1">Atur ulang</button>
@@ -172,13 +179,17 @@ function setLayout(n){
   for(let i=0;i<Math.min(old.length,n);i++) images[i]=old[i];
   document.querySelectorAll('.layoutBtn').forEach(b=>b.classList.remove('active'));
   document.getElementById('layout'+n).classList.add('active');
-  const desc = n===4 ? '4 foto ke bawah — lebih pendek, cocok untuk feed / status yang tidak terlalu panjang.'
+  // FIX: dikasih pengaman, biar gak crash kalo ID kehapus lagi
+  const descEl=document.getElementById('layoutDesc');
+  if(descEl) descEl.textContent = n===4 ? '4 foto ke bawah — lebih pendek, cocok untuk feed / status yang tidak terlalu panjang.'
     : n===5 ? '5 foto ke bawah — cocok untuk story / status WA yang panjang.'
     : '8 foto — kiri 4, kanan 4. Cocok untuk foto bareng, foto produk, atau sebelum-sesudah.';
-  document.getElementById('layoutDesc').textContent=desc;
-  document.getElementById('photoHint').textContent = n===8 ? 'Urutan: 1-4 kolom kiri (atas ke bawah), 5-8 kolom kanan (atas ke bawah).' : `Foto 1 paling atas, foto ${n} paling bawah. Ketuk kotak untuk mengganti.`;
-  document.getElementById('exportInfo').textContent = n===8 ? 'Hasil: 3224 × 2880 px • PNG • Tiap foto 1580 × 700 px.' : n===4 ? 'Hasil: 3224 × 5760 px • PNG • Tiap foto 3224 × 1440 px.' : 'Hasil: 3224 × 7200 px • PNG • Tiap foto 3224 × 1440 px.';
-  document.getElementById('previewHint').textContent = n===8 ? 'Pratinjau 8 foto — kiri 4, kanan 4. Geser untuk melihat semua.' : 'Geser ke bawah untuk melihat semua foto di dalam kotak pratinjau. Hasil unduhan tetap 3224 px lebar.';
+  const hintEl=document.getElementById('photoHint');
+  if(hintEl) hintEl.textContent = n===8 ? 'Urutan: 1-4 kolom kiri (atas ke bawah), 5-8 kolom kanan (atas ke bawah).' : `Foto 1 paling atas, foto ${n} paling bawah. Ketuk kotak untuk mengganti.`;
+  const expEl=document.getElementById('exportInfo');
+  if(expEl) expEl.textContent = n===8 ? 'Hasil: 3224 × 2880 px • PNG • Tiap foto 1580 × 700 px.' : n===4 ? 'Hasil: 3224 × 5760 px • PNG • Tiap foto 3224 × 1440 px.' : 'Hasil: 3224 × 7200 px • PNG • Tiap foto 3224 × 1440 px.';
+  const prevEl=document.getElementById('previewHint');
+  if(prevEl) prevEl.textContent = n===8 ? 'Pratinjau 8 foto — kiri 4, kanan 4. Geser untuk melihat semua.' : 'Geser ke bawah untuk melihat semua foto di dalam kotak pratinjau. Hasil unduhan tetap 3224 px lebar.';
   renderSlots();
   drawPreview();
 }
@@ -229,7 +240,6 @@ function setBg(c, btn){
   drawPreview();
 }
 function updateInfo(){ document.getElementById('infoLabel').textContent=`Jarak: ${gapLevel} • Garis tepi: ${strokeLevel}`; }
-
 function drawToCanvas(canvas, W){
   const ctx=canvas.getContext('2d');
   const scale = W / PW;
@@ -237,7 +247,7 @@ function drawToCanvas(canvas, W){
   if(layout===8){
     const cols=2, rows=4;
     const cellW = (W - gap*(cols+1) - stroke*cols*2) / cols;
-    const cellH = cellW * (PH / PW); // rasio sama kayak foto ke bawah, biar konsisten
+    const cellH = cellW * (PH / PW);
     const totalH = (cellH + gap + stroke*2)*rows + gap + stroke*2;
     if(canvas.height!==Math.round(totalH)) canvas.height=Math.round(totalH);
     if(canvas.width!==W) canvas.width=W;
@@ -258,7 +268,6 @@ function drawToCanvas(canvas, W){
       ctx.drawImage(img, sx,sy,sw,sh, x,y,cellW,cellH);
     }
   } else {
-    
     const ph = PH * scale;
     const totalH = ph*layout + gap*(layout+1) + stroke*layout*2;
     if(canvas.height!==Math.round(totalH)) canvas.height=Math.round(totalH);
