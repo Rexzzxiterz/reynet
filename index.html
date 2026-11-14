@@ -3,121 +3,159 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>REY KOLASE - 1612 x 720 - 5 Foto Ke Bawah HD</title>
+<title>REY KOLASE - 1612 x 720 - 5 Foto HD</title>
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-[#0a0a0f] text-white min-h-screen px-4 py-6 font-sans">
 <div class="max-w-6xl mx-auto">
   <div class="text-center">
     <h1 class="text-3xl md:text-4xl font-black">REY <span class="text-pink-400">KOLASE</span> <span class="text-xs bg-blue-400 text-black px-2 py-0.5 rounded-full align-middle">1612 x 720</span></h1>
-    <p class="text-zinc-400 text-sm mt-1">5 Foto Susun Ke Bawah • Landscape 1612 x 720 • HD PNG • No Burem</p>
-    <div class="mt-2 inline-flex gap-2 text-[11px]">
-      <span class="bg-zinc-800 px-3 py-1 rounded-full">📐 1612 x 720 px</span>
-      <span class="bg-zinc-800 px-3 py-1 rounded-full">🖼️ 5 Foto</span>
-      <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full">HD PNG - NO KOMPRES</span>
-    </div>
+    <p class="text-zinc-400 text-sm mt-1">5 Foto Susun Ke Bawah • 1612 x 720 • HD PNG • No Burem</p>
   </div>
 
   <!-- PREVIEW -->
-  <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-4 mt-6">
+  <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-4 mt-5">
     <div class="flex justify-between items-center mb-3">
-      <div class="text-xs font-bold tracking-widest text-zinc-400">PREVIEW ASLI - 1612 x 720</div>
-      <div class="text-[11px] bg-pink-500/20 text-pink-300 px-3 py-1 rounded-full">Susun Ke Bawah ⬇</div>
+      <div class="text-xs font-bold tracking-widest text-zinc-400">PREVIEW - 5 FOTO KE BAWAH</div>
+      <div id="infoLabel" class="text-[11px] bg-pink-500/20 text-pink-300 px-3 py-1 rounded-full">Gap: 2 • Stroke: 2</div>
     </div>
     <div class="w-full rounded-xl overflow-hidden border border-zinc-700 bg-black">
       <canvas id="canvas" width="1612" height="720" class="w-full h-auto block"></canvas>
     </div>
-    <p class="text-[11px] text-zinc-500 mt-2 text-center">Ini preview persis hasil download. Kalo di sini tajem, di galeri pasti tajem. Jangan screenshot preview, klik tombol DOWNLOAD biar dapet file PNG asli nya.</p>
   </div>
 
   <div class="grid md:grid-cols-2 gap-5 mt-5">
-    <!-- 5 FOTO -->
+    <!-- 5 FOTO - PASTI 5 -->
     <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-5">
-      <div class="text-xs font-bold tracking-widest text-zinc-400 mb-3">1. PILIH 5 FOTO LU - URUT DARI ATAS KE BAWAH</div>
+      <div class="text-xs font-bold tracking-widest text-zinc-400 mb-1">1. PILIH 5 FOTO - URUT ATAS KE BAWAH</div>
+      <div class="text-[11px] text-yellow-300 mb-3">⚠️ Harus 5! Foto 1 paling atas, Foto 5 paling bawah.</div>
       <div class="grid grid-cols-5 gap-2">
-        <label class="cursor-pointer"><div id="slot1" class="aspect-[3/4] bg-zinc-800 rounded-xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-lg">+</span><span class="text-[9px] text-zinc-400">1<br>PALING ATAS</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,0)"></label>
-        <label class="cursor-pointer"><div id="slot2" class="aspect-[3/4] bg-zinc-800 rounded-xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-lg">+</span><span class="text-[9px] text-zinc-400">2</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,1)"></label>
-        <label class="cursor-pointer"><div id="slot3" class="aspect-[3/4] bg-zinc-800 rounded-xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-lg">+</span><span class="text-[9px] text-zinc-400">3<br>TENGAH</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,2)"></label>
-        <label class="cursor-pointer"><div id="slot4" class="aspect-[3/4] bg-zinc-800 rounded-xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-lg">+</span><span class="text-[9px] text-zinc-400">4</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,3)"></label>
-        <label class="cursor-pointer"><div id="slot5" class="aspect-[3/4] bg-zinc-800 rounded-xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-lg">+</span><span class="text-[9px] text-zinc-400">5<br>PALING BAWAH</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,4)"></label>
+        <label class="cursor-pointer"><div id="slot1" class="aspect-[3/4] bg-zinc-800 rounded-xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-2xl font-black">1</span><span class="text-[9px] text-zinc-400">ATAS</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,0)"></label>
+        <label class="cursor-pointer"><div id="slot2" class="aspect-[3/4] bg-zinc-800 rounded-xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-2xl font-black">2</span><span class="text-[9px] text-zinc-400">KE-2</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,1)"></label>
+        <label class="cursor-pointer"><div id="slot3" class="aspect-[3/4] bg-zinc-800 rounded-xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-2xl font-black">3</span><span class="text-[9px] text-zinc-400">TENGAH</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,2)"></label>
+        <label class="cursor-pointer"><div id="slot4" class="aspect-[3/4] bg-zinc-800 rounded-xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-2xl font-black">4</span><span class="text-[9px] text-zinc-400">KE-4</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,3)"></label>
+        <label class="cursor-pointer"><div id="slot5" class="aspect-[3/4] bg-zinc-800 rounded-xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-2xl font-black">5</span><span class="text-[9px] text-zinc-400">BAWAH</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,4)"></label>
       </div>
-      <p class="text-[11px] text-zinc-500 mt-3">Urutan: Foto 1 paling atas, Foto 5 paling bawah. Klik foto buat ganti. Pake foto asli galeri, jangan dari WA biar HD.</p>
+      <p id="countText" class="text-[11px] text-zinc-500 mt-3">Baru keisi: 0 / 5 foto. Isi semua 5 biar full.</p>
     </div>
 
-    <!-- ATUR -->
+    <!-- GAP & STROKE 1/2/3 -->
     <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-5">
-      <div class="text-xs font-bold tracking-widest text-zinc-400 mb-3">2. ATUR TAMPILAN</div>
-      <div class="space-y-4 text-sm">
-        <div class="flex justify-between items-center gap-2"><span>Susun</span><div class="flex gap-1"><button onclick="setLayout('down')" class="layoutBtn bg-pink-500 px-3 py-1.5 rounded-full text-xs">⬇ Ke Bawah (5 Tumpuk)</button><button onclick="setLayout('side')" class="layoutBtn bg-zinc-800 px-3 py-1.5 rounded-full text-xs">➡ Ke Samping (5 Jejer)</button></div></div>
-        <div class="flex justify-between items-center"><span>Jarak (Gap)</span><div class="flex gap-2"><button onclick="setGap(0)" class="gapBtn bg-zinc-800 px-3 py-1.5 rounded-full text-xs">0 - Nempel</button><button onclick="setGap(6)" class="gapBtn bg-pink-500 px-3 py-1.5 rounded-full text-xs">6 - Rapi</button><button onclick="setGap(12)" class="gapBtn bg-zinc-800 px-3 py-1.5 rounded-full text-xs">12 - Lebar</button></div></div>
-        <div class="flex justify-between items-center"><span>Warna Gap</span><div class="flex gap-2"><button onclick="setBg('#ffffff')" class="w-7 h-7 rounded-full bg-white border"></button><button onclick="setBg('#000000')" class="w-7 h-7 rounded-full bg-black border border-zinc-600"></button><button onclick="setBg('#FF5DA2')" class="w-7 h-7 rounded-full bg-pink-500"></button><button onclick="setBg('#F5F5F0')" class="w-7 h-7 rounded-full bg-[#F5F5F0]"></button></div></div>
-        <div class="flex justify-between items-center"><span>Mode Foto</span><div class="flex gap-2"><button onclick="setFit('cover')" class="fitBtn bg-pink-500 px-3 py-1.5 rounded-full text-xs">Cover - Full, No Hitam</button><button onclick="setFit('contain')" class="fitBtn bg-zinc-800 px-3 py-1.5 rounded-full text-xs">Full Foto, Ada Hitam</button></div></div>
+      <div class="text-xs font-bold tracking-widest text-zinc-400 mb-3">2. ATUR YANG PUTIH-PUTIH ITU</div>
+      
+      <!-- GAP = JARAK ANTAR FOTO -->
+      <div class="mb-4">
+        <div class="flex justify-between text-sm mb-2"><span>GAP <span class="text-zinc-500 text-xs">- Jarak antar foto</span></span><span id="gapLabel" class="text-pink-300 font-bold">2 - Pas</span></div>
+        <div class="grid grid-cols-3 gap-2">
+          <button onclick="setGap(1)" class="gapBtn bg-zinc-800 py-3 rounded-xl text-sm font-bold">1<br><span class="text-[10px] font-normal text-zinc-400">Rapet</span></button>
+          <button onclick="setGap(2)" class="gapBtn bg-pink-500 py-3 rounded-xl text-sm font-bold">2<br><span class="text-[10px] font-normal">Pas ✅</span></button>
+          <button onclick="setGap(3)" class="gapBtn bg-zinc-800 py-3 rounded-xl text-sm font-bold">3<br><span class="text-[10px] font-normal text-zinc-400">Renggang</span></button>
+        </div>
       </div>
-      <button onclick="downloadHD()" class="w-full mt-5 bg-pink-500 hover:bg-pink-400 text-white font-black text-lg py-4 rounded-full shadow-[0_0_25px_rgba(236,72,153,.4)] active:scale-[.98] transition">⬇ DOWNLOAD HD 1612 x 720 (PNG)</button>
+
+      <!-- STROKE = GARIS PINGGIR FOTO -->
+      <div class="mb-4">
+        <div class="flex justify-between text-sm mb-2"><span>STROKE <span class="text-zinc-500 text-xs">- Garis pinggir foto</span></span><span id="strokeLabel" class="text-pink-300 font-bold">2 - Sedang</span></div>
+        <div class="grid grid-cols-3 gap-2">
+          <button onclick="setStroke(1)" class="strokeBtn bg-zinc-800 py-3 rounded-xl text-sm font-bold border">1<br><span class="text-[10px] font-normal text-zinc-400">Tipis</span></button>
+          <button onclick="setStroke(2)" class="strokeBtn bg-pink-500 py-3 rounded-xl text-sm font-bold border-2">2<br><span class="text-[10px] font-normal">Sedang ✅</span></button>
+          <button onclick="setStroke(3)" class="strokeBtn bg-zinc-800 py-3 rounded-xl text-sm font-bold border-4">3<br><span class="text-[10px] font-normal text-zinc-400">Tebel</span></button>
+        </div>
+      </div>
+
+      <!-- WARNA GAP -->
+      <div class="flex justify-between items-center text-sm mb-4"><span>Warna Putihnya</span><div class="flex gap-2"><button onclick="setBg('#ffffff')" class="w-8 h-8 rounded-full bg-white border-2 border-pink-500"></button><button onclick="setBg('#000000')" class="w-8 h-8 rounded-full bg-black border border-zinc-600"></button><button onclick="setBg('#FF5DA2')" class="w-8 h-8 rounded-full bg-pink-500"></button><button onclick="setBg('#F5F5F0')" class="w-8 h-8 rounded-full bg-[#F5F5F0]"></button></div></div>
+
+      <button onclick="downloadHD()" class="w-full bg-pink-500 hover:bg-pink-400 text-white font-black text-lg py-4 rounded-full shadow-[0_0_25px_rgba(236,72,153,.4)] active:scale-[.98] transition">⬇ DOWNLOAD HD 1612 x 720 (PNG) - 5 FOTO</button>
       <button onclick="location.reload()" class="w-full mt-2 bg-zinc-800 text-zinc-300 font-bold py-3 rounded-full text-sm">Reset Semua</button>
     </div>
   </div>
-  <p class="text-[11px] text-zinc-500 text-center mt-4">Hasil: 1612 x 720 persis, PNG, no kompres. Cocok buat banner, header, thumbnail landscape.</p>
 </div>
 
 <script>
 let images=[null,null,null,null,null];
-let gap=6, bgColor='#ffffff', layout='down', fitMode='cover';
+let gapLevel=2, strokeLevel=2, bgColor='#ffffff';
+
+// 1 / 2 / 3 nya gue jadiin pixel biar enak
+// Gap: 1=4px, 2=10px, 3=20px
+// Stroke: 1=2px, 2=6px, 3=12px
+function getGapPx(){ return gapLevel===1 ? 4 : gapLevel===2 ? 10 : 20; }
+function getStrokePx(){ return strokeLevel===1 ? 2 : strokeLevel===2 ? 6 : 12; }
 
 function loadImage(e, idx){
   const file=e.target.files[0]; if(!file) return;
   const reader=new FileReader();
-  reader.onload=(ev)=>{ const img=new Image(); img.onload=()=>{ images[idx]=img; document.getElementById('slot'+(idx+1)).innerHTML=`<img src="${ev.target.result}" class="absolute inset-0 w-full h-full object-cover">`; drawCanvas(); }; img.src=ev.target.result; };
+  reader.onload=(ev)=>{ const img=new Image(); img.onload=()=>{ images[idx]=img; document.getElementById('slot'+(idx+1)).innerHTML=`<img src="${ev.target.result}" class="absolute inset-0 w-full h-full object-cover">`; updateCount(); drawCanvas(); }; img.src=ev.target.result; };
   reader.readAsDataURL(file);
 }
-function setGap(g){ gap=g; document.querySelectorAll('.gapBtn').forEach(b=>b.className='gapBtn bg-zinc-800 px-3 py-1.5 rounded-full text-xs'); event.target.className='gapBtn bg-pink-500 px-3 py-1.5 rounded-full text-xs'; drawCanvas(); }
+function updateCount(){
+  const filled = images.filter(i=>i!==null).length;
+  document.getElementById('countText').textContent = `Baru keisi: ${filled} / 5 foto. ${filled===5 ? 'Udah full! Tinggal download.' : 'Isi semua 5 biar full.'}`;
+  document.getElementById('countText').className = filled===5 ? 'text-[11px] text-green-400 mt-3 font-bold' : 'text-[11px] text-zinc-500 mt-3';
+}
+function setGap(l){
+  gapLevel=l;
+  document.querySelectorAll('.gapBtn').forEach(b=>b.className='gapBtn bg-zinc-800 py-3 rounded-xl text-sm font-bold');
+  event.target.closest('button').className='gapBtn bg-pink-500 py-3 rounded-xl text-sm font-bold';
+  document.getElementById('gapLabel').textContent = l===1 ? '1 - Rapet' : l===2 ? '2 - Pas' : '3 - Renggang';
+  updateInfo(); drawCanvas();
+}
+function setStroke(l){
+  strokeLevel=l;
+  document.querySelectorAll('.strokeBtn').forEach(b=>b.className='strokeBtn bg-zinc-800 py-3 rounded-xl text-sm font-bold border');
+  event.target.closest('button').className='strokeBtn bg-pink-500 py-3 rounded-xl text-sm font-bold border-2';
+  document.getElementById('strokeLabel').textContent = l===1 ? '1 - Tipis' : l===2 ? '2 - Sedang' : '3 - Tebel';
+  updateInfo(); drawCanvas();
+}
 function setBg(c){ bgColor=c; drawCanvas(); }
-function setLayout(l){ layout=l; document.querySelectorAll('.layoutBtn').forEach(b=>b.className='layoutBtn bg-zinc-800 px-3 py-1.5 rounded-full text-xs'); event.target.className='layoutBtn bg-pink-500 px-3 py-1.5 rounded-full text-xs'; drawCanvas(); }
-function setFit(f){ fitMode=f; document.querySelectorAll('.fitBtn').forEach(b=>b.className='fitBtn bg-zinc-800 px-3 py-1.5 rounded-full text-xs'); event.target.className='fitBtn bg-pink-500 px-3 py-1.5 rounded-full text-xs'; drawCanvas(); }
+function updateInfo(){ document.getElementById('infoLabel').textContent = `Gap: ${gapLevel} • Stroke: ${strokeLevel}`; }
 
-function drawCover(ctx, img, x, y, w, h){
-  if(!img){ ctx.fillStyle='#1a1a1a'; ctx.fillRect(x,y,w,h); ctx.fillStyle='#777'; ctx.font='bold 24px sans-serif'; ctx.textAlign='center'; ctx.fillText('FOTO', x+w/2, y+h/2); return; }
-  ctx.imageSmoothingEnabled=true; ctx.imageSmoothingQuality='high';
-  if(fitMode==='cover'){
-    // COVER: foto full, di-crop tengah biar gak gepeng - INI YANG BIKIN HD & RAPI
-    const imgRatio=img.width/img.height, boxRatio=w/h;
-    let sw,sh,sx,sy;
-    if(imgRatio>boxRatio){ sh=img.height; sw=sh*boxRatio; sx=(img.width-sw)/2; sy=0; } else { sw=img.width; sh=sw/boxRatio; sx=0; sy=(img.height-sh)/2; }
-    ctx.drawImage(img, sx,sy,sw,sh, x,y,w,h);
-  } else {
-    // CONTAIN: foto utuh, gak ke-potong, sisa nya hitam
-    ctx.fillStyle='#000'; ctx.fillRect(x,y,w,h);
-    const scale=Math.min(w/img.width, h/img.height);
-    const dw=img.width*scale, dh=img.height*scale;
-    ctx.drawImage(img, x+(w-dw)/2, y+(h-dh)/2, dw, dh);
+function drawOne(ctx, img, x, y, w, h){
+  const stroke = getStrokePx();
+  // 1. Gambar STROKE dulu = kotak warna bg, lebih gede dikit
+  ctx.fillStyle = bgColor;
+  ctx.fillRect(x - stroke, y - stroke, w + stroke*2, h + stroke*2);
+  // 2. Gambar foto di dalamnya
+  if(!img){
+    ctx.fillStyle='#1a1a1a'; ctx.fillRect(x,y,w,h);
+    ctx.fillStyle='#666'; ctx.font='bold 32px sans-serif'; ctx.textAlign='center';
+    // Tulis nomernya biar ketauan ini foto ke berapa
+    const idx = Math.round(y / (h+10));
+    ctx.fillText('FOTO '+(idx+1), x+w/2, y+h/2);
+    return;
   }
+  ctx.imageSmoothingEnabled=true; ctx.imageSmoothingQuality='high';
+  const imgRatio=img.width/img.height, boxRatio=w/h;
+  let sw,sh,sx,sy;
+  if(imgRatio>boxRatio){ sh=img.height; sw=sh*boxRatio; sx=(img.width-sw)/2; sy=0; }
+  else { sw=img.width; sh=sw/boxRatio; sx=0; sy=(img.height-sh)/2; }
+  ctx.drawImage(img, sx,sy,sw,sh, x,y,w,h);
 }
 
 function drawCanvas(){
   const canvas=document.getElementById('canvas'), ctx=canvas.getContext('2d');
   const W=1612, H=720;
+  const gap = getGapPx();
+  const stroke = getStrokePx();
+  // Background full
   ctx.fillStyle=bgColor; ctx.fillRect(0,0,W,H);
-  if(layout==='down'){
-    // INI YANG LU MAU: 5 FOTO SUSUN KE BAWAH
-    // Tiap foto lebar full 1612, tinggi = (720 - gap*6) / 5
-    const h=(H-gap*6)/5;
-    for(let i=0;i<5;i++){
-      drawCover(ctx, images[i], gap, gap*(i+1)+h*i, W-gap*2, h);
-    }
-  } else {
-    // Ke samping: 5 jejer
-    const w=(W-gap*6)/5;
-    for(let i=0;i<5;i++){
-      drawCover(ctx, images[i], gap*(i+1)+w*i, gap, w, H-gap*2);
-    }
+  // 5 FOTO KE BAWAH - INI KUNCINYA
+  // Total tinggi dibagi 5, dikurangin gap + stroke
+  const h = (H - gap*6 - stroke*10) / 5;
+  const w = W - gap*2 - stroke*2;
+  for(let i=0;i<5;i++){
+    const y = gap + stroke + (h + gap + stroke*2)*i;
+    const x = gap + stroke;
+    drawOne(ctx, images[i], x, y, w, h);
   }
 }
 drawCanvas();
 
 function downloadHD(){
-  if(images.every(i=>i===null)){ alert('Pilih foto dulu wok, minimal 1!'); return; }
+  const filled = images.filter(i=>i!==null).length;
+  if(filled===0){ alert('Pilih foto dulu wok!'); return; }
+  if(filled<5){ if(!confirm(`Baru keisi ${filled}/5 foto. Tetep download? Yang kosong bakal hitam. Lanjut?`)) return; }
   const canvas=document.getElementById('canvas');
-  // PNG 1.0 = kualitas 100%, no kompres, ini kunci HD no burem
   const a=document.createElement('a');
   a.download='kolase-1612x720-5foto-HD.png';
   a.href=canvas.toDataURL('image/png', 1.0);
