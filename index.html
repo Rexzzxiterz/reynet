@@ -3,93 +3,211 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>REY KOLASE - 4K - 5 Foto</title>
+<title>REY KOLASE • 4K • 5 Foto</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *{font-family:'Plus Jakarta Sans',sans-serif}
+  .font-display{font-family:'Space Grotesk',sans-serif}
+  body{background:#07070D;background-image:radial-gradient(600px 300px at 10% 0%, rgba(236,72,153,.25), transparent 60%), radial-gradient(600px 300px at 90% 10%, rgba(99,102,241,.25), transparent 60%), radial-gradient(500px 400px at 50% 100%, rgba(34,211,238,.15), transparent 60%)}
+  .glass{background:rgba(255,255,255,.06);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1)}
+  .glass-strong{background:rgba(20,20,30,.85);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12)}
+  .grad-text{background:linear-gradient(90deg,#FF5DA2,#A78BFA,#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .grad-btn{background:linear-gradient(90deg,#FF2E88,#FF5DA2,#8B5CF6);box-shadow:0 10px 30px rgba(255,46,136,.4)}
+  .grad-btn:active{transform:scale(.98)}
+  .grad-wa{background:linear-gradient(90deg,#00E676,#25D366);box-shadow:0 10px 30px rgba(37,211,102,.35)}
+  .slot{transition:.2s}.slot:hover{transform:translateY(-3px);border-color:#FF5DA2!important;box-shadow:0 8px 20px rgba(255,93,162,.25)}
+  .chip{transition:.15s}.chip.active{background:linear-gradient(90deg,#FF2E88,#8B5CF6);color:white;border-color:transparent;box-shadow:0 6px 16px rgba(255,46,136,.35)}
+  .phone{box-shadow:0 20px 50px rgba(0,0,0,.6), 0 0 0 8px #111, 0 0 0 10px #2a2a2a}
+  .float{animation:float 3s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  .marquee{animation:marquee 18s linear infinite}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  input[type=file]{display:none}
+</style>
 </head>
-<body class="bg-[#0a0a0f] text-white min-h-screen px-4 py-6 font-sans">
-<div class="max-w-6xl mx-auto">
-  <div class="text-center">
-    <h1 class="text-3xl md:text-4xl font-black">REY <span class="text-pink-400">KOLASE</span> <span class="text-xs bg-yellow-400 text-black px-2 py-0.5 rounded-full align-middle">4K ULTRA HD</span></h1>
-    <p class="text-zinc-400 text-sm mt-1">Tiap Foto 3224 x 1440 (2x HD) • 5 Foto Ke Bawah • Total 3224 x 7200 • PNG No Kompres</p>
-  </div>
+<body class="text-white min-h-screen px-3 py-4 md:px-6 md:py-6">
 
-  <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-4 mt-5">
-    <div class="flex justify-between items-center mb-3">
-      <div class="text-xs font-bold tracking-widest text-zinc-400">PREVIEW - JANGAN DI-SCREENSHOT, INI DIKECILIN</div>
-      <div id="infoLabel" class="text-[11px] bg-pink-500/20 text-pink-300 px-3 py-1 rounded-full">Gap: 2 • Stroke: 2 • 4K</div>
-    </div>
-    <div class="flex justify-center">
-      <div class="w-full max-w-[300px] rounded-xl overflow-hidden border border-zinc-700 bg-black">
-        <canvas id="canvas" width="3224" height="7200" class="w-full h-auto block"></canvas>
+<div class="max-w-[1200px] mx-auto">
+  <!-- HEADER -->
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-pink-500 via-purple-500 to-cyan-400 flex items-center justify-center text-xl font-black shadow-lg shadow-pink-500/30">R</div>
+      <div>
+        <div class="font-display font-bold text-lg leading-none tracking-tight">REY <span class="grad-text">KOLASE</span></div>
+        <div class="text-[11px] text-zinc-400">Editor Kolase • Semarang</div>
       </div>
     </div>
-    <p class="text-[11px] text-yellow-300 mt-2 text-center">⚠️ Preview di HP emang keliatan burem karena dikecilin jadi 300px. Yang HD itu file hasil DOWNLOAD nya, bukan preview ini.</p>
+    <div class="flex gap-2">
+      <span class="hidden sm:flex items-center gap-1.5 text-[11px] font-bold bg-white/10 border border-white/10 px-3 py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> 4K READY</span>
+      <span class="text-[11px] font-bold bg-yellow-400 text-black px-3 py-1.5 rounded-full">PRO • FREE</span>
+    </div>
   </div>
 
-  <div class="grid md:grid-cols-2 gap-5 mt-5">
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-5">
-      <div class="text-xs font-bold tracking-widest text-zinc-400 mb-1">1. PILIH 5 FOTO - WAJIB FOTO ASLI GALERI</div>
-      <div class="text-[11px] text-red-300 mb-3">❌ Jangan pake foto dari WA / IG / Screenshot - itu udah burem dari sananya, gak bisa di-HD-in.</div>
-      <div class="grid grid-cols-5 gap-2">
-        <label class="cursor-pointer"><div id="slot1" class="aspect-[3/4] bg-zinc-800 rounded-xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-2xl font-black">1</span><span class="text-[9px] text-zinc-400">ATAS</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,0)"></label>
-        <label class="cursor-pointer"><div id="slot2" class="aspect-[3/4] bg-zinc-800 rounded-xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-2xl font-black">2</span><span class="text-[9px] text-zinc-400">KE-2</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,1)"></label>
-        <label class="cursor-pointer"><div id="slot3" class="aspect-[3/4] bg-zinc-800 rounded-xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-2xl font-black">3</span><span class="text-[9px] text-zinc-400">TENGAH</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,2)"></label>
-        <label class="cursor-pointer"><div id="slot4" class="aspect-[3/4] bg-zinc-800 rounded-xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-2xl font-black">4</span><span class="text-[9px] text-zinc-400">KE-4</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,3)"></label>
-        <label class="cursor-pointer"><div id="slot5" class="aspect-[3/4] bg-zinc-800 rounded-xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-2xl font-black">5</span><span class="text-[9px] text-zinc-400">BAWAH</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,4)"></label>
-      </div>
-      <p id="countText" class="text-[11px] text-zinc-500 mt-3">Baru keisi: 0 / 5 foto.</p>
-      <p id="qualityText" class="text-[11px] mt-1"></p>
+  <!-- HERO -->
+  <div class="text-center mt-6 md:mt-8">
+    <div class="inline-flex items-center gap-2 text-[11px] font-bold tracking-widest bg-white/10 border border-white/10 px-4 py-1.5 rounded-full"><span>✨</span> 5 FOTO • 4K ULTRA HD • NO BUREM <span>✨</span></div>
+    <h1 class="font-display text-[38px] leading-[1.05] md:text-[64px] font-bold tracking-tight mt-4">Bikin Kolase<br><span class="grad-text">5 Foto Ke Bawah</span><br>Dalam 10 Detik.</h1>
+    <p class="text-zinc-400 text-sm md:text-base mt-3 max-w-[560px] mx-auto">Pilih 5 foto dari galeri → Atur Gap & Stroke 1/2/3 → Download 4K → Bagikan ke WA. Tanpa watermark, tanpa login, gratis.</p>
+    <div class="flex flex-wrap justify-center gap-2 mt-4 text-[11px] font-bold">
+      <span class="bg-white/10 border border-white/10 px-3 py-1.5 rounded-full">📐 3224 x 7200 px</span>
+      <span class="bg-white/10 border border-white/10 px-3 py-1.5 rounded-full">🖼️ Per Foto 3224 x 1440</span>
+      <span class="bg-green-500/20 text-green-300 border border-green-500/20 px-3 py-1.5 rounded-full">PNG • 100% • No Kompres</span>
     </div>
+  </div>
 
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-5">
-      <div class="text-xs font-bold tracking-widest text-zinc-400 mb-3">2. ATUR PUTIH-PUTIH</div>
-      <div class="mb-4">
-        <div class="flex justify-between text-sm mb-2"><span>GAP</span><span id="gapLabel" class="text-pink-300 font-bold">2 - Pas</span></div>
-        <div class="grid grid-cols-3 gap-2">
-          <button onclick="setGap(1)" class="gapBtn bg-zinc-800 py-3 rounded-xl text-sm font-bold">1<br><span class="text-[10px] font-normal text-zinc-400">Rapet</span></button>
-          <button onclick="setGap(2)" class="gapBtn bg-pink-500 py-3 rounded-xl text-sm font-bold">2<br><span class="text-[10px] font-normal">Pas ✅</span></button>
-          <button onclick="setGap(3)" class="gapBtn bg-zinc-800 py-3 rounded-xl text-sm font-bold">3<br><span class="text-[10px] font-normal text-zinc-400">Renggang</span></button>
+  <!-- MARQUEE -->
+  <div class="overflow-hidden mt-6 opacity-70">
+    <div class="flex whitespace-nowrap marquee gap-6 text-[11px] font-bold tracking-[0.2em] text-zinc-400">
+      <span>HD • 4K • 5 FOTO • KE BAWAH • GAP 1/2/3 • STROKE 1/2/3 • BAGIKAN KE WA •&nbsp;</span>
+      <span>HD • 4K • 5 FOTO • KE BAWAH • GAP 1/2/3 • STROKE 1/2/3 • BAGIKAN KE WA •&nbsp;</span>
+    </div>
+  </div>
+
+  <div class="grid lg:grid-cols-[1.05fr_1fr] gap-5 mt-6 items-start">
+    <!-- LEFT: PREVIEW + UPLOAD -->
+    <div class="space-y-5">
+      <!-- PREVIEW PHONE -->
+      <div class="glass rounded-[28px] p-4 md:p-5">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span><span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span><span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+            <span class="text-xs font-bold tracking-widest text-zinc-400 ml-1">LIVE PREVIEW</span>
+          </div>
+          <span id="infoLabel" class="text-[11px] font-bold bg-pink-500/20 text-pink-300 px-3 py-1 rounded-full border border-pink-500/20">Gap: 2 • Stroke: 2 • 4K</span>
+        </div>
+        <div class="flex justify-center py-2">
+          <div class="phone w-full max-w-[300px] rounded-[32px] overflow-hidden bg-black relative">
+            <div class="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-5 bg-black rounded-full z-10 border border-white/10"></div>
+            <canvas id="canvas" width="3224" height="7200" class="w-full h-auto block"></canvas>
+          </div>
+        </div>
+        <p class="text-[11px] text-zinc-400 text-center mt-3">Preview dikecilin biar muat di HP. Yang tajem itu file hasil <b class="text-white">DOWNLOAD</b> nya, bukan preview ini.</p>
+        <div class="flex gap-2 mt-3">
+          <button onclick="downloadHD()" class="flex-1 grad-btn font-black py-3.5 rounded-full text-sm">⬇ DOWNLOAD 4K</button>
+          <button onclick="shareToWA()" class="flex-1 grad-wa text-black font-black py-3.5 rounded-full text-sm">💬 BAGIKAN KE WA</button>
         </div>
       </div>
-      <div class="mb-4">
-        <div class="flex justify-between text-sm mb-2"><span>STROKE</span><span id="strokeLabel" class="text-pink-300 font-bold">2 - Sedang</span></div>
-        <div class="grid grid-cols-3 gap-2">
-          <button onclick="setStroke(1)" class="strokeBtn bg-zinc-800 py-3 rounded-xl text-sm font-bold">1<br><span class="text-[10px] font-normal text-zinc-400">Tipis</span></button>
-          <button onclick="setStroke(2)" class="strokeBtn bg-pink-500 py-3 rounded-xl text-sm font-bold">2<br><span class="text-[10px] font-normal">Sedang ✅</span></button>
-          <button onclick="setStroke(3)" class="strokeBtn bg-zinc-800 py-3 rounded-xl text-sm font-bold">3<br><span class="text-[10px] font-normal text-zinc-400">Tebel</span></button>
+
+      <!-- UPLOAD 5 -->
+      <div class="glass rounded-[28px] p-5">
+        <div class="flex justify-between items-start">
+          <div>
+            <div class="font-display font-bold text-base">1. Pilih 5 Foto Kamu</div>
+            <div class="text-[12px] text-zinc-400 mt-0.5">Dari galeri • Foto 1 paling atas, Foto 5 paling bawah</div>
+          </div>
+          <span id="countBadge" class="text-[11px] font-black bg-white/10 px-3 py-1.5 rounded-full">0 / 5</span>
+        </div>
+        <div class="grid grid-cols-5 gap-2 md:gap-3 mt-4">
+          <label class="cursor-pointer"><div id="slot1" class="slot aspect-[3/4] bg-white/5 rounded-2xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-white/20 overflow-hidden relative"><span class="text-2xl font-black font-display">1</span><span class="text-[9px] text-zinc-400 font-bold tracking-widest">ATAS</span><span class="text-[9px] text-pink-300">+ TAMBAH</span></div><input type="file" accept="image/*" onchange="loadImage(event,0)"></label>
+          <label class="cursor-pointer"><div id="slot2" class="slot aspect-[3/4] bg-white/5 rounded-2xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-white/20 overflow-hidden relative"><span class="text-2xl font-black font-display">2</span><span class="text-[9px] text-zinc-400 font-bold tracking-widest">KE-2</span><span class="text-[9px] text-pink-300">+ TAMBAH</span></div><input type="file" accept="image/*" onchange="loadImage(event,1)"></label>
+          <label class="cursor-pointer"><div id="slot3" class="slot aspect-[3/4] bg-white/5 rounded-2xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-white/20 overflow-hidden relative"><span class="text-2xl font-black font-display">3</span><span class="text-[9px] text-zinc-400 font-bold tracking-widest">TENGAH</span><span class="text-[9px] text-pink-300">+ TAMBAH</span></div><input type="file" accept="image/*" onchange="loadImage(event,2)"></label>
+          <label class="cursor-pointer"><div id="slot4" class="slot aspect-[3/4] bg-white/5 rounded-2xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-white/20 overflow-hidden relative"><span class="text-2xl font-black font-display">4</span><span class="text-[9px] text-zinc-400 font-bold tracking-widest">KE-4</span><span class="text-[9px] text-pink-300">+ TAMBAH</span></div><input type="file" accept="image/*" onchange="loadImage(event,3)"></label>
+          <label class="cursor-pointer"><div id="slot5" class="slot aspect-[3/4] bg-white/5 rounded-2xl flex flex-col items-center justify-center text-center p-1 border-2 border-dashed border-white/20 overflow-hidden relative"><span class="text-2xl font-black font-display">5</span><span class="text-[9px] text-zinc-400 font-bold tracking-widest">BAWAH</span><span class="text-[9px] text-pink-300">+ TAMBAH</span></div><input type="file" accept="image/*" onchange="loadImage(event,4)"></label>
+        </div>
+        <p id="countText" class="text-[12px] text-zinc-400 mt-3">Baru keisi: 0 / 5 foto. Klik kotak buat pilih dari galeri.</p>
+        <p id="qualityText" class="text-[12px] mt-1"></p>
+        <div class="bg-red-500/10 border border-red-500/20 rounded-2xl p-3 mt-3 text-[12px] text-red-200">❌ <b>Jangan</b> pake foto dari WA / IG / Screenshot. Itu udah burem dari sananya. Pake foto asli kamera / galeri biar 4K beneran.</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: CONTROLS -->
+    <div class="space-y-5 lg:sticky lg:top-5">
+      <div class="glass-strong rounded-[28px] p-5">
+        <div class="flex items-center justify-between">
+          <div class="font-display font-bold text-base">2. Atur Tampilan</div>
+          <span class="text-[11px] font-bold bg-white/10 px-2.5 py-1 rounded-full">LIVE • REALTIME</span>
+        </div>
+
+        <!-- GAP -->
+        <div class="mt-5">
+          <div class="flex justify-between items-center mb-2.5"><span class="text-sm font-bold">GAP <span class="text-zinc-400 font-normal text-xs">— Jarak antar foto</span></span><span id="gapLabel" class="text-[12px] font-black text-pink-300 bg-pink-500/15 px-2.5 py-1 rounded-full">2 • Pas</span></div>
+          <div class="grid grid-cols-3 gap-2">
+            <button onclick="setGap(1)" class="gapBtn chip bg-white/5 border border-white/10 py-3.5 rounded-2xl text-sm font-bold">1 <span class="block text-[10px] font-normal text-zinc-400">Rapet</span></button>
+            <button onclick="setGap(2)" class="gapBtn chip active bg-white/5 border border-white/10 py-3.5 rounded-2xl text-sm font-bold">2 <span class="block text-[10px] font-normal">Pas ✅</span></button>
+            <button onclick="setGap(3)" class="gapBtn chip bg-white/5 border border-white/10 py-3.5 rounded-2xl text-sm font-bold">3 <span class="block text-[10px] font-normal text-zinc-400">Renggang</span></button>
+          </div>
+          <div class="flex gap-1.5 mt-2.5">
+            <div class="h-6 flex-1 rounded-lg bg-white overflow-hidden flex"><div class="flex-1 bg-zinc-800"></div><div class="w-[3px] bg-white"></div><div class="flex-1 bg-zinc-800"></div></div>
+            <div class="h-6 flex-1 rounded-lg bg-white overflow-hidden flex"><div class="flex-1 bg-zinc-800"></div><div class="w-[8px] bg-white"></div><div class="flex-1 bg-zinc-800"></div></div>
+            <div class="h-6 flex-1 rounded-lg bg-white overflow-hidden flex"><div class="flex-1 bg-zinc-800"></div><div class="w-[14px] bg-white"></div><div class="flex-1 bg-zinc-800"></div></div>
+          </div>
+          <div class="flex justify-between text-[10px] text-zinc-500 mt-1"><span>1 = Rapet</span><span>2 = Pas</span><span>3 = Renggang</span></div>
+        </div>
+
+        <!-- STROKE -->
+        <div class="mt-5">
+          <div class="flex justify-between items-center mb-2.5"><span class="text-sm font-bold">STROKE <span class="text-zinc-400 font-normal text-xs">— Garis pinggir foto</span></span><span id="strokeLabel" class="text-[12px] font-black text-pink-300 bg-pink-500/15 px-2.5 py-1 rounded-full">2 • Sedang</span></div>
+          <div class="grid grid-cols-3 gap-2">
+            <button onclick="setStroke(1)" class="strokeBtn chip bg-white/5 border border-white/10 py-3.5 rounded-2xl text-sm font-bold">1 <span class="block text-[10px] font-normal text-zinc-400">Tipis</span></button>
+            <button onclick="setStroke(2)" class="strokeBtn chip active bg-white/5 border border-white/10 py-3.5 rounded-2xl text-sm font-bold">2 <span class="block text-[10px] font-normal">Sedang ✅</span></button>
+            <button onclick="setStroke(3)" class="strokeBtn chip bg-white/5 border border-white/10 py-3.5 rounded-2xl text-sm font-bold">3 <span class="block text-[10px] font-normal text-zinc-400">Tebel</span></button>
+          </div>
+        </div>
+
+        <!-- WARNA -->
+        <div class="mt-5">
+          <div class="text-sm font-bold mb-2.5">Warna Gap & Stroke</div>
+          <div class="flex gap-2">
+            <button onclick="setBg('#ffffff')" class="w-10 h-10 rounded-full bg-white ring-2 ring-pink-500 ring-offset-2 ring-offset-black"></button>
+            <button onclick="setBg('#000000')" class="w-10 h-10 rounded-full bg-black border border-white/30"></button>
+            <button onclick="setBg('#FF5DA2')" class="w-10 h-10 rounded-full bg-pink-500"></button>
+            <button onclick="setBg('#A78BFA')" class="w-10 h-10 rounded-full bg-violet-400"></button>
+            <button onclick="setBg('#22D3EE')" class="w-10 h-10 rounded-full bg-cyan-400"></button>
+            <button onclick="setBg('#F5F5F0')" class="w-10 h-10 rounded-full bg-[#F5F5F0]"></button>
+          </div>
+        </div>
+
+        <!-- PRESET -->
+        <div class="mt-5">
+          <div class="text-sm font-bold mb-2.5">Preset Cepat ✨</div>
+          <div class="grid grid-cols-3 gap-2 text-[12px] font-bold">
+            <button onclick="applyPreset(2,2,'#ffffff')" class="bg-white text-black py-2.5 rounded-full">🤍 Bersih</button>
+            <button onclick="applyPreset(1,1,'#000000')" class="bg-black border border-white/20 py-2.5 rounded-full">🖤 Nempel</button>
+            <button onclick="applyPreset(3,3,'#FF5DA2')" class="bg-pink-500 py-2.5 rounded-full">💖 Pink</button>
+          </div>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-3.5 mt-5 text-[12px] leading-relaxed text-zinc-300">📦 <b class="text-white">Export:</b> 3224 x 7200 px • PNG • 100% • Per foto 3224 x 1440<br>File agak gede (5-15 MB), tapi itu tandanya HD beneran.</div>
+
+        <button onclick="downloadHD()" class="w-full grad-btn font-black text-base py-4 rounded-full mt-4">⬇ DOWNLOAD 4K HD (PNG)</button>
+        <button onclick="shareToWA()" class="w-full grad-wa text-black font-black text-base py-4 rounded-full mt-2">💬 BAGIKAN KE WA</button>
+        <button onclick="location.reload()" class="w-full bg-white/10 hover:bg-white/15 font-bold py-3 rounded-full text-sm mt-2">↺ Reset Semua</button>
+      </div>
+
+      <!-- TIPS WA -->
+      <div class="bg-gradient-to-br from-yellow-400/20 to-orange-500/10 border border-yellow-400/30 rounded-[28px] p-5">
+        <div class="font-display font-bold text-sm text-yellow-300">🔥 BIAR KE WA TETEP 4K, GAK BUREM:</div>
+        <div class="text-[13px] text-zinc-200 mt-2 space-y-1.5">
+          <div><b>1.</b> Buka WA → Pilih chat → Klik <b>+</b></div>
+          <div><b>2.</b> Pilih <b>DOKUMEN</b> — jangan Galeri!</div>
+          <div><b>3.</b> Pilih file <b>kolase-4K...png</b></div>
+          <div><b>4.</b> Kirim. Penerima dapet 4K utuh.</div>
+        </div>
+        <div class="text-[11px] text-zinc-400 mt-2">Kalo kirim pake Galeri, WA kompres jadi 800px, pasti burem. Bukan salah web nya.</div>
+      </div>
+
+      <!-- STEPS -->
+      <div class="glass rounded-[28px] p-5">
+        <div class="font-display font-bold text-sm mb-3">Cara Pakai — 3 Langkah</div>
+        <div class="space-y-3 text-[13px]">
+          <div class="flex gap-3"><span class="w-7 h-7 shrink-0 rounded-full bg-pink-500 flex items-center justify-center font-black text-xs">1</span><span><b>Upload 5 foto</b> dari galeri, urut atas ke bawah.</span></div>
+          <div class="flex gap-3"><span class="w-7 h-7 shrink-0 rounded-full bg-violet-500 flex items-center justify-center font-black text-xs">2</span><span><b>Atur Gap & Stroke 1/2/3</b> sampe preview nya cakep.</span></div>
+          <div class="flex gap-3"><span class="w-7 h-7 shrink-0 rounded-full bg-cyan-400 text-black flex items-center justify-center font-black text-xs">3</span><span><b>Download / Bagikan ke WA</b> pake Dokumen biar tetep 4K.</span></div>
         </div>
       </div>
-      <div class="mb-4">
-        <div class="flex justify-between text-sm mb-2"><span>KUALITAS EXPORT</span><span class="text-green-300 font-bold">4K PNG - 100%</span></div>
-        <div class="bg-zinc-800 rounded-xl p-3 text-[11px] text-zinc-300">Canvas: <b>3224 x 7200</b> • Format: <b>PNG</b> • Kualitas: <b>100% No Kompres</b><br>Ini 2x lipat dari 1612x720. File nya agak gede (5-15 MB), tapi tajem banget.</div>
-      </div>
-      <button onclick="downloadHD()" class="w-full bg-pink-500 hover:bg-pink-400 text-white font-black text-lg py-4 rounded-full shadow-[0_0_25px_rgba(236,72,153,.4)] active:scale-[.98] transition">⬇ DOWNLOAD 4K HD (PNG)</button>
-      <button onclick="shareToWA()" class="w-full mt-2 bg-[#25D366] hover:bg-[#1eb856] text-black font-black text-lg py-4 rounded-full active:scale-[.98] transition">💬 BAGIKAN KE WA (HD)</button>
-      <button onclick="location.reload()" class="w-full mt-2 bg-zinc-800 text-zinc-300 font-bold py-3 rounded-full text-sm">Reset</button>
     </div>
   </div>
 
-  <!-- CARA KIRIM KE WA BIAR GAK BUREM -->
-  <div class="bg-yellow-400/10 border border-yellow-400/30 rounded-3xl p-5 mt-5">
-    <div class="font-black text-yellow-300 text-sm">🔥 WAJIB! CARA KIRIM KE WA BIAR TETEP 4K, GAK BUREM:</div>
-    <div class="text-sm text-zinc-200 mt-2 space-y-1">
-      <div><b>1.</b> Buka WA -> Pilih chat -> Klik <b>+</b></div>
-      <div><b>2.</b> Pilih <b>DOKUMEN</b> (jangan pilih Galeri / Foto!)</div>
-      <div><b>3.</b> Pilih <b>Pilih dari Galeri / Cari File</b> -> Pilih file <b>kolase-4K-...png</b></div>
-      <div><b>4.</b> Kirim. Penerima dapet file utuh 4K, gak di-kompres WA.</div>
-      <div class="text-[12px] text-zinc-400 mt-2">Kalo lu kirim pake Galeri, WA bakal kompres jadi 800px, pasti burem walau file asli nya 4K. Ini bukan salah web nya, tapi salah cara kirim nya.</div>
-    </div>
-  </div>
+  <p class="text-center text-[11px] text-zinc-500 mt-6 pb-4">REY KOLASE • Dibuat buat anak Semarang • 100% Gratis • Tanpa Watermark • Foto lu gak di-upload ke server, semua diproses di HP lu.</p>
 </div>
 
 <script>
 let images=[null,null,null,null,null];
 let gapLevel=2, strokeLevel=2, bgColor='#ffffff';
-// 4K: per foto 3224 x 1440 (2x dari 1612x720)
 const PW=3224, PH=1440;
 function getGapPx(){ return gapLevel===1 ? 12 : gapLevel===2 ? 32 : 64; }
 function getStrokePx(){ return strokeLevel===1 ? 6 : strokeLevel===2 ? 16 : 32; }
-
 function loadImage(e, idx){
   const file=e.target.files[0]; if(!file) return;
   const reader=new FileReader();
@@ -99,13 +217,12 @@ function loadImage(e, idx){
       images[idx]=img;
       document.getElementById('slot'+(idx+1)).innerHTML=`<img src="${ev.target.result}" class="absolute inset-0 w-full h-full object-cover">`;
       updateCount();
-      // CEK KUALITAS FOTO ASAL - INI PENTING
       let q='';
-      if(img.width < 1000) q = `⚠️ Foto ${idx+1} cuma ${img.width}x${img.height} - INI YANG BIKIN BUREM! Pake foto asli yang gede, jangan dari WA.`;
+      if(img.width < 1000) q = `⚠️ Foto ${idx+1} cuma ${img.width}x${img.height} - INI BIKIN BUREM! Ganti pake foto asli yang gede.`;
       else if(img.width < 2000) q = `Foto ${idx+1}: ${img.width}x${img.height} - Lumayan, masih bisa HD.`;
       else q = `Foto ${idx+1}: ${img.width}x${img.height} - Mantap, ini baru HD / 4K 🔥`;
       document.getElementById('qualityText').textContent=q;
-      document.getElementById('qualityText').className = img.width<1000 ? 'text-[11px] mt-1 text-red-300 font-bold' : 'text-[11px] mt-1 text-green-300';
+      document.getElementById('qualityText').className = img.width<1000 ? 'text-[12px] mt-1 text-red-300 font-bold' : 'text-[12px] mt-1 text-green-300 font-bold';
       drawCanvas();
     };
     img.src=ev.target.result;
@@ -114,17 +231,29 @@ function loadImage(e, idx){
 }
 function updateCount(){
   const filled=images.filter(i=>i!==null).length;
-  document.getElementById('countText').textContent=`Baru keisi: ${filled} / 5 foto. ${filled===5 ? 'Udah full!' : ''}`;
+  document.getElementById('countText').textContent=`Baru keisi: ${filled} / 5 foto. ${filled===5 ? 'Udah full! Tinggal download.' : 'Isi semua 5 biar full.'}`;
+  document.getElementById('countBadge').textContent=`${filled} / 5`;
+  document.getElementById('countBadge').className = filled===5 ? 'text-[11px] font-black bg-green-500 text-black px-3 py-1.5 rounded-full' : 'text-[11px] font-black bg-white/10 px-3 py-1.5 rounded-full';
 }
-function setGap(l){ gapLevel=l; document.querySelectorAll('.gapBtn').forEach(b=>b.className='gapBtn bg-zinc-800 py-3 rounded-xl text-sm font-bold'); event.target.closest('button').className='gapBtn bg-pink-500 py-3 rounded-xl text-sm font-bold'; document.getElementById('gapLabel').textContent=l===1?'1 - Rapet':l===2?'2 - Pas':'3 - Renggang'; updateInfo(); drawCanvas(); }
-function setStroke(l){ strokeLevel=l; document.querySelectorAll('.strokeBtn').forEach(b=>b.className='strokeBtn bg-zinc-800 py-3 rounded-xl text-sm font-bold'); event.target.closest('button').className='strokeBtn bg-pink-500 py-3 rounded-xl text-sm font-bold'; document.getElementById('strokeLabel').textContent=l===1?'1 - Tipis':l===2?'2 - Sedang':'3 - Tebel'; updateInfo(); drawCanvas(); }
+function setGap(l){
+  gapLevel=l;
+  document.querySelectorAll('.gapBtn').forEach(b=>b.classList.remove('active')); event.target.closest('button').classList.add('active');
+  document.getElementById('gapLabel').textContent=l===1?'1 • Rapet':l===2?'2 • Pas':'3 • Renggang';
+  updateInfo(); drawCanvas();
+}
+function setStroke(l){
+  strokeLevel=l;
+  document.querySelectorAll('.strokeBtn').forEach(b=>b.classList.remove('active')); event.target.closest('button').classList.add('active');
+  document.getElementById('strokeLabel').textContent=l===1?'1 • Tipis':l===2?'2 • Sedang':'3 • Tebel';
+  updateInfo(); drawCanvas();
+}
+function setBg(c){ bgColor=c; drawCanvas(); }
+function applyPreset(g,s,c){ gapLevel=g; strokeLevel=s; bgColor=c; document.querySelectorAll('.gapBtn').forEach((b,i)=>b.classList.toggle('active', i+1===g)); document.querySelectorAll('.strokeBtn').forEach((b,i)=>b.classList.toggle('active', i+1===s)); document.getElementById('gapLabel').textContent=g+' • '+(g===1?'Rapet':g===2?'Pas':'Renggang'); document.getElementById('strokeLabel').textContent=s+' • '+(s===1?'Tipis':s===2?'Sedang':'Tebel'); updateInfo(); drawCanvas(); }
 function updateInfo(){ document.getElementById('infoLabel').textContent=`Gap: ${gapLevel} • Stroke: ${strokeLevel} • 4K`; }
-
 function drawOne(ctx, img, x, y, w, h){
   const stroke=getStrokePx();
-  ctx.fillStyle='#ffffff'; ctx.fillRect(x-stroke, y-stroke, w+stroke*2, h+stroke*2);
+  ctx.fillStyle=bgColor; ctx.fillRect(x-stroke, y-stroke, w+stroke*2, h+stroke*2);
   if(!img){ ctx.fillStyle='#1a1a1a'; ctx.fillRect(x,y,w,h); ctx.fillStyle='#666'; ctx.font='bold 80px sans-serif'; ctx.textAlign='center'; ctx.fillText('FOTO', x+w/2, y+h/2); return; }
-  // KUNCI HD: smoothing high + cover yang bener
   ctx.imageSmoothingEnabled=true; ctx.imageSmoothingQuality='high';
   const imgRatio=img.width/img.height, boxRatio=w/h;
   let sw,sh,sx,sy;
@@ -138,7 +267,7 @@ function drawCanvas(){
   const totalH = PH*5 + gap*6 + stroke*10;
   if(canvas.height!==totalH) canvas.height=totalH;
   if(canvas.width!==PW) canvas.width=PW;
-  ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,PW,totalH);
+  ctx.fillStyle=bgColor; ctx.fillRect(0,0,PW,totalH);
   for(let i=0;i<5;i++){
     const y = gap + stroke + (PH + gap + stroke*2)*i;
     const x = gap + stroke;
