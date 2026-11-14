@@ -16,10 +16,10 @@
   .opt.active{border-color:#111;background:#111;color:#fff}
   .slot{border:1px dashed #C9C4B8;background:#FAF8F4;border-radius:12px}
   input[type=file]{display:none}
-  /* INI KUNCI SCROLL NYA - Preview dibatasin, bisa di-scroll sendiri, gak bikin halaman loncat */
   .preview-scroll{max-height:520px;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
   .preview-scroll::-webkit-scrollbar{width:4px}
   .preview-scroll::-webkit-scrollbar-thumb{background:#D8D5CE;border-radius:999px}
+  .colorBtn.active{outline:2px solid #111;outline-offset:2px}
 </style>
 </head>
 <body class="min-h-screen">
@@ -34,36 +34,53 @@
   </header>
 
   <section class="py-8 md:py-10">
-    <p class="text-[12px] tracking-[0.18em] uppercase text-zinc-500">Kolase foto — 5 foto ke bawah</p>
-    <h1 class="serif text-[40px] leading-[1.05] md:text-[56px] mt-3">Tumpuk lima foto<br><span class="italic font-normal">jadi satu yang tajam.</span></h1>
-    <p class="text-[15px] leading-relaxed text-zinc-600 mt-3 max-w-[520px]">Pilih lima foto dari galeri. Atur jarak dan garis tepi. Unduh dalam resolusi tinggi, lalu kirim ke WhatsApp.</p>
+    <p class="text-[12px] tracking-[0.18em] uppercase text-zinc-500">Kolase foto — Pilih layout</p>
+    <h1 class="serif text-[40px] leading-[1.05] md:text-[56px] mt-3">Tumpuk foto<br><span class="italic font-normal">jadi satu yang tajam.</span></h1>
+    <p class="text-[15px] leading-relaxed text-zinc-600 mt-3 max-w-[520px]">Pilih layout, pilih foto, atur jarak dan garis tepi. Unduh dalam resolusi tinggi, lalu kirim ke WhatsApp.</p>
   </section>
 
-  <!-- URUTAN BARU BIAR SCROLL ENAK: 1. Pilih Foto -> 2. Pengaturan -> 3. Preview + Download -->
-  <!-- Dulu kan Preview di atas, makanya halaman langsung panjang banget. Sekarang Preview di bawah, scroll nya natural. -->
-
   <div class="grid lg:grid-cols-2 gap-5 items-start">
-    <!-- KIRI: PILIH + PENGATURAN - NO STICKY -->
+    <!-- KIRI -->
     <div class="space-y-5">
+      <!-- 1. PILIH LAYOUT -->
+      <section class="card p-5">
+        <h2 class="text-[15px] font-bold">1. Pilih layout</h2>
+        <p class="text-[13px] text-zinc-500 mt-1">Mau berapa foto yang ditumpuk?</p>
+        <div class="grid grid-cols-3 gap-2 mt-4">
+          <button onclick="setLayout(4)" id="layout4" class="layoutBtn opt py-3 px-2 text-[13px] font-bold">
+            4 Foto
+            <span class="block text-[11px] font-normal text-zinc-500 mt-1 leading-tight">Ke bawah<br>4 tumpuk</span>
+            <span class="block mt-2 mx-auto w-[28px] space-y-[2px]"><span class="block h-[8px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[8px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[8px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[8px] bg-current rounded-[2px] opacity-80"></span></span>
+          </button>
+          <button onclick="setLayout(5)" id="layout5" class="layoutBtn opt active py-3 px-2 text-[13px] font-bold">
+            5 Foto
+            <span class="block text-[11px] font-normal mt-1 leading-tight">Ke bawah<br>5 tumpuk</span>
+            <span class="block mt-2 mx-auto w-[28px] space-y-[2px]"><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span></span>
+          </button>
+          <button onclick="setLayout(8)" id="layout8" class="layoutBtn opt py-3 px-2 text-[13px] font-bold">
+            8 Foto
+            <span class="block text-[11px] font-normal text-zinc-500 mt-1 leading-tight">Kiri 4 • Kanan 4<br>2 kolom</span>
+            <span class="block mt-2 mx-auto w-[28px] grid grid-cols-2 gap-[2px]"><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span><span class="block h-[6px] bg-current rounded-[2px] opacity-80"></span></span>
+          </button>
+        </div>
+        <p id="layoutDesc" class="text-[12px] text-zinc-500 mt-3">5 foto ke bawah — cocok untuk story / status WA yang panjang.</p>
+      </section>
+
+      <!-- 2. PILIH FOTO - DINAMIS SESUAI LAYOUT -->
       <section class="card p-5">
         <div class="flex justify-between items-baseline">
-          <h2 class="text-[15px] font-bold">1. Pilih 5 foto</h2>
+          <h2 class="text-[15px] font-bold">2. Pilih foto</h2>
           <span id="countBadge" class="text-[12px] font-medium text-zinc-500">0 / 5 terisi</span>
         </div>
-        <p class="text-[13px] text-zinc-500 mt-1">Foto 1 paling atas, foto 5 paling bawah. Ketuk kotak untuk mengganti.</p>
-        <div class="grid grid-cols-5 gap-2 md:gap-3 mt-4">
-          <label class="cursor-pointer"><div id="slot1" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative"><span class="text-[18px] font-bold">1</span><span class="text-[10px] text-zinc-500">ATAS</span></div><input type="file" accept="image/*" onchange="loadImage(event,0)"></label>
-          <label class="cursor-pointer"><div id="slot2" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative"><span class="text-[18px] font-bold">2</span><span class="text-[10px] text-zinc-500">KE-2</span></div><input type="file" accept="image/*" onchange="loadImage(event,1)"></label>
-          <label class="cursor-pointer"><div id="slot3" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative"><span class="text-[18px] font-bold">3</span><span class="text-[10px] text-zinc-500">TENGAH</span></div><input type="file" accept="image/*" onchange="loadImage(event,2)"></label>
-          <label class="cursor-pointer"><div id="slot4" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative"><span class="text-[18px] font-bold">4</span><span class="text-[10px] text-zinc-500">KE-4</span></div><input type="file" accept="image/*" onchange="loadImage(event,3)"></label>
-          <label class="cursor-pointer"><div id="slot5" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative"><span class="text-[18px] font-bold">5</span><span class="text-[10px] text-zinc-500">BAWAH</span></div><input type="file" accept="image/*" onchange="loadImage(event,4)"></label>
-        </div>
+        <p id="photoHint" class="text-[13px] text-zinc-500 mt-1">Foto 1 paling atas, foto 5 paling bawah. Ketuk kotak untuk mengganti.</p>
+        <div id="slotsGrid" class="grid grid-cols-5 gap-2 md:gap-3 mt-4"></div>
         <p id="countText" class="text-[12px] text-zinc-500 mt-3">0 dari 5 foto terisi.</p>
         <p id="qualityText" class="text-[12px] mt-1"></p>
       </section>
 
+      <!-- 3. PENGATURAN -->
       <section class="card p-5">
-        <h2 class="text-[15px] font-bold">2. Pengaturan</h2>
+        <h2 class="text-[15px] font-bold">3. Pengaturan</h2>
         <div class="mt-5">
           <div class="flex justify-between items-baseline mb-2"><span class="text-[13px] font-bold">Jarak antar foto</span><span id="gapLabel" class="text-[12px] text-zinc-500">2 — Seimbang</span></div>
           <div class="grid grid-cols-3 gap-2">
@@ -80,43 +97,38 @@
             <button onclick="setStroke(3)" class="strokeBtn opt py-3 text-[13px] font-bold">3<span class="block text-[11px] font-normal text-zinc-500">Tebal</span></button>
           </div>
         </div>
+        <!-- WARNA LATAR CUMA 2 -->
         <div class="mt-5">
           <div class="text-[13px] font-bold mb-2">Warna latar</div>
-          <div class="flex gap-2">
-            <button onclick="setBg('#ffffff')" class="w-9 h-9 rounded-full bg-white border border-zinc-300"></button>
-            <button onclick="setBg('#111111')" class="w-9 h-9 rounded-full bg-[#111] border border-zinc-300"></button>
-            <button onclick="setBg('#EDE8DF')" class="w-9 h-9 rounded-full bg-[#EDE8DF] border border-zinc-300"></button>
-            <button onclick="setBg('#D8D5CE')" class="w-9 h-9 rounded-full bg-[#D8D5CE] border border-zinc-300"></button>
-            <button onclick="setBg('#1E2A26')" class="w-9 h-9 rounded-full bg-[#1E2A26] border border-zinc-300"></button>
+          <div class="flex gap-3">
+            <button onclick="setBg('#ffffff', this)" class="colorBtn active flex items-center gap-2 border border-[#E5E1D8] rounded-full pl-1.5 pr-4 py-1.5 bg-white">
+              <span class="w-7 h-7 rounded-full bg-white border border-zinc-300 block"></span>
+              <span class="text-[13px] font-medium">Putih</span>
+            </button>
+            <button onclick="setBg('#111111', this)" class="colorBtn flex items-center gap-2 border border-[#E5E1D8] rounded-full pl-1.5 pr-4 py-1.5 bg-white">
+              <span class="w-7 h-7 rounded-full bg-[#111] border border-zinc-300 block"></span>
+              <span class="text-[13px] font-medium">Hitam</span>
+            </button>
           </div>
-        </div>
-        <div class="mt-5">
-          <div class="text-[13px] font-bold mb-2">Preset</div>
-          <div class="grid grid-cols-3 gap-2 text-[12px] font-medium">
-            <button onclick="applyPreset(2,2,'#ffffff')" class="opt py-2.5">Bersih</button>
-            <button onclick="applyPreset(1,1,'#111111')" class="opt py-2.5">Rapat</button>
-            <button onclick="applyPreset(3,2,'#EDE8DF')" class="opt py-2.5">Kertas</button>
-          </div>
+          <p class="text-[12px] text-zinc-500 mt-2">Putih paling aman. Hitam cocok untuk foto malam / foto gelap.</p>
         </div>
       </section>
     </div>
 
-    <!-- KANAN: PREVIEW + DOWNLOAD - NO STICKY, SCROLL NORMAL -->
+    <!-- KANAN -->
     <div class="space-y-5">
       <section class="card p-4 md:p-5">
         <div class="flex justify-between items-center mb-3">
-          <h2 class="text-[13px] font-bold">3. Pratinjau</h2>
+          <h2 class="text-[13px] font-bold">4. Pratinjau</h2>
           <span id="infoLabel" class="text-[12px] text-zinc-500">Jarak: 2 • Garis tepi: 2</span>
         </div>
-        <!-- Preview dibungkus scroll sendiri, max 520px, jadi halaman gak loncat -->
         <div class="preview-scroll bg-[#F4F2ED] border border-[#E5E1D8] rounded-xl p-3">
-          <div class="w-full max-w-[300px] mx-auto bg-white border border-[#E5E1D8] overflow-hidden">
-            <!-- Canvas preview KECIL, bukan 4K. Yang 4K cuma pas download. -->
+          <div id="previewWrap" class="w-full max-w-[300px] mx-auto bg-white border border-[#E5E1D8] overflow-hidden">
             <canvas id="previewCanvas" width="600" height="1340" class="w-full h-auto block"></canvas>
           </div>
         </div>
-        <p class="text-[12px] text-zinc-500 mt-3 leading-relaxed">Geser ke bawah untuk melihat semua 5 foto di dalam kotak pratinjau. Hasil unduhan tetap 3224 × 7200 px.</p>
-        <div class="border-t border-[#E5E1D8] mt-4 pt-4 text-[12px] leading-relaxed text-zinc-500">Hasil: 3224 × 7200 px • PNG • Tiap foto 3224 × 1440 px.</div>
+        <p id="previewHint" class="text-[12px] text-zinc-500 mt-3 leading-relaxed">Geser ke bawah untuk melihat semua foto di dalam kotak pratinjau. Hasil unduhan tetap 3224 px lebar.</p>
+        <div id="exportInfo" class="border-t border-[#E5E1D8] mt-4 pt-4 text-[12px] leading-relaxed text-zinc-500">Hasil: 3224 × 7200 px • PNG • Tiap foto 3224 × 1440 px.</div>
         <button onclick="downloadHD()" class="w-full btn-black font-bold py-4 text-[14px] mt-4">Unduh HD — PNG</button>
         <button onclick="shareToWA()" class="w-full bg-white border border-[#111] font-bold py-4 text-[14px] mt-2 rounded-full">Bagikan ke WhatsApp</button>
         <button onclick="location.reload()" class="w-full text-[13px] text-zinc-500 font-medium py-3 mt-1">Atur ulang</button>
@@ -135,28 +147,72 @@
   </div>
 
   <footer class="flex flex-col md:flex-row justify-between gap-2 border-t border-[#E5E1D8] mt-8 pt-5 pb-4 text-[12px] text-zinc-500">
-    <span><b class="text-zinc-900">TUMPUK.ID</b> — Tumpuk lima foto jadi satu.</span>
+    <span><b class="text-zinc-900">TUMPUK.ID</b> — Tumpuk foto jadi satu.</span>
     <span>Semarang • 2026 • Foto diproses lokal di perangkatmu.</span>
   </footer>
 </div>
 
-<!-- Canvas 4K disembunyiin, cuma dipake pas download, jadi gak bikin scroll berat -->
 <canvas id="exportCanvas" width="3224" height="7200" style="display:none"></canvas>
 
 <script>
-let images=[null,null,null,null,null];
+let layout = 5; // 4, 5, atau 8
+let images = [null,null,null,null,null];
 let gapLevel=2, strokeLevel=2, bgColor='#ffffff';
 const PW=3224, PH=1440;
 function getGapPx(scale){ return (gapLevel===1 ? 12 : gapLevel===2 ? 32 : 64) * scale; }
 function getStrokePx(scale){ return (strokeLevel===1 ? 6 : strokeLevel===2 ? 16 : 32) * scale; }
+
+// RENDER SLOT SESUAI LAYOUT
+function renderSlots(){
+  const grid=document.getElementById('slotsGrid');
+  // 8 foto pake grid 4 kolom biar muat, 4/5 foto pake 5 kolom
+  grid.className = layout===8 ? 'grid grid-cols-4 gap-2 md:gap-3 mt-4' : 'grid grid-cols-5 gap-2 md:gap-3 mt-4';
+  let html='';
+  const labels = layout===8 ? ['KIRI 1','KIRI 2','KIRI 3','KIRI 4','KANAN 1','KANAN 2','KANAN 3','KANAN 4'] : ['ATAS','KE-2','TENGAH','KE-4','BAWAH','KE-6'];
+  for(let i=0;i<layout;i++){
+    const label = layout===8 ? labels[i] : (i===0?'ATAS': i===layout-1?'BAWAH': 'KE-'+(i+1));
+    const existing = images[i] ? '' : `<span class="text-[18px] font-bold">${i+1}</span><span class="text-[10px] text-zinc-500">${label}</span>`;
+    // kalau udah ada gambar, kita simpen di data, renderSlots akan dipanggil ulang, jadi kita butuh simpen URL
+    html += `<label class="cursor-pointer"><div id="slot${i+1}" data-idx="${i}" class="slot aspect-[3/4] flex flex-col items-center justify-center gap-1 overflow-hidden relative">${existing}</div><input type="file" accept="image/*" onchange="loadImage(event,${i})"></label>`;
+  }
+  grid.innerHTML=html;
+  // balikin gambar yang udah keisi (karena innerHTML ke-reset)
+  images.forEach((img,i)=>{
+    if(img && img._url){
+      const el=document.getElementById('slot'+(i+1));
+      if(el) el.innerHTML=`<img src="${img._url}" class="absolute inset-0 w-full h-full object-cover">`;
+    }
+  });
+  updateCount();
+}
+function setLayout(n){
+  // simpen foto lama, potong / tambah sesuai layout baru
+  const old=[...images];
+  layout=n;
+  images = Array(n).fill(null);
+  for(let i=0;i<Math.min(old.length,n);i++) images[i]=old[i];
+  document.querySelectorAll('.layoutBtn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('layout'+n).classList.add('active');
+  const desc = n===4 ? '4 foto ke bawah — lebih pendek, cocok untuk feed / status yang tidak terlalu panjang.'
+    : n===5 ? '5 foto ke bawah — cocok untuk story / status WA yang panjang.'
+    : '8 foto — kiri 4, kanan 4. Cocok untuk foto bareng, foto produk, atau sebelum-sesudah.';
+  document.getElementById('layoutDesc').textContent=desc;
+  document.getElementById('photoHint').textContent = n===8 ? 'Urutan: 1-4 kolom kiri (atas ke bawah), 5-8 kolom kanan (atas ke bawah).' : `Foto 1 paling atas, foto ${n} paling bawah. Ketuk kotak untuk mengganti.`;
+  document.getElementById('exportInfo').textContent = n===8 ? 'Hasil: 3224 × 2880 px • PNG • Tiap foto 1580 × 700 px.' : n===4 ? 'Hasil: 3224 × 5760 px • PNG • Tiap foto 3224 × 1440 px.' : 'Hasil: 3224 × 7200 px • PNG • Tiap foto 3224 × 1440 px.';
+  document.getElementById('previewHint').textContent = n===8 ? 'Pratinjau 8 foto — kiri 4, kanan 4. Geser untuk melihat semua.' : 'Geser ke bawah untuk melihat semua foto di dalam kotak pratinjau. Hasil unduhan tetap 3224 px lebar.';
+  renderSlots();
+  drawPreview();
+}
 function loadImage(e, idx){
   const file=e.target.files[0]; if(!file) return;
   const reader=new FileReader();
   reader.onload=(ev)=>{
     const img=new Image();
     img.onload=()=>{
+      img._url=ev.target.result;
       images[idx]=img;
-      document.getElementById('slot'+(idx+1)).innerHTML=`<img src="${ev.target.result}" class="absolute inset-0 w-full h-full object-cover">`;
+      const el=document.getElementById('slot'+(idx+1));
+      if(el) el.innerHTML=`<img src="${ev.target.result}" class="absolute inset-0 w-full h-full object-cover">`;
       updateCount();
       let q='';
       if(img.width < 1000) q = `Foto ${idx+1} hanya ${img.width}×${img.height}. Terlalu kecil, hasil akan buram.`;
@@ -172,8 +228,8 @@ function loadImage(e, idx){
 }
 function updateCount(){
   const filled=images.filter(i=>i!==null).length;
-  document.getElementById('countText').textContent=`${filled} dari 5 foto terisi. ${filled===5 ? 'Sudah lengkap.' : ''}`;
-  document.getElementById('countBadge').textContent=`${filled} / 5 terisi`;
+  document.getElementById('countText').textContent=`${filled} dari ${layout} foto terisi. ${filled===layout ? 'Sudah lengkap.' : ''}`;
+  document.getElementById('countBadge').textContent=`${filled} / ${layout} terisi`;
 }
 function setGap(l){
   gapLevel=l;
@@ -187,56 +243,90 @@ function setStroke(l){
   document.getElementById('strokeLabel').textContent=l===1?'1 — Tipis':l===2?'2 — Sedang':'3 — Tebal';
   updateInfo(); drawPreview();
 }
-function setBg(c){ bgColor=c; drawPreview(); }
-function applyPreset(g,s,c){ gapLevel=g; strokeLevel=s; bgColor=c; document.querySelectorAll('.gapBtn').forEach((b,i)=>b.classList.toggle('active', i+1===g)); document.querySelectorAll('.strokeBtn').forEach((b,i)=>b.classList.toggle('active', i+1===s)); document.getElementById('gapLabel').textContent=g+' — '+(g===1?'Rapat':g===2?'Seimbang':'Longgar'); document.getElementById('strokeLabel').textContent=s+' — '+(s===1?'Tipis':s===2?'Sedang':'Tebal'); updateInfo(); drawPreview(); }
+function setBg(c, btn){
+  bgColor=c;
+  document.querySelectorAll('.colorBtn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  drawPreview();
+}
 function updateInfo(){ document.getElementById('infoLabel').textContent=`Jarak: ${gapLevel} • Garis tepi: ${strokeLevel}`; }
 
-// Gambar ke canvas apapun - bisa preview kecil / export 4K, rumusnya sama
-function drawToCanvas(canvas, W, H){
+function drawToCanvas(canvas, W){
   const ctx=canvas.getContext('2d');
   const scale = W / PW;
   const gap=getGapPx(scale), stroke=getStrokePx(scale);
-  const ph = PH * scale;
-  const totalH = ph*5 + gap*6 + stroke*10;
-  if(canvas.height!==Math.round(totalH)) canvas.height=Math.round(totalH);
-  if(canvas.width!==W) canvas.width=W;
-  ctx.fillStyle=bgColor; ctx.fillRect(0,0,W,totalH);
-  for(let i=0;i<5;i++){
-    const y = gap + stroke + (ph + gap + stroke*2)*i;
-    const x = gap + stroke;
-    const w = W - gap*2 - stroke*2;
-    ctx.fillStyle=bgColor; ctx.fillRect(x-stroke, y-stroke, w+stroke*2, ph+stroke*2);
-    const img=images[i];
-    if(!img){ ctx.fillStyle='#EDE8DF'; ctx.fillRect(x,y,w,ph); ctx.fillStyle='#999'; ctx.font='600 20px sans-serif'; ctx.textAlign='center'; ctx.fillText('FOTO', x+w/2, y+ph/2); continue; }
-    ctx.imageSmoothingEnabled=true; ctx.imageSmoothingQuality='high';
-    const imgRatio=img.width/img.height, boxRatio=w/ph;
-    let sw,sh,sx,sy;
-    if(imgRatio>boxRatio){ sh=img.height; sw=sh*boxRatio; sx=(img.width-sw)/2; sy=0; }
-    else { sw=img.width; sh=sw/boxRatio; sx=0; sy=(img.height-sh)/2; }
-    ctx.drawImage(img, sx,sy,sw,sh, x,y,w,ph);
+  if(layout===8){
+    // 8 FOTO: 2 kolom x 4 baris
+    const cols=2, rows=4;
+    const cellW = (W - gap*(cols+1) - stroke*cols*2) / cols;
+    const cellH = cellW * (PH / PW); // rasio sama kayak foto ke bawah, biar konsisten
+    const totalH = (cellH + gap + stroke*2)*rows + gap + stroke*2;
+    if(canvas.height!==Math.round(totalH)) canvas.height=Math.round(totalH);
+    if(canvas.width!==W) canvas.width=W;
+    ctx.fillStyle=bgColor; ctx.fillRect(0,0,W,totalH);
+    for(let i=0;i<8;i++){
+      const col = i < 4 ? 0 : 1;
+      const row = i % 4;
+      const x = gap + stroke + col*(cellW + gap + stroke*2);
+      const y = gap + stroke + row*(cellH + gap + stroke*2);
+      ctx.fillStyle=bgColor; ctx.fillRect(x-stroke, y-stroke, cellW+stroke*2, cellH+stroke*2);
+      const img=images[i];
+      if(!img){ ctx.fillStyle= bgColor==='#ffffff' ? '#EDE8DF' : '#222'; ctx.fillRect(x,y,cellW,cellH); ctx.fillStyle='#999'; ctx.font='600 20px sans-serif'; ctx.textAlign='center'; ctx.fillText('FOTO', x+cellW/2, y+cellH/2); continue; }
+      ctx.imageSmoothingEnabled=true; ctx.imageSmoothingQuality='high';
+      const imgRatio=img.width/img.height, boxRatio=cellW/cellH;
+      let sw,sh,sx,sy;
+      if(imgRatio>boxRatio){ sh=img.height; sw=sh*boxRatio; sx=(img.width-sw)/2; sy=0; }
+      else { sw=img.width; sh=sw/boxRatio; sx=0; sy=(img.height-sh)/2; }
+      ctx.drawImage(img, sx,sy,sw,sh, x,y,cellW,cellH);
+    }
+  } else {
+    // 4 / 5 FOTO: 1 kolom ke bawah
+    const ph = PH * scale;
+    const totalH = ph*layout + gap*(layout+1) + stroke*layout*2;
+    if(canvas.height!==Math.round(totalH)) canvas.height=Math.round(totalH);
+    if(canvas.width!==W) canvas.width=W;
+    ctx.fillStyle=bgColor; ctx.fillRect(0,0,W,totalH);
+    for(let i=0;i<layout;i++){
+      const y = gap + stroke + (ph + gap + stroke*2)*i;
+      const x = gap + stroke;
+      const w = W - gap*2 - stroke*2;
+      ctx.fillStyle=bgColor; ctx.fillRect(x-stroke, y-stroke, w+stroke*2, ph+stroke*2);
+      const img=images[i];
+      if(!img){ ctx.fillStyle= bgColor==='#ffffff' ? '#EDE8DF' : '#222'; ctx.fillRect(x,y,w,ph); ctx.fillStyle='#999'; ctx.font='600 20px sans-serif'; ctx.textAlign='center'; ctx.fillText('FOTO', x+w/2, y+ph/2); continue; }
+      ctx.imageSmoothingEnabled=true; ctx.imageSmoothingQuality='high';
+      const imgRatio=img.width/img.height, boxRatio=w/ph;
+      let sw,sh,sx,sy;
+      if(imgRatio>boxRatio){ sh=img.height; sw=sh*boxRatio; sx=(img.width-sw)/2; sy=0; }
+      else { sw=img.width; sh=sw/boxRatio; sx=0; sy=(img.height-sh)/2; }
+      ctx.drawImage(img, sx,sy,sw,sh, x,y,w,ph);
+    }
   }
 }
-function drawPreview(){ drawToCanvas(document.getElementById('previewCanvas'), 600, 1340); }
+function drawPreview(){ drawToCanvas(document.getElementById('previewCanvas'), 600); }
+renderSlots();
 drawPreview();
+function getFileName(){
+  return layout===8 ? 'tumpukid-8foto-3224x2880.png' : layout===4 ? 'tumpukid-4foto-3224x5760.png' : 'tumpukid-5foto-3224x7200.png';
+}
 function downloadHD(){
   const filled=images.filter(i=>i!==null).length;
   if(filled===0){ alert('Pilih foto dulu.'); return; }
   const canvas=document.getElementById('exportCanvas');
-  drawToCanvas(canvas, PW, PH);
-  const a=document.createElement('a'); a.download='tumpukid-4K-3224x7200-5foto.png'; a.href=canvas.toDataURL('image/png',1.0); a.click();
+  drawToCanvas(canvas, PW);
+  const a=document.createElement('a'); a.download=getFileName(); a.href=canvas.toDataURL('image/png',1.0); a.click();
 }
 async function shareToWA(){
   const filled=images.filter(i=>i!==null).length;
   if(filled===0){ alert('Pilih foto dulu.'); return; }
   const canvas=document.getElementById('exportCanvas');
-  drawToCanvas(canvas, PW, PH);
+  drawToCanvas(canvas, PW);
   canvas.toBlob(async (blob)=>{
-    const file=new File([blob], 'tumpukid-4K-3224x7200-5foto.png', {type:'image/png'});
+    const file=new File([blob], getFileName(), {type:'image/png'});
     if(navigator.canShare && navigator.canShare({files:[file]})){
-      try{ await navigator.share({ files:[file], title:'TUMPUK.ID', text:'Hasil dari TUMPUK.ID — 5 foto jadi 1.' }); return; }catch(e){}
+      try{ await navigator.share({ files:[file], title:'TUMPUK.ID', text:`Hasil dari TUMPUK.ID — ${layout} foto jadi 1.` }); return; }catch(e){}
     }
-    const a=document.createElement('a'); a.download='tumpukid-4K-3224x7200-5foto.png'; a.href=canvas.toDataURL('image/png',1.0); a.click();
-    alert('Foto sudah diunduh. Kirim lewat Dokumen di WhatsApp agar tetap HD.');
+    const a=document.createElement('a'); a.download=getFileName(); a.href=canvas.toDataURL('image/png',1.0); a.click();
+    alert('Foto sudah diunduh. Kirim lewat Dokumen di WhatsApp agar tetap tajam.');
   }, 'image/png', 1.0);
 }
 </script>
