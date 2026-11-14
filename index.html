@@ -3,224 +3,128 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>REY SPEEDTEST PRO</title>
+<title>REY KOLASE - 806 x 1440 HD</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 <body class="bg-[#0a0a0f] text-white min-h-screen px-4 py-6 font-sans">
-<div class="max-w-4xl mx-auto">
-
+<div class="max-w-5xl mx-auto">
   <div class="text-center">
-    <h1 class="text-3xl md:text-4xl font-black">REY <span class="text-green-400">SPEEDTEST</span> <span class="text-xs bg-yellow-400 text-black px-2 py-0.5 rounded-full align-middle">PRO</span></h1>
-    <p class="text-zinc-400 text-sm mt-1">Wifi / Data Seluler • Server Cloudflare Singapore</p>
-    <div class="mt-3 flex justify-center gap-2 text-[11px]">
-      <span id="netType" class="bg-zinc-800 px-3 py-1 rounded-full">Mendeteksi...</span>
-      <span id="ipInfo" class="bg-zinc-800 px-3 py-1 rounded-full">IP: ...</span>
-      <span id="historyCount" class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full">History: 0x</span>
+    <h1 class="text-3xl md:text-4xl font-black">REY <span class="text-pink-400">KOLASE</span></h1>
+    <p class="text-zinc-400 text-sm mt-1">Kolase 4 Foto • Ukuran 806 x 1440 • HD PNG • No Burem</p>
+    <div class="mt-2 inline-flex gap-2 text-[11px]">
+      <span class="bg-zinc-800 px-3 py-1 rounded-full">📐 806 x 1440 px</span>
+      <span class="bg-zinc-800 px-3 py-1 rounded-full">🖼️ 4 Foto</span>
+      <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full">HD PNG</span>
     </div>
   </div>
 
-  <!-- GAUGE + GRAFIK LIVE -->
-  <div class="grid md:grid-cols-2 gap-4 mt-6">
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-5 flex flex-col items-center justify-center min-h-[280px]">
-      <div class="text-zinc-400 text-xs font-bold tracking-widest">KECEPATAN SAAT INI</div>
-      <div class="text-[72px] leading-none font-black mt-2"><span id="bigSpeed">0</span><span class="text-xl text-zinc-400"> Mbps</span></div>
-      <div id="statusText" class="text-green-400 text-xs font-bold mt-3 bg-green-500/10 px-3 py-1 rounded-full">SIAP TES</div>
-      <button id="startBtn" onclick="startTest()" class="mt-5 bg-green-500 hover:bg-green-400 text-black font-black px-8 py-3 rounded-full shadow-[0_0_25px_rgba(34,197,94,.4)] active:scale-95 transition">▶ MULAI TES</button>
-      <div class="grid grid-cols-3 gap-3 w-full mt-6 text-center">
-        <div><div class="text-[10px] text-zinc-400 font-bold">DOWNLOAD</div><div class="font-black text-lg"><span id="dl">-</span> <span class="text-[10px] text-zinc-400">Mbps</span></div></div>
-        <div><div class="text-[10px] text-zinc-400 font-bold">UPLOAD</div><div class="font-black text-lg"><span id="ul">-</span> <span class="text-[10px] text-zinc-400">Mbps</span></div></div>
-        <div><div class="text-[10px] text-zinc-400 font-bold">PING</div><div class="font-black text-lg"><span id="ping">-</span> <span class="text-[10px] text-zinc-400">ms</span></div></div>
+  <div class="grid md:grid-cols-[1fr_360px] gap-5 mt-6">
+    <!-- KONTROL -->
+    <div class="space-y-4">
+      <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-5">
+        <div class="text-xs font-bold tracking-widest text-zinc-400 mb-3">1. PILIH 4 FOTO LU</div>
+        <div class="grid grid-cols-2 gap-3">
+          <label class="cursor-pointer"><div id="slot1" class="aspect-[4/5] bg-zinc-800 rounded-2xl flex flex-col items-center justify-center text-center p-2 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-3xl">+</span><span class="text-[11px] text-zinc-400 mt-1">FOTO 1<br>Atas Kiri</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,0)"></label>
+          <label class="cursor-pointer"><div id="slot2" class="aspect-[4/5] bg-zinc-800 rounded-2xl flex flex-col items-center justify-center text-center p-2 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-3xl">+</span><span class="text-[11px] text-zinc-400 mt-1">FOTO 2<br>Atas Kanan</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,1)"></label>
+          <label class="cursor-pointer"><div id="slot3" class="aspect-[4/5] bg-zinc-800 rounded-2xl flex flex-col items-center justify-center text-center p-2 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-3xl">+</span><span class="text-[11px] text-zinc-400 mt-1">FOTO 3<br>Bawah Kiri</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,2)"></label>
+          <label class="cursor-pointer"><div id="slot4" class="aspect-[4/5] bg-zinc-800 rounded-2xl flex flex-col items-center justify-center text-center p-2 border-2 border-dashed border-zinc-700 overflow-hidden relative"><span class="text-3xl">+</span><span class="text-[11px] text-zinc-400 mt-1">FOTO 4<br>Bawah Kanan</span></div><input type="file" accept="image/*" class="hidden" onchange="loadImage(event,3)"></label>
+        </div>
+        <p class="text-[11px] text-zinc-500 mt-3">Tips HD: Pake foto asli dari galeri, jangan foto yang udah di-screenshot / dikirim lewat WA yang ke-kompres. Kalo mau ganti, klik lagi foto nya.</p>
       </div>
-      <div class="text-[11px] text-zinc-500 mt-2">Jitter: <span id="jitter">-</span> ms • Penilaian: <span id="grade" class="text-white font-bold">-</span></div>
-    </div>
 
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-5">
-      <div class="flex justify-between items-center">
-        <div class="text-xs font-bold tracking-widest text-zinc-400">GRAFIK LIVE</div>
-        <div class="flex gap-2 text-[10px]"><span class="text-green-400">● Download</span><span class="text-blue-400">● Upload</span></div>
+      <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-5">
+        <div class="text-xs font-bold tracking-widest text-zinc-400 mb-3">2. ATUR TAMPILAN</div>
+        <div class="space-y-3 text-sm">
+          <div class="flex justify-between items-center"><span>Jarak antar foto (Gap)</span><div class="flex gap-2"><button onclick="setGap(0)" class="gapBtn bg-zinc-800 px-3 py-1 rounded-full text-xs" data-gap="0">0 - Nempel</button><button onclick="setGap(6)" class="gapBtn bg-pink-500 px-3 py-1 rounded-full text-xs" data-gap="6">6 - Rapi</button><button onclick="setGap(14)" class="gapBtn bg-zinc-800 px-3 py-1 rounded-full text-xs" data-gap="14">14 - Lebar</button></div></div>
+          <div class="flex justify-between items-center"><span>Warna Background Gap</span><div class="flex gap-2"><button onclick="setBg('#ffffff')" class="w-7 h-7 rounded-full bg-white border"></button><button onclick="setBg('#000000')" class="w-7 h-7 rounded-full bg-black border border-zinc-600"></button><button onclick="setBg('#FF5DA2')" class="w-7 h-7 rounded-full bg-pink-500"></button><button onclick="setBg('#F5F5F0')" class="w-7 h-7 rounded-full bg-[#F5F5F0]"></button></div></div>
+          <div class="flex justify-between items-center"><span>Layout</span><div class="flex gap-2"><button onclick="setLayout('grid')" class="layoutBtn bg-pink-500 px-3 py-1 rounded-full text-xs">2x2 Grid</button><button onclick="setLayout('vertical')" class="layoutBtn bg-zinc-800 px-3 py-1 rounded-full text-xs">4 Susun</button></div></div>
+        </div>
       </div>
-      <div class="h-[230px] mt-3"><canvas id="liveChart"></canvas></div>
+
+      <button onclick="downloadHD()" class="w-full bg-pink-500 hover:bg-pink-400 text-white font-black text-lg py-4 rounded-full shadow-[0_0_25px_rgba(236,72,153,.4)] active:scale-[.98] transition">⬇ DOWNLOAD HD 806 x 1440 (PNG)</button>
+      <button onclick="resetAll()" class="w-full bg-zinc-800 text-zinc-300 font-bold py-3 rounded-full text-sm">Reset Semua Foto</button>
+      <p class="text-[11px] text-zinc-500 text-center">Hasil download langsung masuk galeri lu, ukuran persis 806 x 1440, format PNG, no kompres.</p>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-4 flex flex-col items-center">
+      <div class="text-xs font-bold tracking-widest text-zinc-400 mb-3">PREVIEW ASLI - 806 x 1440</div>
+      <div class="w-full max-w-[300px] rounded-xl overflow-hidden border border-zinc-700 bg-black">
+        <canvas id="canvas" width="806" height="1440" class="w-full h-auto block"></canvas>
+      </div>
+      <div class="text-[11px] text-zinc-500 mt-2">Ini preview persis hasil download nya. Kalo di preview udah tajem, di galeri pasti tajem.</div>
     </div>
   </div>
-
-  <!-- GRAFIK HISTORY -->
-  <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-5 mt-4">
-    <div class="flex justify-between items-center">
-      <div class="text-xs font-bold tracking-widest text-zinc-400">GRAFIK HISTORY - 10 TES TERAKHIR</div>
-      <button onclick="clearHistory()" class="text-[11px] bg-red-500/20 text-red-300 px-3 py-1 rounded-full">Hapus History</button>
-    </div>
-    <div class="h-[180px] mt-3"><canvas id="historyChart"></canvas></div>
-    <p class="text-[11px] text-zinc-500 mt-2">Kalo garis nya turun terus, berarti Wifi lu makin lemot / provider lu lagi gangguan. Kalo naik-turun parah, berarti sinyal lu gak stabil.</p>
-  </div>
-
-  <!-- TABEL HISTORY -->
-  <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-5 mt-4">
-    <div class="text-xs font-bold tracking-widest text-zinc-400 mb-3">RIWAYAT TES</div>
-    <div class="overflow-x-auto">
-      <table class="w-full text-sm">
-        <thead><tr class="text-left text-zinc-500 text-[11px] border-b border-zinc-800"><th class="py-2 pr-2">JAM</th><th class="py-2 pr-2">JARINGAN</th><th class="py-2 pr-2">DOWN</th><th class="py-2 pr-2">UP</th><th class="py-2 pr-2">PING</th><th class="py-2">NILAI</th></tr></thead>
-        <tbody id="historyBody"><tr><td colspan="6" class="py-4 text-center text-zinc-500 text-xs">Belum ada history. Tes dulu 1x.</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div id="rekomendasi" class="mt-4 bg-zinc-900/60 border border-zinc-800 rounded-2xl p-4 text-sm text-zinc-300 hidden"><b class="text-white">Analisa:</b> <span id="rekomText"></span></div>
-  <p class="text-zinc-600 text-[11px] mt-4 text-center">Tutup YouTube / TikTok dulu biar akurat. Tes 2x, ambil hasil kedua.</p>
 </div>
 
 <script>
-// ===== HISTORY - LOCALSTORAGE =====
-let history = JSON.parse(localStorage.getItem('rey_speed_history') || '[]');
+let images = [null,null,null,null];
+let gap = 6;
+let bgColor = '#ffffff';
+let layout = 'grid';
 
-function saveHistory(entry){
-  history.unshift(entry);
-  history = history.slice(0, 20); // simpan 20 terakhir
-  localStorage.setItem('rey_speed_history', JSON.stringify(history));
-  renderHistory();
+function loadImage(e, idx){
+  const file = e.target.files[0]; if(!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev)=>{
+    const img = new Image();
+    img.onload = ()=>{ images[idx]=img; updateSlotPreview(idx, ev.target.result); drawCanvas(); };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
 }
-function clearHistory(){
-  if(!confirm('Hapus semua history?')) return;
-  history = []; localStorage.removeItem('rey_speed_history'); renderHistory();
+function updateSlotPreview(idx, src){
+  const el = document.getElementById('slot'+(idx+1));
+  el.innerHTML = `<img src="${src}" class="absolute inset-0 w-full h-full object-cover">`;
+  el.classList.remove('border-dashed');
+}
+function setGap(g){ gap=g; document.querySelectorAll('.gapBtn').forEach(b=>b.className='gapBtn bg-zinc-800 px-3 py-1 rounded-full text-xs'); event.target.className='gapBtn bg-pink-500 px-3 py-1 rounded-full text-xs'; drawCanvas(); }
+function setBg(c){ bgColor=c; drawCanvas(); }
+function setLayout(l){ layout=l; document.querySelectorAll('.layoutBtn').forEach(b=>b.className='layoutBtn bg-zinc-800 px-3 py-1 rounded-full text-xs'); event.target.className='layoutBtn bg-pink-500 px-3 py-1 rounded-full text-xs'; drawCanvas(); }
+function resetAll(){ images=[null,null,null,null]; location.reload(); }
+
+function drawCover(ctx, img, x, y, w, h){
+  if(!img){
+    ctx.fillStyle = '#1a1a1a'; ctx.fillRect(x,y,w,h);
+    ctx.fillStyle = '#555'; ctx.font = 'bold 28px sans-serif'; ctx.textAlign='center';
+    ctx.fillText('FOTO '+(images.indexOf(null)+1), x+w/2, y+h/2);
+    return;
+  }
+  // Hitung crop biar gak gepeng - COVER mode
+  const imgRatio = img.width / img.height;
+  const boxRatio = w / h;
+  let sw, sh, sx, sy;
+  if(imgRatio > boxRatio){ sh = img.height; sw = sh * boxRatio; sx = (img.width - sw)/2; sy = 0; }
+  else { sw = img.width; sh = sw / boxRatio; sx = 0; sy = (img.height - sh)/2; }
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
 }
 
-// ===== CHART LIVE =====
-const liveCtx = document.getElementById('liveChart').getContext('2d');
-let liveChart = new Chart(liveCtx, {
-  type: 'line',
-  data: { labels: [], datasets: [
-    { label:'Download', data:[], borderColor:'#22c55e', backgroundColor:'rgba(34,197,94,.15)', fill:true, tension:.4, pointRadius:0 },
-    { label:'Upload', data:[], borderColor:'#3b82f6', backgroundColor:'rgba(59,130,246,.12)', fill:true, tension:.4, pointRadius:0 }
-  ]},
-  options:{ responsive:true, maintainAspectRatio:false, scales:{ y:{ beginAtZero:true, grid:{color:'#27272a'}, ticks:{color:'#a1a1aa'} }, x:{ grid:{display:false}, ticks:{color:'#71717a', maxTicksLimit:6} } }, plugins:{ legend:{display:false} } }
-});
-
-let historyChart;
-function renderHistory(){
-  document.getElementById('historyCount').textContent = 'History: ' + history.length + 'x';
-  const body = document.getElementById('historyBody');
-  if(history.length===0){
-    body.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-zinc-500 text-xs">Belum ada history. Tes dulu 1x.</td></tr>';
+function drawCanvas(){
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = bgColor; ctx.fillRect(0,0,806,1440);
+  if(layout==='grid'){
+    const w = (806 - gap*3)/2;
+    const h = (1440 - gap*3)/2;
+    const pos = [[gap,gap],[gap*2+w,gap],[gap,gap*2+h],[gap*2+w,gap*2+h]];
+    pos.forEach((p,i)=> drawCover(ctx, images[i], p[0], p[1], w, h));
   } else {
-    body.innerHTML = history.map(h=>{
-      const color = h.dl>=50?'text-green-400':h.dl>=20?'text-yellow-300':h.dl>=10?'text-orange-400':'text-red-400';
-      return `<tr class="border-b border-zinc-800/50"><td class="py-2 pr-2 text-xs whitespace-nowrap">${h.jam}</td><td class="py-2 pr-2 text-xs">${h.jaringan}</td><td class="py-2 pr-2 font-bold ${color}">${h.dl} Mbps</td><td class="py-2 pr-2 font-bold">${h.ul} Mbps</td><td class="py-2 pr-2">${h.ping} ms</td><td class="py-2 text-xs">${h.grade}</td></tr>`;
-    }).join('');
+    const h = (1440 - gap*5)/4;
+    for(let i=0;i<4;i++) drawCover(ctx, images[i], gap, gap*(i+1)+h*i, 806-gap*2, h);
   }
-  // Chart history
-  const last10 = [...history].reverse().slice(-10);
-  if(historyChart) historyChart.destroy();
-  historyChart = new Chart(document.getElementById('historyChart').getContext('2d'), {
-    type:'bar',
-    data:{ labels: last10.map(h=>h.jamShort), datasets:[
-      { label:'Download', data: last10.map(h=>h.dl), backgroundColor:'#22c55e', borderRadius:6 },
-      { label:'Upload', data: last10.map(h=>h.ul), backgroundColor:'#3b82f6', borderRadius:6 }
-    ]},
-    options:{ responsive:true, maintainAspectRatio:false, scales:{ y:{ beginAtZero:true, grid:{color:'#27272a'}, ticks:{color:'#a1a1aa'} }, x:{ grid:{display:false}, ticks:{color:'#71717a'} } }, plugins:{ legend:{ labels:{color:'#a1a1aa', boxWidth:12, font:{size:11}} } } }
-  });
 }
-renderHistory();
+drawCanvas();
 
-// ===== DETEKSI JARINGAN =====
-let netLabel = 'Unknown';
-async function detectInfo(){
-  try{ const r=await fetch('https://api.ipify.org?format=json'); const j=await r.json(); document.getElementById('ipInfo').textContent='IP: '+j.ip; }catch(e){}
-  const conn = navigator.connection||navigator.mozConnection||navigator.webkitConnection;
-  if(conn){
-    if(conn.type==='wifi' || (conn.effectiveType && !navigator.userAgent.includes('Android'))) netLabel='📶 WIFI';
-    else if(conn.type==='cellular' || conn.effectiveType?.includes('4g') || conn.effectiveType?.includes('3g')) netLabel='📱 DATA '+ (conn.effectiveType||'').toUpperCase();
-    else netLabel = (conn.effectiveType||'Jaringan').toUpperCase();
-  } else {
-    // Fallback: kalo di HP biasanya data, kalo di PC biasanya wifi
-    netLabel = /Mobi|Android/i.test(navigator.userAgent) ? '📱 DATA SELULER' : '📶 WIFI';
-  }
-  document.getElementById('netType').textContent = netLabel;
-}
-detectInfo();
-
-async function testPing(){
-  const times=[];
-  for(let i=0;i<10;i++){ const t0=performance.now(); try{ await fetch('https://speed.cloudflare.com/__down?bytes=0',{cache:'no-store'}); }catch(e){} times.push(performance.now()-t0); await new Promise(r=>setTimeout(r,40)); }
-  const avg=times.reduce((a,b)=>a+b,0)/times.length;
-  let jit=0; for(let i=1;i<times.length;i++) jit+=Math.abs(times[i]-times[i-1]); jit/=(times.length-1);
-  return {ping:Math.round(avg), jitter:Math.round(jit)};
-}
-
-function pushLive(label, dlVal, ulVal){
-  liveChart.data.labels.push(label);
-  liveChart.data.datasets[0].data.push(dlVal);
-  liveChart.data.datasets[1].data.push(ulVal);
-  if(liveChart.data.labels.length>20){ liveChart.data.labels.shift(); liveChart.data.datasets.forEach(d=>d.data.shift()); }
-  liveChart.update('none');
-}
-
-async function testDownload(){
-  const promises=[];
-  for(let i=0;i<4;i++){
-    promises.push((async()=>{
-      const t0=performance.now();
-      const res=await fetch(`https://speed.cloudflare.com/__down?bytes=5000000&cache=${Math.random()}`,{cache:'no-store'});
-      const buf=await res.arrayBuffer();
-      return {bytes:buf.byteLength, time:(performance.now()-t0)/1000};
-    })());
-  }
-  // Animasi grafik live selama download
-  let fake = 0; const interval = setInterval(()=>{ fake+=Math.random()*20+5; pushLive('', Math.min(fake, 150), 0); document.getElementById('bigSpeed').textContent=Math.round(Math.min(fake,150)); }, 200);
-  const results=await Promise.all(promises);
-  clearInterval(interval);
-  let totalBytes=0, maxTime=0; results.forEach(r=>{totalBytes+=r.bytes; maxTime=Math.max(maxTime,r.time);});
-  return (totalBytes*8)/(maxTime*1000000);
-}
-async function testUpload(){
-  const data=new Uint8Array(1000000); let total=0;
-  for(let i=0;i<3;i++){ const t0=performance.now(); await fetch('https://speed.cloudflare.com/__up',{method:'POST', body:data, cache:'no-store'}); total+=(performance.now()-t0)/1000; }
-  return (1000000*8)/((total/3)*1000000);
-}
-
-async function startTest(){
-  const btn=document.getElementById('startBtn');
-  btn.disabled=true; btn.textContent='SEDANG TES...'; btn.classList.add('opacity-50');
-  document.getElementById('statusText').textContent='TES PING...';
-  liveChart.data.labels=[]; liveChart.data.datasets.forEach(d=>d.data=[]); liveChart.update();
-
-  const {ping, jitter}=await testPing();
-  document.getElementById('ping').textContent=ping;
-  document.getElementById('jitter').textContent=jitter;
-
-  document.getElementById('statusText').textContent='TES DOWNLOAD...';
-  const dl=await testDownload();
-  document.getElementById('dl').textContent=dl.toFixed(1);
-  document.getElementById('bigSpeed').textContent=Math.round(dl);
-  pushLive('DL', dl, 0);
-
-  document.getElementById('statusText').textContent='TES UPLOAD...';
-  const ul=await testUpload();
-  document.getElementById('ul').textContent=ul.toFixed(1);
-  pushLive('UL', dl, ul);
-
-  let grade, rekom='';
-  if(dl>=50){ grade='SANGAT CEPAT'; rekom='Wifi lu kenceng banget. Libas semua game + live. Ping '+ping+'ms udah enak.'; }
-  else if(dl>=20){ grade='CEPAT'; rekom='Lancar buat game & streaming 1080p. Kalo masih lag, yang lag server game nya.'; }
-  else if(dl>=10){ grade='SEDANG'; rekom='Cukup buat 1-2 orang. Kalo dipake bareng, bakal rebutan. Coba deketin router.'; }
-  else if(dl>=3){ grade='LELET'; rekom='Ini yang bikin lu lag. Restart router 30 detik, atau pindah ke deket router.'; }
-  else { grade='PARAH'; rekom='Cek kuota / sinyal lu cuma 1 bar. Coba mode pesawat 10 detik.'; }
-  document.getElementById('grade').textContent=grade;
-  document.getElementById('rekomText').textContent=rekom;
-  document.getElementById('rekomendasi').classList.remove('hidden');
-  document.getElementById('statusText').textContent='SELESAI ✓';
-
-  // SIMPAN HISTORY
-  const now=new Date();
-  saveHistory({
-    jam: now.toLocaleString('id-ID',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}),
-    jamShort: now.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}),
-    jaringan: netLabel,
-    dl: parseFloat(dl.toFixed(1)),
-    ul: parseFloat(ul.toFixed(1)),
-    ping, grade
-  });
-
-  btn.disabled=false; btn.textContent='▶ TES LAGI'; btn.classList.remove('opacity-50');
+function downloadHD(){
+  if(images.every(i=>i===null)){ alert('Pilih foto dulu wok, minimal 1 foto!'); return; }
+  const canvas = document.getElementById('canvas');
+  // PNG = HD, no kompres. Jangan pake JPEG.
+  const link = document.createElement('a');
+  link.download = 'kolase-806x1440-HD.png';
+  link.href = canvas.toDataURL('image/png', 1.0);
+  link.click();
 }
 </script>
 </body>
