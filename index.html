@@ -72,7 +72,7 @@
         <h2 class="text-[15px] font-bold">3. Pengaturan</h2>
         <div class="mt-5 border border-[#E5E1D8] rounded-xl p-3.5 flex items-center justify-between gap-3 bg-[#FAF8F4]">
           <div>
-            <div class="text-[13px] font-bold flex items-center gap-1.5">✨ AI HD - Hugging Face <span class="text-[10px] bg-[#111] text-white px-2 py-0.5 rounded-full font-bold">REAL-ESRGAN</span></div>
+            <div class="text-[13px] font-bold flex items-center gap-1.5">🤖 AI HD - Hugging Face <span class="text-[10px] bg-[#111] text-white px-2 py-0.5 rounded-full font-bold">REAL-ESRGAN</span></div>
             <p class="text-[12px] text-zinc-500 mt-0.5 leading-snug">Model: sczhou/Real-ESRGAN 2x.</p>
           </div>
           <button id="aiToggle" onclick="toggleAI()" class="shrink-0 w-[52px] h-[28px] rounded-full bg-zinc-300 relative transition-all"><span id="aiKnob" class="absolute top-[3px] left-[3px] w-[22px] h-[22px] bg-white rounded-full shadow transition-all"></span></button>
@@ -192,7 +192,7 @@ function getStrokeLabel(l){ return l===0?'0 — Polosan / Foto Doang':l===1?'1 �
 function setGap(l){ gapLevel=l; document.querySelectorAll('.gapBtn').forEach(b=>b.classList.remove('active')); event.target.closest('button').classList.add('active'); document.getElementById('gapLabel').textContent=getGapLabel(l); updateInfo(); drawPreview(); updateExportInfo(); }
 function setStroke(l){ strokeLevel=l; document.querySelectorAll('.strokeBtn').forEach(b=>b.classList.remove('active')); event.target.closest('button').classList.add('active'); document.getElementById('strokeLabel').textContent=getStrokeLabel(l); updateInfo(); drawPreview(); updateExportInfo(); }
 function setBg(c, btn){ bgColor=c; document.querySelectorAll('.colorBtn').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); drawPreview(); }
-function updateInfo(){ document.getElementById('infoLabel').textContent=`Jarak: ${gapLevel} • Garis tepi: ${strokeLevel} • AI: ${aiEnabled?'ON ✨':'OFF'}`; }
+function updateInfo(){ document.getElementById('infoLabel').textContent=`Jarak: ${gapLevel} • Garis tepi: ${strokeLevel} • AI: ${aiEnabled?'ON 🤖':'OFF'}`; }
 function updateExportInfo(){
   const el=document.getElementById('exportInfo');
   if(gapLevel===0 && strokeLevel===0){ el.textContent='Hasil: Full foto doang, tanpa jarak & tanpa garis tepi • 3224 px lebar • PNG.'; }
@@ -273,7 +273,7 @@ async function getProcessedImages(){
   const out=[];
   for(let i=0;i<images.length;i++){
     if(!images[i]){ out.push(null); continue; }
-    document.getElementById('aiStatus').textContent=`✨ AI lagi proses foto ${i+1} / ${layout} via Hugging Face... jangan tutup web nya ya (15-40 detik)`;
+    document.getElementById('aiStatus').textContent=`🤖 AI lagi proses foto ${i+1} / ${layout} via Hugging Face... jangan tutup web nya ya (15-40 detik)`;
     out.push(await enhanceWithHF(images[i]));
   }
   document.getElementById('aiStatus').classList.add('hidden');
