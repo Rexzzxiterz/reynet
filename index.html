@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TUMPUK.ID — Tumpuk Foto Jadi Satu, HD Gratis</title>
+<title>TUMPUK.ID</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="icon" href="https://res.cloudinary.com/jqzx9h0x/image/upload/f_auto,q_auto/WhatsApp_Image_2026-11-15_at_05.00.03">
 <style>
   html{scroll-behavior:smooth}
-  /* ANTI COPY TEKS - 3 */
   body{font-family:-apple-system,BlinkMacSystemFont,"Inter","Helvetica Neue",Arial,sans-serif;background:#FFFBF2;color:#111;-webkit-font-smoothing:antialiased;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none}
   img{-webkit-user-drag:none;user-drag:none;pointer-events:none}
   input[type=file]{pointer-events:auto}
@@ -21,7 +20,7 @@
   .slot{border:1.5px dashed #D8D0BC;background:#FFFBF2;border-radius:14px}
   input[type=file]{display:none}
   .colorBtn.active{outline:2px solid #111;outline-offset:2px}
-  .logo-img{width:40px;height:40px;object-fit:cover;border-radius:12px;border:1px solid #EDE6D6;background:#fff;flex-shrink:0}
+  .logo-img{width:36px;height:36px;object-fit:cover;border-radius:10px;border:1px solid #EDE6D6;background:#fff;flex-shrink:0}
   .badge-yellow{background:#FFE600;color:#111}
   .android{width:100%;max-width:340px;margin:0 auto;background:#111;border-radius:38px;padding:11px;box-shadow:0 30px 60px rgba(0,0,0,.35),0 0 0 2px #000,inset 0 0 0 2px #333;position:relative;overflow:hidden}
   .android::before{content:"";position:absolute;right:-3px;top:140px;width:3px;height:56px;background:#333;border-radius:3px}
@@ -41,11 +40,12 @@
 </head>
 <body class="min-h-screen" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 <div class="sticky top-0 z-50 bg-[#FFFBF2]/90 backdrop-blur border-b border-[#EDE6D6]">
-  <div class="max-w-[1120px] mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
-    <div class="flex items-center gap-2.5">
+  <div class="max-w-[1120px] mx-auto px-4 md:px-6 py-3 flex items-center justify-between gap-2">
+    <div class="flex items-center gap-2 min-w-0">
       <img src="https://res.cloudinary.com/jqzx9h0x/image/upload/f_auto,q_auto/WhatsApp_Image_2026-11-15_at_05.00.03" alt="TUMPUK.ID" class="logo-img" onerror="this.style.display='none'">
-      <span class="text-[22px] font-black tracking-tight">TUMPUK<span class="font-normal">.ID</span></span>
-      <span class="hidden md:inline-block text-[11px] badge-yellow px-2.5 py-1 rounded-full font-bold ml-1">GRATIS • TANPA WATERMARK</span>
+      <span class="text-[20px] md:text-[22px] font-black tracking-tight whitespace-nowrap">TUMPUK<span class="font-normal">.ID</span></span>
+      <!-- FIX: tadinya hidden md:inline-block, sekarang selalu muncul di HP -->
+      <span class="inline-block text-[9px] md:text-[11px] badge-yellow px-2 py-1 rounded-full font-bold ml-1 whitespace-nowrap">GRATIS • TANPA WATERMARK</span>
     </div>
   </div>
 </div>
@@ -58,7 +58,7 @@
       <p class="text-[15px] leading-relaxed text-zinc-600 mt-4 max-w-[480px]">Gabungin 4, 5, atau 8 foto jadi 1 gambar panjang. Cocok buat Status WA, Feed IG, foto produk olshop, sampe before-after. Hasil 3224px, bukan buram.</p>
     </div>
     <div class="bg-white border border-[#EDE6D6] rounded-3xl p-5 shadow-sm">
-      <h2 class="font-bold text-[16px]">Cara pake, 30 detik doang:</h2>
+      <h2 class="font-bold text-[16px]">Tutorial Penggunaannya:</h2>
       <div class="space-y-4 mt-4">
         <div class="flex gap-3 items-start"><div class="step-num">1</div><div><p class="text-[14px] font-bold">Pilih layout</p><p class="text-[13px] text-zinc-500">4 foto ke bawah, 5 foto ke bawah, atau 8 foto 2 kolom.</p></div></div>
         <div class="flex gap-3 items-start"><div class="step-num">2</div><div><p class="text-[14px] font-bold">Upload foto kamu</p><p class="text-[13px] text-zinc-500">Ketuk kotak, pilih dari galeri. Bisa ganti kapan aja.</p></div></div>
@@ -146,30 +146,21 @@
 <canvas id="exportCanvas" width="3224" height="7200" style="display:none"></canvas>
 <script>
 // ===== ANTI COPY / ANTI INTIP - TUMPUK.ID =====
-// 2. No klik kanan
 document.addEventListener('contextmenu', e => { e.preventDefault(); return false; });
-// 3. No copy teks / cut / paste / select
 document.addEventListener('copy', e => { e.preventDefault(); return false; });
 document.addEventListener('cut', e => { e.preventDefault(); return false; });
 document.addEventListener('paste', e => { e.preventDefault(); return false; });
 document.addEventListener('selectstart', e => { e.preventDefault(); return false; });
 document.addEventListener('dragstart', e => { e.preventDefault(); return false; });
-// 1. Anti liat source code
 document.addEventListener('keydown', e => {
-  // F12
   if(e.key === 'F12' || e.keyCode === 123){ e.preventDefault(); return false; }
-  // Ctrl+U (view source), Ctrl+S (save), Ctrl+C, Ctrl+X, Ctrl+A, Ctrl+P
   if(e.ctrlKey && ['u','s','c','x','a','p','U','S','C','X','A','P'].includes(e.key)){ e.preventDefault(); return false; }
-  // Ctrl+Shift+I / J / C (inspect)
   if(e.ctrlKey && e.shiftKey && ['i','j','c','I','J','C'].includes(e.key)){ e.preventDefault(); return false; }
-  // Ctrl+Shift+K (firefox console)
   if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'k'){ e.preventDefault(); return false; }
 });
-// Anti long-press di HP (biar gak muncul menu copy)
 document.addEventListener('touchstart', e => { if(e.touches.length > 1) e.preventDefault(); }, {passive:false});
 let _lastTouch = 0;
 document.addEventListener('touchend', e => { const now = Date.now(); if(now - _lastTouch <= 300) e.preventDefault(); _lastTouch = now; }, {passive:false});
-// Deteksi DevTools kebuka -> blur halaman (opsional, bikin orang males)
 setInterval(() => {
   const wDiff = window.outerWidth - window.innerWidth;
   const hDiff = window.outerHeight - window.innerHeight;
