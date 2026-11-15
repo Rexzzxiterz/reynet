@@ -126,7 +126,7 @@
     </div>
     <div class="space-y-5 lg:sticky lg:top-[76px]">
       <section class="card p-4 md:p-5">
-        <div class="flex justify-between items-center mb-3"><h2 class="text-[13px] font-bold">4. Preview — Live di HP</h2><span id="infoLabel" class="text-[12px] text-zinc-500">Jarak: 2 • Garis tepi: 2 • AI: OFF</span></div>
+        <div class="flex justify-between items-center mb-3"><h2 class="text-[13px] font-bold">4. Preview</h2><span id="infoLabel" class="text-[12px] text-zinc-500">Jarak: 2 • Garis tepi: 2 • AI: OFF</span></div>
         <div class="bg-[#FFFBF2] border border-[#EDE6D6] rounded-2xl p-4">
           <div class="android"><div class="android-screen"><div class="android-camera"></div><div class="android-scroll" id="androidScroll"><canvas id="previewCanvas" width="600" height="1340" class="w-full h-auto block"></canvas></div><div class="android-nav"><span class="nav-tri"></span><span class="nav-circle"></span><span class="nav-sq"></span></div></div></div>
         </div>
@@ -203,7 +203,7 @@ function setLayout(n){
   for(let i=0;i<Math.min(old.length,n);i++) images[i]=old[i];
   document.querySelectorAll('.layoutBtn').forEach(b=>b.classList.remove('active'));
   document.getElementById('layout'+n).classList.add('active');
-  document.getElementById('layoutDesc').textContent = n===4 ? '4 foto ke bawah — lebih pendek.' : n===5 ? '5 foto ke bawah — cocok untuk story / status WA yang panjang.' : '8 foto — kiri 4, kanan 4.';
+  document.getElementById('layoutDesc').textContent = n===4 ? '4 foto ke bawah' : n===5 ? '5 foto ke bawah' : '8 foto — kiri 4, kanan 4.';
   renderSlots(); drawPreview();
 }
 function loadImage(e, idx){
@@ -217,7 +217,7 @@ function loadImage(e, idx){
       if(el) el.innerHTML=`<img src="${ev.target.result}" class="absolute inset-0 w-full h-full object-cover">`;
       updateCount();
       let q='';
-      if(img.width < 1000) q = `Foto ${idx+1} hanya ${img.width}×${img.height}. Buram. Nyalain AI HD biar lebih tajam.`;
+      if(img.width < 1000) q = `Foto ${idx+1} hanya ${img.width}×${img.height}. Buram. Nyalain AI biar lebih HD.`;
       else if(img.width < 2000) q = `Foto ${idx+1}: ${img.width}×${img.height} — Cukup untuk HD.`;
       else q = `Foto ${idx+1}: ${img.width}×${img.height} — Bagus, resolusi tinggi.`;
       document.getElementById('qualityText').textContent=q;
@@ -232,15 +232,15 @@ function updateCount(){
   const badge=document.getElementById('countBadge');
   if(badge) badge.textContent=`${filled} / ${layout} terisi`;
 }
-function getGapLabel(l){ return l===0?'0 — Polosan / Foto Doang':l===1?'1 — Rapat':l===2?'2 — Seimbang':'3 — Longgar'; }
-function getStrokeLabel(l){ return l===0?'0 — Polosan / Foto Doang':l===1?'1 — Tipis':l===2?'2 — Sedang':'3 — Tebal'; }
+function getGapLabel(l){ return l===0?'0 — Polosan / Foto':l===1?'1 — Rapat':l===2?'2 — Seimbang':'3 — Longgar'; }
+function getStrokeLabel(l){ return l===0?'0 — Polosan / Foto':l===1?'1 — Tipis':l===2?'2 — Sedang':'3 — Tebal'; }
 function setGap(l){ gapLevel=l; document.querySelectorAll('.gapBtn').forEach(b=>b.classList.remove('active')); event.target.closest('button').classList.add('active'); document.getElementById('gapLabel').textContent=getGapLabel(l); updateInfo(); drawPreview(); updateExportInfo(); }
 function setStroke(l){ strokeLevel=l; document.querySelectorAll('.strokeBtn').forEach(b=>b.classList.remove('active')); event.target.closest('button').classList.add('active'); document.getElementById('strokeLabel').textContent=getStrokeLabel(l); updateInfo(); drawPreview(); updateExportInfo(); }
 function setBg(c, btn){ bgColor=c; document.querySelectorAll('.colorBtn').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); drawPreview(); }
 function updateInfo(){ document.getElementById('infoLabel').textContent=`Jarak: ${gapLevel} • Garis tepi: ${strokeLevel} • AI: ${aiEnabled?'ON ✨':'OFF'}`; }
 function updateExportInfo(){
   const el=document.getElementById('exportInfo');
-  if(gapLevel===0 && strokeLevel===0){ el.textContent='Hasil: Full foto doang, tanpa jarak & tanpa garis tepi • 3224 px lebar • PNG.'; }
+  if(gapLevel===0 && strokeLevel===0){ el.textContent='Hasil: Full foto, tanpa jarak & tanpa garis tepi • 3224 px lebar • PNG.'; }
   else { el.textContent='Hasil: 3224 px lebar • PNG • Tiap foto 3224 × 1440 px • Tanpa putih atas-bawah.'; }
 }
 async function enhanceWithHF(img){
@@ -350,7 +350,7 @@ async function shareToWA(){
       try{ await navigator.share({ files:[file], title:'TUMPUK.ID', text:`Hasil dari TUMPUK.ID — ${layout} foto jadi 1.` }); return; }catch(e){}
     }
     const a=document.createElement('a'); a.download=getFileName(); a.href=canvas.toDataURL('image/png',1.0); a.click();
-    alert('Foto sudah diunduh. Kirim lewat Dokumen di WhatsApp agar tetap tajam.');
+    alert('Foto sudah diunduh. Kirim lewat Dokumen di WhatsApp agar tetap HD.');
   }, 'image/png', 1.0);
 }
 </script>
