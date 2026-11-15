@@ -19,16 +19,20 @@
   input[type=file]{display:none}
   .colorBtn.active{outline:2px solid #111;outline-offset:2px}
   .logo-img{width:36px;height:36px;object-fit:cover;border-radius:10px;border:1px solid #E5E1D8;background:#fff;flex-shrink:0}
-  .iphone{width:100%;max-width:360px;margin:0 auto;background:#111;border-radius:56px;padding:12px;box-shadow:0 24px 50px rgba(0,0,0,.30),0 0 0 2px #000,inset 0 0 0 2px #333;position:relative}
-  .iphone::before{content:"";position:absolute;left:-3px;top:120px;width:3px;height:34px;background:#333;border-radius:3px}
-  .iphone::after{content:"";position:absolute;right:-3px;top:170px;width:3px;height:64px;background:#333;border-radius:3px}
-  .iphone-screen{background:#fff;border-radius:44px;overflow:hidden;position:relative}
-  .iphone-notch{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:108px;height:26px;background:#111;border-radius:999px;z-index:10;display:flex;align-items:center;justify-content:flex-end;padding-right:9px}
-  .iphone-notch::after{content:"";width:9px;height:9px;background:#1a1a2e;border-radius:50%}
-  .iphone-scroll{max-height:620px;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
-  .iphone-scroll::-webkit-scrollbar{display:none;width:0;height:0}
-  .iphone-home{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:120px;height:5px;background:rgba(0,0,0,.85);border-radius:999px;z-index:10}
-  .iphone-screen canvas{display:block}
+  /* === ANDROID PHONE === */
+  .android{width:100%;max-width:360px;margin:0 auto;background:#111;border-radius:36px;padding:11px;box-shadow:0 24px 50px rgba(0,0,0,.30),0 0 0 2px #000,inset 0 0 0 2px #333;position:relative}
+  .android::before{content:"";position:absolute;right:-3px;top:140px;width:3px;height:56px;background:#333;border-radius:3px}
+  .android::after{content:"";position:absolute;right:-3px;top:210px;width:3px;height:34px;background:#333;border-radius:3px}
+  .android-screen{background:#fff;border-radius:26px;overflow:hidden;position:relative}
+  .android-camera{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:14px;height:14px;background:#111;border-radius:50%;z-index:10;box-shadow:0 0 0 2px #1a1a2e, inset 0 0 0 2px #2a2a3a}
+  .android-scroll{max-height:620px;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;padding-top:4px}
+  .android-scroll::-webkit-scrollbar{display:none;width:0;height:0}
+  .android-nav{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:18px;align-items:center;z-index:10}
+  .android-nav span{display:block;background:rgba(0,0,0,.85)}
+  .android-nav .nav-tri{width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-right:10px solid rgba(0,0,0,.85);background:transparent}
+  .android-nav .nav-circle{width:11px;height:11px;border-radius:50%;border:2px solid rgba(0,0,0,.85);background:transparent !important}
+  .android-nav .nav-sq{width:10px;height:10px;border:2px solid rgba(0,0,0,.85);background:transparent !important}
+  .android-screen canvas{display:block}
 </style>
 </head>
 <body class="min-h-screen">
@@ -43,7 +47,7 @@
 
   <section class="py-8 md:py-10">
     <p class="text-[12px] tracking-[0.18em] uppercase text-zinc-500">Pilih layout</p>
-    <h1 class="serif text-[40px] leading-[1.05] md:text-[56px] mt-3">Tumpuk foto<br><span class="italic font-normal">jadi satu yang tajam.</span></h1>
+    <h1 class="serif text-[40px] leading-[1.05] md:text-[56px] mt-3">Tumpuk foto<br><span class="italic font-normal">jadi satu, unduh.</span></h1>
     <p class="text-[15px] leading-relaxed text-zinc-600 mt-3 max-w-[520px]">Pilih layout, pilih foto, aktifin AI HD biar foto buram jadi lebih tajam pake AI Real-ESRGAN. Unduh HD, kirim ke WhatsApp.</p>
   </section>
 
@@ -105,10 +109,10 @@
       <section class="card p-4 md:p-5">
         <div class="flex justify-between items-center mb-3"><h2 class="text-[13px] font-bold">4. Preview</h2><span id="infoLabel" class="text-[12px] text-zinc-500">Jarak: 2 • Garis tepi: 2 • AI: OFF</span></div>
         <div class="bg-[#F4F2ED] border border-[#E5E1D8] rounded-xl p-4">
-          <div class="iphone"><div class="iphone-screen"><div class="iphone-notch"></div><div class="iphone-scroll"><canvas id="previewCanvas" width="600" height="1340" class="w-full h-auto block"></canvas></div><div class="iphone-home"></div></div></div>
-          <p class="text-center text-[12px] text-zinc-500 mt-3">Geser di dalam HP untuk lihat semua foto 👆</p>
+          <div class="android"><div class="android-screen"><div class="android-camera"></div><div class="android-scroll"><canvas id="previewCanvas" width="600" height="1340" class="w-full h-auto block"></canvas></div><div class="android-nav"><span class="nav-tri"></span><span class="nav-circle"></span><span class="nav-sq"></span></div></div></div>
+          <p class="text-center text-[12px] text-zinc-500 mt-3">Geser di dalam Android untuk lihat semua foto 👆</p>
         </div>
-        <p id="previewHint" class="text-[12px] text-zinc-500 mt-3 leading-relaxed">Geser ke bawah untuk melihat semua foto di dalam HP. Hasil unduhan tetap 3224 px lebar.</p>
+        <p id="previewHint" class="text-[12px] text-zinc-500 mt-3 leading-relaxed">Geser ke bawah untuk melihat semua foto di dalam Android. Hasil unduhan tetap 3224 px lebar.</p>
         <div id="exportInfo" class="border-t border-[#E5E1D8] mt-4 pt-4 text-[12px] leading-relaxed text-zinc-500">Hasil: 3224 × 7200 px • PNG • Tiap foto 3224 × 1440 px.</div>
         <button onclick="downloadHD()" class="w-full btn-black font-bold py-4 text-[14px] mt-4">Unduh HD — PNG</button>
         <button onclick="shareToWA()" class="w-full bg-white border border-[#111] font-bold py-4 text-[14px] mt-2 rounded-full">Bagikan ke WhatsApp</button>
@@ -189,8 +193,6 @@ function setGap(l){ gapLevel=l; document.querySelectorAll('.gapBtn').forEach(b=>
 function setStroke(l){ strokeLevel=l; document.querySelectorAll('.strokeBtn').forEach(b=>b.classList.remove('active')); event.target.closest('button').classList.add('active'); document.getElementById('strokeLabel').textContent=l===1?'1 — Tipis':l===2?'2 — Sedang':'3 — Tebal'; updateInfo(); drawPreview(); }
 function setBg(c, btn){ bgColor=c; document.querySelectorAll('.colorBtn').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); drawPreview(); }
 function updateInfo(){ document.getElementById('infoLabel').textContent=`Jarak: ${gapLevel} • Garis tepi: ${strokeLevel} • AI: ${aiEnabled?'ON ✨':'OFF'}`; }
-
-// === AI VIA VERCEL -> HUGGING FACE (TOKEN AMAN DI VERCEL) ===
 async function enhanceWithHF(img){
   try{
     if(img.width >= 2000) return img;
@@ -209,7 +211,6 @@ async function enhanceWithHF(img){
     return img;
   }
 }
-
 function drawToCanvas(canvas, W, imgsToUse){
   const ctx=canvas.getContext('2d');
   const scale = W / PW;
