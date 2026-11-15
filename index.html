@@ -3,26 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TUMPUK.ID</title>
+<title>TUMPUK.ID — Tumpuk Foto Jadi Satu, HD Gratis</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="icon" href="https://res.cloudinary.com/jqzx9h0x/image/upload/f_auto,q_auto/WhatsApp_Image_2026-11-15_at_05.00.03">
 <style>
-  html{scroll-behavior:auto}
-  body{font-family:-apple-system,BlinkMacSystemFont,"Inter","Helvetica Neue",Arial,sans-serif;background:#F4F2ED;color:#111;-webkit-font-smoothing:antialiased}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Inter","Helvetica Neue",Arial,sans-serif;background:#FFFBF2;color:#111;-webkit-font-smoothing:antialiased}
   .serif{font-family:Georgia,"Times New Roman",serif}
-  .card{background:#fff;border:1px solid #E5E1D8;border-radius:16px}
-  .btn-black{background:#111;color:#fff;border-radius:999px}
+  .card{background:#fff;border:1px solid #EDE6D6;border-radius:20px;box-shadow:0 4px 20px rgba(0,0,0,.04)}
+  .btn-black{background:#111;color:#fff;border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.18)}
   .btn-black:active{transform:scale(.98)}
-  .opt{border:1px solid #E5E1D8;background:#fff;border-radius:12px;transition:.15s}
-  .opt.active{border-color:#111;background:#111;color:#fff}
-  .slot{border:1px dashed #C9C4B8;background:#FAF8F4;border-radius:12px}
+  .opt{border:1.5px solid #EDE6D6;background:#fff;border-radius:14px;transition:.15s}
+  .opt.active{border-color:#111;background:#111;color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.15)}
+  .slot{border:1.5px dashed #D8D0BC;background:#FFFBF2;border-radius:14px}
   input[type=file]{display:none}
   .colorBtn.active{outline:2px solid #111;outline-offset:2px}
-  .logo-img{width:36px;height:36px;object-fit:cover;border-radius:10px;border:1px solid #E5E1D8;background:#fff;flex-shrink:0}
-  .android{width:100%;max-width:360px;margin:0 auto;background:#111;border-radius:36px;padding:11px;box-shadow:0 24px 50px rgba(0,0,0,.30),0 0 0 2px #000,inset 0 0 0 2px #333;position:relative;overflow:hidden}
+  .logo-img{width:40px;height:40px;object-fit:cover;border-radius:12px;border:1px solid #EDE6D6;background:#fff;flex-shrink:0}
+  .badge-yellow{background:#FFE600;color:#111}
+  /* HP PREVIEW - DIBIKIN LEBIH GEDE & MENONJOL */
+  .android{width:100%;max-width:340px;margin:0 auto;background:#111;border-radius:38px;padding:11px;box-shadow:0 30px 60px rgba(0,0,0,.35),0 0 0 2px #000,inset 0 0 0 2px #333;position:relative;overflow:hidden}
   .android::before{content:"";position:absolute;right:-3px;top:140px;width:3px;height:56px;background:#333;border-radius:3px}
   .android::after{content:"";position:absolute;right:-3px;top:210px;width:3px;height:34px;background:#333;border-radius:3px}
-  .android-screen{background:#111;border-radius:26px;overflow:hidden;position:relative;width:100%}
+  .android-screen{background:#111;border-radius:28px;overflow:hidden;position:relative;width:100%}
   .android-camera{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:14px;height:14px;background:#111;border-radius:50%;z-index:10;box-shadow:0 0 0 2px #1a1a2e, inset 0 0 0 2px #2a2a3a;pointer-events:none}
   .android-scroll{max-height:620px;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;padding:0;margin:0;background:#111;width:100%;display:block}
   .android-scroll::-webkit-scrollbar{display:none;width:0;height:0}
@@ -32,25 +34,63 @@
   .android-nav .nav-circle{width:11px;height:11px;border-radius:50%;border:2px solid rgba(255,255,255,.9);background:transparent !important}
   .android-nav .nav-sq{width:10px;height:10px;border:2px solid rgba(255,255,255,.9);background:transparent !important}
   .android-screen canvas{display:block;margin:0;padding:0;vertical-align:top;width:100% !important;height:auto !important}
+  .demo-strip{display:flex;gap:4px;overflow:hidden;border-radius:12px}
+  .demo-strip div{flex:1;height:52px}
+  .step-num{width:28px;height:28px;border-radius:50%;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0}
 </style>
 </head>
 <body class="min-h-screen">
-<div class="max-w-[1080px] mx-auto px-4 md:px-6 py-5">
-  <header class="flex items-center justify-between pb-5 border-b border-[#E5E1D8]">
+<!-- HEADER STICKY -->
+<div class="sticky top-0 z-50 bg-[#FFFBF2]/90 backdrop-blur border-b border-[#EDE6D6]">
+  <div class="max-w-[1120px] mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
     <div class="flex items-center gap-2.5">
       <img src="https://res.cloudinary.com/jqzx9h0x/image/upload/f_auto,q_auto/WhatsApp_Image_2026-11-15_at_05.00.03" alt="TUMPUK.ID" class="logo-img" onerror="this.style.display='none'">
       <span class="text-[22px] font-black tracking-tight">TUMPUK<span class="font-normal">.ID</span></span>
+      <span class="hidden md:inline-block text-[11px] badge-yellow px-2.5 py-1 rounded-full font-bold ml-1">GRATIS • TANPA WATERMARK</span>
     </div>
-    <span class="text-[11px] bg-[#111] text-white px-3 py-1.5 rounded-full">AI HD • Hugging Face</span>
-  </header>
+    <a href="#buat" class="bg-[#111] text-white text-[13px] font-bold px-4 py-2.5 rounded-full">Buat Sekarang →</a>
+  </div>
+</div>
 
-  <section class="py-8 md:py-10">
-    <p class="text-[12px] tracking-[0.18em] uppercase text-zinc-500">Pilih layout</p>
-    <h1 class="serif text-[40px] leading-[1.05] md:text-[56px] mt-3">Tumpuk foto<br><span class="italic font-normal">jadi satu, unduh.</span></h1>
-    <p class="text-[15px] leading-relaxed text-zinc-600 mt-3 max-w-[520px]">Pilih layout, pilih foto, aktifin AI HD biar foto buram jadi lebih tajam pake AI Real-ESRGAN. Unduh HD, kirim ke WhatsApp.</p>
+<div class="max-w-[1120px] mx-auto px-4 md:px-6 py-5">
+  <!-- HERO BARU - LEBIH NGEJUAL -->
+  <section class="py-6 md:py-10 grid lg:grid-cols-2 gap-8 items-center">
+    <div>
+      <p class="text-[11px] tracking-[0.18em] uppercase text-zinc-500 font-bold">✦ Tool gratis • Tanpa login • Tanpa install</p>
+      <h1 class="serif text-[44px] leading-[1.02] md:text-[60px] mt-3">Tumpuk foto<br><span class="italic font-normal">jadi satu,</span><br>langsung <span class="bg-[#FFE600] px-2 rounded-lg">HD.</span></h1>
+      <p class="text-[15px] leading-relaxed text-zinc-600 mt-4 max-w-[480px]">Gabungin 4, 5, atau 8 foto jadi 1 gambar panjang. Cocok buat Status WA, Feed IG, foto produk olshop, sampe before-after. Hasil 3224px, bukan buram.</p>
+      <div class="flex flex-wrap gap-2 mt-5">
+        <span class="text-[12px] bg-white border border-[#EDE6D6] px-3 py-1.5 rounded-full font-medium">✅ HD 3224px</span>
+        <span class="text-[12px] bg-white border border-[#EDE6D6] px-3 py-1.5 rounded-full font-medium">✅ Gratis 100%</span>
+        <span class="text-[12px] bg-white border border-[#EDE6D6] px-3 py-1.5 rounded-full font-medium">✨ AI HD Real-ESRGAN</span>
+      </div>
+      <!-- CONTOH HASIL - BIAR ORANG LANGSUNG PAHAM -->
+      <div class="mt-6 bg-white border border-[#EDE6D6] rounded-2xl p-3">
+        <p class="text-[12px] font-bold mb-2">👀 Contoh hasilnya kayak gini:</p>
+        <div class="demo-strip">
+          <div style="background:linear-gradient(135deg,#FFD166,#FF6B6B)"></div>
+          <div style="background:linear-gradient(135deg,#6BCB77,#4D96FF)"></div>
+          <div style="background:linear-gradient(135deg,#FF9F45,#FF6B9D)"></div>
+          <div style="background:linear-gradient(135deg,#9B5DE5,#00BBF9)"></div>
+          <div style="background:linear-gradient(135deg,#00F5D4,#FEE440)"></div>
+        </div>
+        <p class="text-[11px] text-zinc-500 mt-2">5 foto → jadi 1 gambar panjang, tinggal upload ke Status WA.</p>
+      </div>
+    </div>
+    <!-- LANGKAH CARA PAKE - BIAR GAK BINGUNG -->
+    <div class="bg-white border border-[#EDE6D6] rounded-3xl p-5 shadow-sm">
+      <h2 class="font-bold text-[16px]">Cara pake, 30 detik doang:</h2>
+      <div class="space-y-4 mt-4">
+        <div class="flex gap-3 items-start"><div class="step-num">1</div><div><p class="text-[14px] font-bold">Pilih layout</p><p class="text-[13px] text-zinc-500">4 foto ke bawah, 5 foto ke bawah, atau 8 foto 2 kolom.</p></div></div>
+        <div class="flex gap-3 items-start"><div class="step-num">2</div><div><p class="text-[14px] font-bold">Upload foto kamu</p><p class="text-[13px] text-zinc-500">Ketuk kotak, pilih dari galeri. Bisa ganti kapan aja.</p></div></div>
+        <div class="flex gap-3 items-start"><div class="step-num">3</div><div><p class="text-[14px] font-bold">Atur jarak & garis tepi</p><p class="text-[13px] text-zinc-500">Mau rapat, seimbang, atau polosan foto doang.</p></div></div>
+        <div class="flex gap-3 items-start"><div class="step-num">4</div><div><p class="text-[14px] font-bold">Unduh HD — PNG</p><p class="text-[13px] text-zinc-500">Kirim via Dokumen di WA biar tetep tajem, gak ke-kompres.</p></div></div>
+      </div>
+      <a href="#buat" class="block text-center w-full btn-black font-bold py-3.5 text-[14px] mt-5">Mulai Tumpuk Foto →</a>
+    </div>
   </section>
 
-  <div class="grid lg:grid-cols-2 gap-5 items-start">
+  <div id="buat" class="grid lg:grid-cols-2 gap-5 items-start scroll-mt-24">
     <div class="space-y-5">
       <section class="card p-5">
         <h2 class="text-[15px] font-bold">1. Pilih layout</h2>
@@ -70,7 +110,7 @@
       </section>
       <section class="card p-5">
         <h2 class="text-[15px] font-bold">3. Pengaturan</h2>
-        <div class="mt-5 border border-[#E5E1D8] rounded-xl p-3.5 flex items-center justify-between gap-3 bg-[#FAF8F4]">
+        <div class="mt-5 border border-[#EDE6D6] rounded-xl p-3.5 flex items-center justify-between gap-3 bg-[#FFFBF2]">
           <div>
             <div class="text-[13px] font-bold flex items-center gap-1.5">✨ AI HD - Hugging Face <span class="text-[10px] bg-[#111] text-white px-2 py-0.5 rounded-full font-bold">REAL-ESRGAN</span></div>
             <p class="text-[12px] text-zinc-500 mt-0.5 leading-snug">Foto buram di-upscale AI di server.<br>Model: sczhou/Real-ESRGAN 2x.</p>
@@ -99,19 +139,19 @@
         <div class="mt-5">
           <div class="text-[13px] font-bold mb-2">Warna latar</div>
           <div class="flex gap-3">
-            <button onclick="setBg('#ffffff', this)" class="colorBtn active flex items-center gap-2 border border-[#E5E1D8] rounded-full pl-1.5 pr-4 py-1.5 bg-white"><span class="w-7 h-7 rounded-full bg-white border border-zinc-300 block"></span><span class="text-[13px] font-medium">Putih</span></button>
-            <button onclick="setBg('#111111', this)" class="colorBtn flex items-center gap-2 border border-[#E5E1D8] rounded-full pl-1.5 pr-4 py-1.5 bg-white"><span class="w-7 h-7 rounded-full bg-[#111] border border-zinc-300 block"></span><span class="text-[13px] font-medium">Hitam</span></button>
+            <button onclick="setBg('#ffffff', this)" class="colorBtn active flex items-center gap-2 border border-[#EDE6D6] rounded-full pl-1.5 pr-4 py-1.5 bg-white"><span class="w-7 h-7 rounded-full bg-white border border-zinc-300 block"></span><span class="text-[13px] font-medium">Putih</span></button>
+            <button onclick="setBg('#111111', this)" class="colorBtn flex items-center gap-2 border border-[#EDE6D6] rounded-full pl-1.5 pr-4 py-1.5 bg-white"><span class="w-7 h-7 rounded-full bg-[#111] border border-zinc-300 block"></span><span class="text-[13px] font-medium">Hitam</span></button>
           </div>
         </div>
       </section>
     </div>
-    <div class="space-y-5">
+    <div class="space-y-5 lg:sticky lg:top-[76px]">
       <section class="card p-4 md:p-5">
-        <div class="flex justify-between items-center mb-3"><h2 class="text-[13px] font-bold">4. Preview</h2><span id="infoLabel" class="text-[12px] text-zinc-500">Jarak: 2 • Garis tepi: 2 • AI: OFF</span></div>
-        <div class="bg-[#F4F2ED] border border-[#E5E1D8] rounded-xl p-4">
+        <div class="flex justify-between items-center mb-3"><h2 class="text-[13px] font-bold">4. Preview — Live di HP</h2><span id="infoLabel" class="text-[12px] text-zinc-500">Jarak: 2 • Garis tepi: 2 • AI: OFF</span></div>
+        <div class="bg-[#FFFBF2] border border-[#EDE6D6] rounded-2xl p-4">
           <div class="android"><div class="android-screen"><div class="android-camera"></div><div class="android-scroll" id="androidScroll"><canvas id="previewCanvas" width="600" height="1340" class="w-full h-auto block"></canvas></div><div class="android-nav"><span class="nav-tri"></span><span class="nav-circle"></span><span class="nav-sq"></span></div></div></div>
         </div>
-        <div id="exportInfo" class="border-t border-[#E5E1D8] mt-4 pt-4 text-[12px] leading-relaxed text-zinc-500">Hasil: 3224 × 7200 px • PNG • Tiap foto 3224 × 1440 px.</div>
+        <div id="exportInfo" class="border-t border-[#EDE6D6] mt-4 pt-4 text-[12px] leading-relaxed text-zinc-500">Hasil: 3224 × 7200 px • PNG • Tiap foto 3224 × 1440 px.</div>
         <button onclick="downloadHD()" class="w-full btn-black font-bold py-4 text-[14px] mt-4">Unduh HD — PNG</button>
         <button onclick="shareToWA()" class="w-full bg-white border border-[#111] font-bold py-4 text-[14px] mt-2 rounded-full">Bagikan ke WhatsApp</button>
         <button onclick="location.reload()" class="w-full text-[13px] text-zinc-500 font-medium py-3 mt-1">Atur ulang</button>
@@ -122,7 +162,7 @@
       </section>
     </div>
   </div>
-  <footer class="flex flex-col md:flex-row justify-between gap-2 border-t border-[#E5E1D8] mt-8 pt-5 pb-4 text-[12px] text-zinc-500"><span><b class="text-zinc-900">TUMPUK.ID</b> — Tumpuk foto jadi satu.</span><span>Create by REY OFFICIAL</span></footer>
+  <footer class="flex flex-col md:flex-row justify-between gap-2 border-t border-[#EDE6D6] mt-8 pt-5 pb-4 text-[12px] text-zinc-500"><span><b class="text-zinc-900">TUMPUK.ID</b> — Tumpuk foto jadi satu.</span><span>Create by REY OFFICIAL</span></footer>
 </div>
 <canvas id="exportCanvas" width="3224" height="7200" style="display:none"></canvas>
 <script>
@@ -235,11 +275,8 @@ function drawToCanvas(canvas, W, imgsToUse){
   const scale = W / PW;
   const gap=getGapPx(scale), stroke=getStrokePx(scale);
   const useImgs = imgsToUse || images;
-  // FIX LAYOUT 8: hitungan baru biar lebar pas 100%, gak ada sisa hitam di kanan
   if(layout===8){
     const cols=2, rows=4;
-    // pad luar = stroke, jarak antar kolom = gap
-    // cellW = (total - pad kiri-kanan - gap tengah) / 2 -> PASTI PAS
     const pad = stroke;
     const cellW = (W - pad*2 - gap) / cols;
     const cellH = cellW * (PH / PW);
