@@ -19,19 +19,19 @@
   input[type=file]{display:none}
   .colorBtn.active{outline:2px solid #111;outline-offset:2px}
   .logo-img{width:36px;height:36px;object-fit:cover;border-radius:10px;border:1px solid #E5E1D8;background:#fff;flex-shrink:0}
-  .android{width:100%;max-width:360px;margin:0 auto;background:#111;border-radius:36px;padding:11px;box-shadow:0 24px 50px rgba(0,0,0,.30),0 0 0 2px #000,inset 0 0 0 2px #333;position:relative}
+  .android{width:100%;max-width:360px;margin:0 auto;background:#111;border-radius:36px;padding:11px;box-shadow:0 24px 50px rgba(0,0,0,.30),0 0 0 2px #000,inset 0 0 0 2px #333;position:relative;overflow:hidden}
   .android::before{content:"";position:absolute;right:-3px;top:140px;width:3px;height:56px;background:#333;border-radius:3px}
   .android::after{content:"";position:absolute;right:-3px;top:210px;width:3px;height:34px;background:#333;border-radius:3px}
-  .android-screen{background:#111;border-radius:26px;overflow:hidden;position:relative}
+  .android-screen{background:#111;border-radius:26px;overflow:hidden;position:relative;width:100%}
   .android-camera{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:14px;height:14px;background:#111;border-radius:50%;z-index:10;box-shadow:0 0 0 2px #1a1a2e, inset 0 0 0 2px #2a2a3a;pointer-events:none}
-  .android-scroll{max-height:620px;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;padding:0;margin:0;background:#111}
+  .android-scroll{max-height:620px;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;padding:0;margin:0;background:#111;width:100%;display:block}
   .android-scroll::-webkit-scrollbar{display:none;width:0;height:0}
   .android-nav{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:18px;align-items:center;z-index:10;pointer-events:none;opacity:.9}
   .android-nav span{display:block;background:rgba(255,255,255,.9)}
   .android-nav .nav-tri{width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-right:10px solid rgba(255,255,255,.9);background:transparent}
   .android-nav .nav-circle{width:11px;height:11px;border-radius:50%;border:2px solid rgba(255,255,255,.9);background:transparent !important}
   .android-nav .nav-sq{width:10px;height:10px;border:2px solid rgba(255,255,255,.9);background:transparent !important}
-  .android-screen canvas{display:block;margin:0;padding:0;vertical-align:top}
+  .android-screen canvas{display:block;margin:0;padding:0;vertical-align:top;width:100% !important;height:auto !important}
 </style>
 </head>
 <body class="min-h-screen">
@@ -66,14 +66,14 @@
         <p id="photoHint" class="text-[13px] text-zinc-500 mt-1">Ketuk kotak untuk Upload foto / Mengganti foto.</p>
         <div id="slotsGrid" class="grid grid-cols-5 gap-2 md:gap-3 mt-4"></div>
         <p id="qualityText" class="text-[12px] mt-3"></p>
-        <div id="aiStatus" class="hidden mt-3 text-[12px] bg-[#FFF7D6] border border-[#E5C81A] rounded-lg p-3 leading-relaxed">🤖 AI lagi proses...</div>
+        <div id="aiStatus" class="hidden mt-3 text-[12px] bg-[#FFF7D6] border border-[#E5C81A] rounded-lg p-3 leading-relaxed">✨ AI lagi proses...</div>
       </section>
       <section class="card p-5">
         <h2 class="text-[15px] font-bold">3. Pengaturan</h2>
         <div class="mt-5 border border-[#E5E1D8] rounded-xl p-3.5 flex items-center justify-between gap-3 bg-[#FAF8F4]">
           <div>
-            <div class="text-[13px] font-bold flex items-center gap-1.5">🤖 AI HD - Hugging Face <span class="text-[10px] bg-[#111] text-white px-2 py-0.5 rounded-full font-bold">REAL-ESRGAN</span></div>
-            <p class="text-[12px] text-zinc-500 mt-0.5 leading-snug">Model: sczhou/Real-ESRGAN 2x.</p>
+            <div class="text-[13px] font-bold flex items-center gap-1.5">✨ AI HD - Hugging Face <span class="text-[10px] bg-[#111] text-white px-2 py-0.5 rounded-full font-bold">REAL-ESRGAN</span></div>
+            <p class="text-[12px] text-zinc-500 mt-0.5 leading-snug">Foto buram di-upscale AI di server.<br>Model: sczhou/Real-ESRGAN 2x.</p>
           </div>
           <button id="aiToggle" onclick="toggleAI()" class="shrink-0 w-[52px] h-[28px] rounded-full bg-zinc-300 relative transition-all"><span id="aiKnob" class="absolute top-[3px] left-[3px] w-[22px] h-[22px] bg-white rounded-full shadow transition-all"></span></button>
         </div>
@@ -81,7 +81,7 @@
         <div class="mt-5">
           <div class="flex justify-between items-baseline mb-2"><span class="text-[13px] font-bold">Jarak antar foto</span><span id="gapLabel" class="text-[12px] text-zinc-500">2 — Seimbang</span></div>
           <div class="grid grid-cols-4 gap-2">
-            <button onclick="setGap(0)" class="gapBtn opt py-3 text-[13px] font-bold">0<span class="block text-[11px] font-normal text-zinc-500 leading-tight">Polosan<br>Foto</span></button>
+            <button onclick="setGap(0)" class="gapBtn opt py-3 text-[13px] font-bold">0<span class="block text-[11px] font-normal text-zinc-500 leading-tight">Polosan<br>Foto Doang</span></button>
             <button onclick="setGap(1)" class="gapBtn opt py-3 text-[13px] font-bold">1<span class="block text-[11px] font-normal text-zinc-500">Rapat</span></button>
             <button onclick="setGap(2)" class="gapBtn opt active py-3 text-[13px] font-bold">2<span class="block text-[11px] font-normal">Seimbang</span></button>
             <button onclick="setGap(3)" class="gapBtn opt py-3 text-[13px] font-bold">3<span class="block text-[11px] font-normal text-zinc-500">Longgar</span></button>
@@ -90,7 +90,7 @@
         <div class="mt-5">
           <div class="flex justify-between items-baseline mb-2"><span class="text-[13px] font-bold">Garis tepi</span><span id="strokeLabel" class="text-[12px] text-zinc-500">2 — Sedang</span></div>
           <div class="grid grid-cols-4 gap-2">
-            <button onclick="setStroke(0)" class="strokeBtn opt py-3 text-[13px] font-bold">0<span class="block text-[11px] font-normal text-zinc-500 leading-tight">Polosan<br>Foto</span></button>
+            <button onclick="setStroke(0)" class="strokeBtn opt py-3 text-[13px] font-bold">0<span class="block text-[11px] font-normal text-zinc-500 leading-tight">Polosan<br>Foto Doang</span></button>
             <button onclick="setStroke(1)" class="strokeBtn opt py-3 text-[13px] font-bold">1<span class="block text-[11px] font-normal text-zinc-500">Tipis</span></button>
             <button onclick="setStroke(2)" class="strokeBtn opt active py-3 text-[13px] font-bold">2<span class="block text-[11px] font-normal">Sedang</span></button>
             <button onclick="setStroke(3)" class="strokeBtn opt py-3 text-[13px] font-bold">3<span class="block text-[11px] font-normal text-zinc-500">Tebal</span></button>
@@ -107,9 +107,9 @@
     </div>
     <div class="space-y-5">
       <section class="card p-4 md:p-5">
-        <div class="flex justify-between items-center mb-3"><h2 class="text-[13px] font-bold">4. Preview</h2><span id="infoLabel" class="text-[12px] text-zinc-500">Jarak: 2 • Garis tepi: 2 • AI: OFF🤖</span></div>
+        <div class="flex justify-between items-center mb-3"><h2 class="text-[13px] font-bold">4. Preview</h2><span id="infoLabel" class="text-[12px] text-zinc-500">Jarak: 2 • Garis tepi: 2 • AI: OFF</span></div>
         <div class="bg-[#F4F2ED] border border-[#E5E1D8] rounded-xl p-4">
-          <div class="android"><div class="android-screen"><div class="android-camera"></div><div class="android-scroll"><canvas id="previewCanvas" width="600" height="1340" class="w-full h-auto block"></canvas></div><div class="android-nav"><span class="nav-tri"></span><span class="nav-circle"></span><span class="nav-sq"></span></div></div></div>
+          <div class="android"><div class="android-screen"><div class="android-camera"></div><div class="android-scroll" id="androidScroll"><canvas id="previewCanvas" width="600" height="1340" class="w-full h-auto block"></canvas></div><div class="android-nav"><span class="nav-tri"></span><span class="nav-circle"></span><span class="nav-sq"></span></div></div></div>
         </div>
         <div id="exportInfo" class="border-t border-[#E5E1D8] mt-4 pt-4 text-[12px] leading-relaxed text-zinc-500">Hasil: 3224 × 7200 px • PNG • Tiap foto 3224 × 1440 px.</div>
         <button onclick="downloadHD()" class="w-full btn-black font-bold py-4 text-[14px] mt-4">Unduh HD — PNG</button>
@@ -192,7 +192,7 @@ function getStrokeLabel(l){ return l===0?'0 — Polosan / Foto Doang':l===1?'1 �
 function setGap(l){ gapLevel=l; document.querySelectorAll('.gapBtn').forEach(b=>b.classList.remove('active')); event.target.closest('button').classList.add('active'); document.getElementById('gapLabel').textContent=getGapLabel(l); updateInfo(); drawPreview(); updateExportInfo(); }
 function setStroke(l){ strokeLevel=l; document.querySelectorAll('.strokeBtn').forEach(b=>b.classList.remove('active')); event.target.closest('button').classList.add('active'); document.getElementById('strokeLabel').textContent=getStrokeLabel(l); updateInfo(); drawPreview(); updateExportInfo(); }
 function setBg(c, btn){ bgColor=c; document.querySelectorAll('.colorBtn').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); drawPreview(); }
-function updateInfo(){ document.getElementById('infoLabel').textContent=`Jarak: ${gapLevel} • Garis tepi: ${strokeLevel} • AI: ${aiEnabled?'ON 🤖':'OFF'}`; }
+function updateInfo(){ document.getElementById('infoLabel').textContent=`Jarak: ${gapLevel} • Garis tepi: ${strokeLevel} • AI: ${aiEnabled?'ON ✨':'OFF'}`; }
 function updateExportInfo(){
   const el=document.getElementById('exportInfo');
   if(gapLevel===0 && strokeLevel===0){ el.textContent='Hasil: Full foto doang, tanpa jarak & tanpa garis tepi • 3224 px lebar • PNG.'; }
@@ -216,32 +216,44 @@ async function enhanceWithHF(img){
     return img;
   }
 }
+function drawImageCover(ctx, img, x, y, w, h){
+  ctx.imageSmoothingEnabled=true; ctx.imageSmoothingQuality='high';
+  const imgRatio=img.width/img.height, boxRatio=w/h;
+  let sw,sh,sx,sy;
+  if(imgRatio>boxRatio){ sh=img.height; sw=sh*boxRatio; sx=(img.width-sw)/2; sy=0; }
+  else { sw=img.width; sh=sw/boxRatio; sx=0; sy=(img.height-sh)/2; }
+  ctx.drawImage(img, sx,sy,sw,sh, x,y,w,h);
+}
+function drawPlaceholder(ctx, x, y, w, h){
+  ctx.fillStyle= bgColor==='#ffffff' ? '#EDE8DF' : '#222';
+  ctx.fillRect(x,y,w,h);
+  ctx.fillStyle='#999'; ctx.font='600 20px sans-serif'; ctx.textAlign='center';
+  ctx.fillText('FOTO', x+w/2, y+h/2);
+}
 function drawToCanvas(canvas, W, imgsToUse){
   const ctx=canvas.getContext('2d');
   const scale = W / PW;
   const gap=getGapPx(scale), stroke=getStrokePx(scale);
   const useImgs = imgsToUse || images;
+  // FIX LAYOUT 8: hitungan baru biar lebar pas 100%, gak ada sisa hitam di kanan
   if(layout===8){
     const cols=2, rows=4;
-    const cellW = (W - gap*(cols-1) - stroke*cols*2) / cols;
+    // pad luar = stroke, jarak antar kolom = gap
+    // cellW = (total - pad kiri-kanan - gap tengah) / 2 -> PASTI PAS
+    const pad = stroke;
+    const cellW = (W - pad*2 - gap) / cols;
     const cellH = cellW * (PH / PW);
-    const totalH = (cellH + stroke*2)*rows + gap*(rows-1);
+    const totalH = pad*2 + cellH*rows + gap*(rows-1);
     if(canvas.height!==Math.round(totalH)) canvas.height=Math.round(totalH);
     if(canvas.width!==W) canvas.width=W;
     ctx.fillStyle=bgColor; ctx.fillRect(0,0,W,totalH);
     for(let i=0;i<8;i++){
       const col = i < 4 ? 0 : 1; const row = i % 4;
-      const x = stroke + col*(cellW + gap + stroke*2);
-      const y = stroke + row*(cellH + gap + stroke*2);
-      if(stroke>0){ ctx.fillStyle=bgColor; ctx.fillRect(x-stroke, y-stroke, cellW+stroke*2, cellH+stroke*2); }
+      const x = pad + col*(cellW + gap);
+      const y = pad + row*(cellH + gap);
       const img=useImgs[i];
-      if(!img){ ctx.fillStyle= bgColor==='#ffffff' ? '#EDE8DF' : '#222'; ctx.fillRect(x,y,cellW,cellH); ctx.fillStyle='#999'; ctx.font='600 20px sans-serif'; ctx.textAlign='center'; ctx.fillText('FOTO', x+cellW/2, y+cellH/2); continue; }
-      ctx.imageSmoothingEnabled=true; ctx.imageSmoothingQuality='high';
-      const imgRatio=img.width/img.height, boxRatio=cellW/cellH;
-      let sw,sh,sx,sy;
-      if(imgRatio>boxRatio){ sh=img.height; sw=sh*boxRatio; sx=(img.width-sw)/2; sy=0; }
-      else { sw=img.width; sh=sw/boxRatio; sx=0; sy=(img.height-sh)/2; }
-      ctx.drawImage(img, sx,sy,sw,sh, x,y,cellW,cellH);
+      if(!img){ drawPlaceholder(ctx, x, y, cellW, cellH); continue; }
+      drawImageCover(ctx, img, x, y, cellW, cellH);
     }
   } else {
     const ph = PH * scale;
@@ -255,12 +267,7 @@ function drawToCanvas(canvas, W, imgsToUse){
       if(stroke>0){ ctx.fillStyle=bgColor; ctx.fillRect(x-stroke, y-stroke, w+stroke*2, ph+stroke*2); }
       const img=useImgs[i];
       if(!img){ ctx.fillStyle= bgColor==='#ffffff' ? '#EDE8DF' : '#222'; ctx.fillRect(x,y,w,ph); ctx.fillStyle='#999'; ctx.font='600 20px sans-serif'; ctx.textAlign='center'; ctx.fillText('FOTO', x+w/2, y+ph/2); continue; }
-      ctx.imageSmoothingEnabled=true; ctx.imageSmoothingQuality='high';
-      const imgRatio=img.width/img.height, boxRatio=w/ph;
-      let sw,sh,sx,sy;
-      if(imgRatio>boxRatio){ sh=img.height; sw=sh*boxRatio; sx=(img.width-sw)/2; sy=0; }
-      else { sw=img.width; sh=sw/boxRatio; sx=0; sy=(img.height-sh)/2; }
-      ctx.drawImage(img, sx,sy,sw,sh, x,y,w,ph);
+      drawImageCover(ctx, img, x, y, w, ph);
     }
   }
 }
@@ -273,7 +280,7 @@ async function getProcessedImages(){
   const out=[];
   for(let i=0;i<images.length;i++){
     if(!images[i]){ out.push(null); continue; }
-    document.getElementById('aiStatus').textContent=`🤖 AI lagi proses foto ${i+1} / ${layout} via Hugging Face... jangan tutup web nya ya (15-40 detik)`;
+    document.getElementById('aiStatus').textContent=`✨ AI lagi proses foto ${i+1} / ${layout} via Hugging Face... jangan tutup web nya ya (15-40 detik)`;
     out.push(await enhanceWithHF(images[i]));
   }
   document.getElementById('aiStatus').classList.add('hidden');
