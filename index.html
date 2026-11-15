@@ -65,8 +65,7 @@
         <div class="flex justify-between items-baseline"><h2 class="text-[15px] font-bold">2. Pilih foto</h2><span id="countBadge" class="text-[12px] font-medium text-zinc-500">0 / 5 terisi</span></div>
         <p id="photoHint" class="text-[13px] text-zinc-500 mt-1">Ketuk kotak untuk Upload foto / Mengganti foto.</p>
         <div id="slotsGrid" class="grid grid-cols-5 gap-2 md:gap-3 mt-4"></div>
-        <p id="countText" class="text-[12px] text-zinc-500 mt-3">0 dari 5 foto terisi.</p>
-        <p id="qualityText" class="text-[12px] mt-1"></p>
+        <p id="qualityText" class="text-[12px] mt-3"></p>
         <div id="aiStatus" class="hidden mt-3 text-[12px] bg-[#FFF7D6] border border-[#E5C81A] rounded-lg p-3 leading-relaxed">✨ AI lagi proses...</div>
       </section>
       <section class="card p-5">
@@ -87,7 +86,6 @@
             <button onclick="setGap(2)" class="gapBtn opt active py-3 text-[13px] font-bold">2<span class="block text-[11px] font-normal">Seimbang</span></button>
             <button onclick="setGap(3)" class="gapBtn opt py-3 text-[13px] font-bold">3<span class="block text-[11px] font-normal text-zinc-500">Longgar</span></button>
           </div>
-          <p class="text-[11px] text-zinc-500 mt-2">Jarak sekarang cuma di ANTARA foto. Atas-bawah udah gak ada putih lagi.</p>
         </div>
         <div class="mt-5">
           <div class="flex justify-between items-baseline mb-2"><span class="text-[13px] font-bold">Garis tepi</span><span id="strokeLabel" class="text-[12px] text-zinc-500">2 — Sedang</span></div>
@@ -104,7 +102,6 @@
             <button onclick="setBg('#ffffff', this)" class="colorBtn active flex items-center gap-2 border border-[#E5E1D8] rounded-full pl-1.5 pr-4 py-1.5 bg-white"><span class="w-7 h-7 rounded-full bg-white border border-zinc-300 block"></span><span class="text-[13px] font-medium">Putih</span></button>
             <button onclick="setBg('#111111', this)" class="colorBtn flex items-center gap-2 border border-[#E5E1D8] rounded-full pl-1.5 pr-4 py-1.5 bg-white"><span class="w-7 h-7 rounded-full bg-[#111] border border-zinc-300 block"></span><span class="text-[13px] font-medium">Hitam</span></button>
           </div>
-          <p id="bgHint" class="text-[11px] text-zinc-500 mt-2">Kalo Jarak + Garis tepi dua-duanya 0 Polosan, warna latar gak kepake — hasilnya full foto doang.</p>
         </div>
       </section>
     </div>
@@ -113,9 +110,7 @@
         <div class="flex justify-between items-center mb-3"><h2 class="text-[13px] font-bold">4. Preview</h2><span id="infoLabel" class="text-[12px] text-zinc-500">Jarak: 2 • Garis tepi: 2 • AI: OFF</span></div>
         <div class="bg-[#F4F2ED] border border-[#E5E1D8] rounded-xl p-4">
           <div class="android"><div class="android-screen"><div class="android-camera"></div><div class="android-scroll"><canvas id="previewCanvas" width="600" height="1340" class="w-full h-auto block"></canvas></div><div class="android-nav"><span class="nav-tri"></span><span class="nav-circle"></span><span class="nav-sq"></span></div></div></div>
-          <p class="text-center text-[12px] text-zinc-500 mt-3">Geser di dalam Android untuk lihat semua foto 👆</p>
         </div>
-        <p id="previewHint" class="text-[12px] text-zinc-500 mt-3 leading-relaxed">Preview di HP sama persis kayak hasil unduhan. Gak ada lagi putih di atas / bawah pas scroll.</p>
         <div id="exportInfo" class="border-t border-[#E5E1D8] mt-4 pt-4 text-[12px] leading-relaxed text-zinc-500">Hasil: 3224 × 7200 px • PNG • Tiap foto 3224 × 1440 px.</div>
         <button onclick="downloadHD()" class="w-full btn-black font-bold py-4 text-[14px] mt-4">Unduh HD — PNG</button>
         <button onclick="shareToWA()" class="w-full bg-white border border-[#111] font-bold py-4 text-[14px] mt-2 rounded-full">Bagikan ke WhatsApp</button>
@@ -189,8 +184,8 @@ function loadImage(e, idx){
 }
 function updateCount(){
   const filled=images.filter(i=>i!==null).length;
-  document.getElementById('countText').textContent=`${filled} dari ${layout} foto terisi.`;
-  document.getElementById('countBadge').textContent=`${filled} / ${layout} terisi`;
+  const badge=document.getElementById('countBadge');
+  if(badge) badge.textContent=`${filled} / ${layout} terisi`;
 }
 function getGapLabel(l){ return l===0?'0 — Polosan / Foto Doang':l===1?'1 — Rapat':l===2?'2 — Seimbang':'3 — Longgar'; }
 function getStrokeLabel(l){ return l===0?'0 — Polosan / Foto Doang':l===1?'1 — Tipis':l===2?'2 — Sedang':'3 — Tebal'; }
@@ -226,7 +221,6 @@ function drawToCanvas(canvas, W, imgsToUse){
   const scale = W / PW;
   const gap=getGapPx(scale), stroke=getStrokePx(scale);
   const useImgs = imgsToUse || images;
-  // FIX: Jarak cuma di ANTARA foto, bukan di pinggir luar. Jadi gak ada putih atas-bawah / kiri-kanan pas scroll.
   if(layout===8){
     const cols=2, rows=4;
     const cellW = (W - gap*(cols-1) - stroke*cols*2) / cols;
